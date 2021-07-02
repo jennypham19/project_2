@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Semester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class SemesterController extends Controller
 {
@@ -11,9 +13,14 @@ class SemesterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('semester.listSemester');
+        $search = $request->get('search');
+        $listSemester = Semester::where("semesterCode","like","%$search%")->get();       
+        return view('semester.listSemester',[
+            'listSemester'=> $listSemester,
+            'search'=> $search,
+        ]);
     }
 
     /**
@@ -34,7 +41,15 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nameSemester = $request->get('name-semester');
+        $yearSemester1 = $request->get('year-semester1');
+        $yearSemester2 = $request->get('year-semester2');
+        $semester = new Semester();
+        $semester->nameSemester = $nameSemester;
+        $semester->year1 = $yearSemester1;
+        $semester->year2 = $yearSemester2;
+        $semester->save();
+        return Redirect::route('semester.index');
     }
 
     /**

@@ -13,7 +13,7 @@
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        Tania Andrew
+                        Phạm Ngọc Ánh
                         <b class="caret"></b>
                     </span>
                 </a>
@@ -51,7 +51,7 @@
             </li>
             <li>
                 <a data-toggle="collapse" href="#majorExamples">
-                    <i class="material-icons">image</i>
+                    <i class="material-icons">article</i>
                     <p> Major
                         <b class="caret"></b>
                     </p>
@@ -99,7 +99,7 @@
             </li>
             <li>
                 <a data-toggle="collapse" href="#semesterExamples">
-                    <i class="material-icons">place</i>
+                    <i class="material-icons">schedule</i>
                     <p> Semester
                         <b class="caret"></b>
                     </p>
@@ -123,7 +123,7 @@
             </li>
             <li>
                 <a data-toggle="collapse" href="#subjectExamples">
-                    <i class="material-icons">content_paste</i>
+                    <i class="material-icons">menu_book</i>
                     <p> Subject
                         <b class="caret"></b>
                     </p>
@@ -147,7 +147,7 @@
             </li>
             <li>
                 <a data-toggle="collapse" href="#gradeExamples">
-                    <i class="material-icons">grid_on</i>
+                    <i class="material-icons">class</i>
                     <p> Grade
                         <b class="caret"></b>
                     </p>
@@ -171,7 +171,7 @@
             </li>
             <li>
                 <a data-toggle="collapse" href="#studentExamples">
-                    <i class="material-icons">place</i>
+                    <i class="material-icons">person</i>
                     <p> Student
                         <b class="caret"></b>
                     </p>
@@ -221,6 +221,12 @@
                 <a href="#">
                     <i class="material-icons">date_range</i>
                     <p> Calendar </p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}">
+                    <i class="material-icons">logout</i>
+                    <p> Đăng xuất </p>
                 </a>
             </li>
         </ul>

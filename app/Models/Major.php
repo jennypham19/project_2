@@ -9,4 +9,5 @@ class Major extends Model
 {
     protected $table = 'major';
     public $timestamps = false;
+    protected $primaryKey = 'majorCode';
 }

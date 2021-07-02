@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Semester extends Migration
+class AddSemesterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class Semester extends Migration
      */
     public function up()
     {
-        Schema::create('semester', function (Blueprint $table) {
-            $table->increments('semesterCode');
-            $table->string('nameSemester',20);
-            $table->year('year1');
-
+        Schema::table('semester', function (Blueprint $table) {
+            $table->year('year2')->after('year1');
         });
     }
 
@@ -28,6 +25,8 @@ class Semester extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('semester');
+        Schema::table('semester', function (Blueprint $table) {
+            $table->dropColumn('year2');
+        });
     }
 }

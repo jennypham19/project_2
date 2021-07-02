@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CourseController extends Controller
 {
@@ -12,9 +13,14 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('course.listCourse');
+        $search = $request->get('search');
+        $listCourse = Course::where('nameCourse','like',"%$search%")->get();
+        return view('course.listCourse',[
+            'listCourse' => $listCourse,
+            'search' => $search
+        ]);
     }
 
     /**
@@ -39,6 +45,7 @@ class CourseController extends Controller
         $course = new Course();
         $course ->nameCourse = $nameCourse;
         $course->save();
+        return redirect()->route('course.index');
 
     }
 
@@ -61,7 +68,10 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::find($id);
+        return view('course.editCourse',[
+            'course'=>$course,
+        ]);
     }
 
     /**
@@ -73,7 +83,11 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nameCourse = $request->get('name_course');
+        $course = Course::find($id);
+        $course->nameCourse = $nameCourse;
+        $course->save();
+        return Redirect::route('course.index');
     }
 
     /**

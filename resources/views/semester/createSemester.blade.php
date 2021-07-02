@@ -1,12 +1,15 @@
-@extends('index')
+@extends('layout.index')
 @section('content1')
     <a class="navbar-brand" href="#"> Semester </a>
 @endsection
 @section('content')
     <h1>Thêm học kỳ</h1>
     @csrf
-    <form action="" method="post">
+    <form action="{{ route('semester.store') }}" method="post">
+        @csrf
         Tên học kỳ: <input type="text" name="name-semester"><br>
+        Năm: <input type="text" name="year-semester1"><br>
+        Năm: <input type="text" name="year-semester2"><br>
         <button type="submit">Thêm</button>
     </form>
 @endsection

@@ -1,6 +1,6 @@
-@extends('index')
+@extends('layout.index')
 @section('content1')
-    <a class="navbar-brand" href="#"> Course </a>
+    <a class="navbar-brand" href="{{ route('course.index') }}"> Course </a>
 @endsection
 @section('content')
     <h1>Thêm khóa học</h1>

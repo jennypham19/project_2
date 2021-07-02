@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layout.index')
 @section('content1')
     <a class="navbar-brand" href="#"> Major </a>
 @endsection
