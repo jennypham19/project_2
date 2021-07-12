@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
+use App\Models\Major;
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class GradeController extends Controller
 {
@@ -13,7 +17,16 @@ class GradeController extends Controller
      */
     public function index()
     {
-        return view('grade.listGrade');
+        $listCourse = Course::all();
+        $listMajor = Major::all();
+        $listGrade = Grade::join("course","grade.courseCode","=","course.courseCode")
+                    ->join("major","grade.majorCode","=","major.majorCode")
+                    ->get();
+        return view('grade.listGrade',[
+            'listGrade'=> $listGrade,
+            'listCourse' => $listCourse,
+            'listMajor' => $listMajor,
+        ]);
     }
 
     /**
@@ -23,7 +36,12 @@ class GradeController extends Controller
      */
     public function create()
     {
-        return view('grade.createGrade');
+        $listCourse = Course::all();
+        $listMajor = Major::all();
+        return view('grade.createGrade',[
+            'listCourse' => $listCourse,
+            'listMajor' => $listMajor,
+        ]);
     }
 
     /**
@@ -34,7 +52,15 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nameGrade = $request->get('name-grade');
+        $courseCode = $request->get('id-course');
+        $majorCode = $request->get('id-major');
+        $grade = new Grade();
+        $grade -> nameClass = $nameGrade;
+        $grade -> courseCode = $courseCode;
+        $grade -> majorCode = $majorCode;
+        $grade ->save();
+        return Redirect::route('grade.index');
     }
 
     /**

@@ -15,4 +15,9 @@ class Semester extends Model
     public function getFullYearAttribute(){
         return $this->year1 . "-" . $this->year2;
     }
+
+    public function getFullSemesterAttribute()
+    {
+        return $this->nameSemester."/".$this->year1."-".$this->year2;
+    }
 }

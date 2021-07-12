@@ -44,181 +44,55 @@
         </div>
         <ul class="nav">
             <li class="active">
-                <a href="{{ route('dashboard')}}">
+                <a href="{{ route('dashboard-admin')}}">
                     <i class="material-icons">dashboard</i>
                     <p> Dashboard </p>
                 </a>
             </li>
             <li>
-                <a data-toggle="collapse" href="#majorExamples">
+                <a href="{{ route('major.index') }}">
                     <i class="material-icons">article</i>
-                    <p> Major
-                        <b class="caret"></b>
-                    </p>
+                    <p>Major</p>
                 </a>
-                <div class="collapse" id="majorExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="{{ route('major.index')}}">
-                                <span class="sidebar-mini"> LM </span>
-                                <span class="sidebar-normal"> List Major </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('major.create')}}">
-                                <span class="sidebar-mini"> CM </span>
-                                <span class="sidebar-normal"> Create Major </span>
-                            </a>
-                        </li>   
-                    </ul>
-                </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#courseExamples">
+                <a href="{{ route('course.index') }}">
                     <i class="material-icons">apps</i>
-                    <p> Course
-                        <b class="caret"></b>
-                    </p>
+                    <p>Course</p>
                 </a>
-                <div class="collapse" id="courseExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="{{ route('course.index')}}">
-                                <span class="sidebar-mini"> LC </span>
-                                <span class="sidebar-normal"> List Course </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('course.create')}}">
-                                <span class="sidebar-mini"> CC </span>
-                                <span class="sidebar-normal"> Create Course </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#semesterExamples">
+                <a href="{{ route('semester.index') }}">
                     <i class="material-icons">schedule</i>
-                    <p> Semester
-                        <b class="caret"></b>
-                    </p>
+                    <p>Semester</p>
                 </a>
-                <div class="collapse" id="semesterExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="{{ route('semester.index')}}">
-                                <span class="sidebar-mini"> LS </span>
-                                <span class="sidebar-normal"> List Semester </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('semester.create')}}">
-                                <span class="sidebar-mini"> CS </span>
-                                <span class="sidebar-normal"> Create Semester </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#subjectExamples">
+                <a href="{{ route('subject.index') }}">
                     <i class="material-icons">menu_book</i>
-                    <p> Subject
-                        <b class="caret"></b>
-                    </p>
+                    <p>Subject</p>
                 </a>
-                <div class="collapse" id="subjectExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="{{ route('subject.index')}}">
-                                <span class="sidebar-mini"> LS </span>
-                                <span class="sidebar-normal"> List Subject </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('subject.create')}}">
-                                <span class="sidebar-mini"> CS </span>
-                                <span class="sidebar-normal"> Create Subject </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#gradeExamples">
+                <a href="{{ route('grade.index') }}">
                     <i class="material-icons">class</i>
-                    <p> Grade
-                        <b class="caret"></b>
-                    </p>
+                    <p>Grade</p>
                 </a>
-                <div class="collapse" id="gradeExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="{{ route('grade.index')}}">
-                                <span class="sidebar-mini"> LG </span>
-                                <span class="sidebar-normal"> List Grade </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('grade.create')}}">
-                                <span class="sidebar-mini"> CG </span>
-                                <span class="sidebar-normal"> Create Grade </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#studentExamples">
+                <a href="{{ route('student.index') }}">
                     <i class="material-icons">person</i>
-                    <p> Student
-                        <b class="caret"></b>
-                    </p>
+                    <p>Student</p>
                 </a>
-                <div class="collapse" id="studentExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="{{ route('student.index')}}">
-                                <span class="sidebar-mini"> LS </span>
-                                <span class="sidebar-normal"> List Student </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('student.create')}}">
-                                <span class="sidebar-mini"> CS </span>
-                                <span class="sidebar-normal"> Create Student </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#markExamples">
+                <a href="{{ route('mark.index') }}">
                     <i class="material-icons">place</i>
-                    <p> Mark
-                        <b class="caret"></b>
-                    </p>
+                    <p>Mark</p>
                 </a>
-                <div class="collapse" id="markExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="{{ route('mark.index')}}">
-                                <span class="sidebar-mini"> LM </span>
-                                <span class="sidebar-normal"> List Mark </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('mark.create')}}">
-                                <span class="sidebar-mini"> CM </span>
-                                <span class="sidebar-normal"> Create Mark </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('calendar') }}">
                     <i class="material-icons">date_range</i>
                     <p> Calendar </p>
                 </a>

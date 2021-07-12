@@ -16,9 +16,9 @@ class Grade extends Migration
         Schema::create('grade', function (Blueprint $table) {
             $table->increments('classCode');
             $table->string('nameClass',150);
-            $table->unsignedInteger('courseCode');
+            $table->unsignedInteger('courseCode')->nullable();
             $table->foreign('courseCode')->references('courseCode')->on('course');
-            $table->unsignedInteger('majorCode');
+            $table->unsignedInteger('majorCode')->nullable();
             $table->foreign('majorCode')->references('majorCode')->on('major');
 
         });

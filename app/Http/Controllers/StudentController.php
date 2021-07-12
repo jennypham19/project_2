@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
+use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class StudentController extends Controller
 {
@@ -13,7 +17,13 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student.listStudent');
+        $listStudent = Student::get();
+        $grade = Grade::join("course","grade.courseCode","=","course.courseCode")
+                ->get();
+        return view('student.listStudent',[
+            'listStudent'=>$listStudent,
+            'grade'=>$grade,
+        ]);
     }
 
     /**
@@ -23,7 +33,11 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.createStudent');
+        $grade = Grade::join("course","grade.courseCode","=","course.courseCode")
+                ->get(); 
+        return view('student.createStudent',[
+            'grade'=>$grade,
+        ]);
     }
 
     /**
@@ -34,7 +48,39 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $submit = $request->get('btn btn-submit');
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $fistName = $request->get('first-name');
+        $middleName = $request->get('middle-name');
+        $lastName = $request->get('last-name');
+        $dob = $request->get('dob');
+        $gender = $request->get('gender');
+        $phone = $request->get('phone');
+        $address = $request->get('address');
+        $status = $request->get('status');
+        $dateEnrollment = $request->get('date');
+        $grade = $request->get('grade');
+
+        $student = new Student();
+
+        $student ->email = $email;
+        $student ->passWord = $password;
+        $student->firstName = $fistName;
+        $student->middleName = $middleName;
+        $student->lastName = $lastName;
+        $student ->dateOfBirth = $dob;
+        $student ->genDer = $gender;
+        $student ->phone= $phone;
+        $student ->address= $address;
+        $student ->status = $status;
+        $student ->dateEnrollment = $dateEnrollment;
+        $student ->classCode = $grade;
+
+        $student->save();
+        return Redirect::route('student.index');
+        
+
     }
 
     /**

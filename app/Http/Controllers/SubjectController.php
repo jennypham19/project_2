@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
+use App\Models\Semester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class SubjectController extends Controller
 {
@@ -13,7 +16,13 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('subject.listSubject');
+        $listSemester = Semester::all();
+        $listSubject = Subject::join("semester","subject.semesterCode","=","semester.semesterCode")
+                        ->get();
+        return view('subject.listSubject',[
+            'listSubject'=>$listSubject,
+            'listSemester'=>$listSemester
+        ]);
     }
 
     /**
@@ -23,7 +32,10 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('subject.createSubject');
+        $semester = Semester::all();
+        return view('subject.createSubject',[
+            'semester' => $semester,
+        ]);
     }
 
     /**
@@ -34,7 +46,21 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nameSubject = $request->get('name-subject');
+        $hours = $request->get('hour');
+        $startDate = $request->get('start-date');
+        $final = $request->get('final');
+        $skill = $request->get('skill');
+        $semester = $request->get('semester');
+        $subject = new Subject();
+        $subject -> nameSubject = $nameSubject;
+        $subject -> totalClassHour = $hours;
+        $subject -> startDate = $startDate;
+        $subject -> isFinal = $final;
+        $subject -> isSkill = $skill;
+        $subject -> semesterCode = $semester;
+        $subject ->save();
+        return Redirect::route('subject.index');
     }
 
     /**
