@@ -1,6 +1,9 @@
 @extends('layout.index')
+@section('title')
+    Quản lý môn học
+@endsection
 @section('content1')
-    <a class="navbar-brand" href="#"> Subject </a>
+    <a class="navbar-brand" href="{{ route('subject.index') }}"> Subject </a>
 @endsection
 @section('content')
     <h1>Danh sách môn học</h1>
@@ -31,18 +34,6 @@
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Mã MH</th>
-                                    <th>Tên MH</th>
-                                    <th>Số giờ</th>
-                                    <th>Ngày bắt đầu</th>
-                                    <th>Lý Thuyết</th>
-                                    <th>Thực hành</th>
-                                    <th>Học kỳ</th>
-                                    <th class="text-center">Tác vụ</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($listSubject as $subject)
                                     <tr>

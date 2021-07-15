@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Quản lý lớp
+@endsection
 @section('content1')
     <a class="navbar-brand" href="{{ route('grade.index') }}"> Grade </a>
 @endsection
@@ -26,14 +29,6 @@
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Mã lớp</th>
-                                    <th>Tên lớp</th>
-                                    <th>Chuyên ngành</th>
-                                    <th class="text-center">Tác vụ</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($listGrade as $grade)
                                     <tr>

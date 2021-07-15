@@ -10,4 +10,10 @@ class Mark extends Model
     use HasFactory;
     protected $table = 'mark';
     public $timestamps = false;
+
+    public function getFullNameAttribute()
+    {
+        return $this->lastName. " ".$this->middleName." ".$this->firstName;
+    }
+
 }

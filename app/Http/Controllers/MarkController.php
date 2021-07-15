@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mark;
+use App\Models\Student;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class MarkController extends Controller
 {
@@ -13,7 +17,12 @@ class MarkController extends Controller
      */
     public function index()
     {
-        return view('mark.listMark');
+        $listMark = Mark::join("student","student.studentCode","=","mark.studentCode")
+                        -> join("subject","subject.subjectCode","=","mark.subjectCode")
+                        ->get();
+        return view('mark.listMark',[
+            'listMark'=>$listMark,
+        ]);
     }
 
     /**
@@ -23,7 +32,12 @@ class MarkController extends Controller
      */
     public function create()
     {
-        return view('mark.createMark');
+        $listStudent = Student::all();
+        $listSubject = Subject::all();
+        return view('mark.createMark',[
+            'listStudent' => $listStudent,
+            'listSubject' => $listSubject,
+        ]);
     }
 
     /**
@@ -34,7 +48,21 @@ class MarkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nameStudent = $request->get('student');
+        $nameSubject = $request->get('subject');
+        $final1st = $request->get('final-1st');
+        $final2nd = $request->get('final-2nd');
+        $skill1st = $request->get('skill-1st');
+        $skill2nd = $request->get('skill-2nd');
+        $mark = new Mark();
+        $mark->studentCode = $nameStudent;
+        $mark->subjectCode = $nameSubject;
+        $mark->final1st = $final1st;
+        $mark->final2nd = $final2nd;
+        $mark->skill1st = $skill1st;
+        $mark->skill2nd = $skill2nd;
+        $mark->save();
+        return Redirect::route('mark.index');
     }
 
     /**

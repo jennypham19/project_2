@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Quản lý khóa
+@endsection
 @section('content1')
     <a class="navbar-brand" href="{{ route('course.index') }}"> Course </a>
 @endsection
@@ -13,8 +16,8 @@
 </button>
 @endsection
 @section('content')
-    <h1>Danh sách khóa học</h1>
-    <a href="{{ route('course.create') }}" class="btn btn-info" style="color:black;">Thêm khóa học </a>
+    <h1>Danh sách khóa</h1>
+    <a href="{{ route('course.create') }}" class="btn btn-info" style="color:black;">Thêm khóa </a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -35,13 +38,6 @@
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Mã học kỳ</th>
-                                    <th>Tên học kỳ</th>
-                                    <th class="text-center">Tác vụ</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($listCourse as $course)
                                     <tr>

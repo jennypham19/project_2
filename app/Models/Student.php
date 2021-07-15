@@ -22,23 +22,22 @@ class Student extends Model
         return $this->lastName. " ".$this->middleName." ".$this->firstName;
     }
 
-    public function getGenderAttribute()
+    public function getNameGenderAttribute()
     {
-        if ($this->genDer==1) {
+        if ($this-> genDer ==1){
             return "Nam";
-        } else {
+        }else{
             return "Nữ";
         }
-        
     }
 
-    public function getStatusAttribute()
+    public function getNameStatusAttribute()
     {
-        if ($this->status==1) {
+        if ($this-> status ==1){
             return "Hoạt động";
-        } else {
+        }else{
             return "Không hoạt động";
         }
-        
     }
+
 }

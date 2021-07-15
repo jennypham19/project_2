@@ -1,6 +1,9 @@
 @extends('layout.index')
+@section('title')
+    Quản lý sinh viên
+@endsection
 @section('content1')
-    <a class="navbar-brand" href="#"> Student </a>
+    <a class="navbar-brand" href="{{ route('student.index') }}"> Student </a>
 @endsection
 @section('content')
     <h1>Danh sách sinh viên</h1>
@@ -12,7 +15,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Chuyên ngành</h4>
+                    <h4 class="card-title">Sinh viên</h4>
                     <div class="toolbar">
 
                     </div>
@@ -21,7 +24,7 @@
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Mã sinh viên</th>
+                                    <th>Mã SV</th>
                                     <th>Email</th>
                                     <th>Mật khẩu</th>
                                     <th>Họ tên</th>
@@ -43,16 +46,16 @@
                                         <td>{{ $student->passWord }}</td>
                                         <td>{{ $student->FullName }}</td>
                                         <td>{{ $student->dateOfBirth }}</td>
-                                        <td>{{ $student->Gender }}</td>
+                                        <td>{{ $student->NameGender }}</td>
                                         <td>{{ $student->phone }}</td>
                                         <td>{{ $student->address }}</td>
-                                        <td>{{ $student->Status }}</td>
+                                        <td>{{ $student->NameStatus }}</td>
                                         <td>{{ $student->dateEnrollment }}</td>
                                         <td>{{ $student->FullGrade }}</td>
                                         <td class="td-actions text-center">
                                             <a href="">
                                                 <button class="btn btn-success btn-xs">
-                                                     <i class   ="material-icons">edit</i>Edit
+                                                     <i class="material-icons">edit</i>Edit
                                                 </button>
                                             </a>
                                             <form action="" method="post">

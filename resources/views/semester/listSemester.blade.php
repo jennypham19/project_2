@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Quản lý học kỳ
+@endsection
 @section('content1')
     <a class="navbar-brand" href="{{ route('semester.index') }}"> Semester </a>
 @endsection
@@ -36,14 +39,6 @@
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Mã học kỳ</th>
-                                    <th>Tên học kỳ</th>
-                                    <th>Năm</th>
-                                    <th class="text-center">Tác vụ</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($listSemester as $semester)
                                     <tr>

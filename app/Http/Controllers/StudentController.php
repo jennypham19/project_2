@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
-use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -17,12 +16,12 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $listStudent = Student::get();
-        $grade = Grade::join("course","grade.courseCode","=","course.courseCode")
-                ->get();
+        $listStudent = Student::join("grade","student.classCode","=","grade.classCode")
+                        ->join("course","grade.courseCode","=","course.courseCode")
+                       ->get();
+      
         return view('student.listStudent',[
             'listStudent'=>$listStudent,
-            'grade'=>$grade,
         ]);
     }
 

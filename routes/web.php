@@ -41,7 +41,6 @@ Route::middleware([CheckLogin::class])->group(function(){
     Route::resource('grade',GradeController::class);
     Route::resource('student',StudentController::class);
     Route::resource('mark',MarkController::class);
-    
 });
 Route::get('/calendar',[CalendarController::class,'index'])->name('calendar');
 Route::get('/dashboard-user',[UserController::class,'index'])->name('dashboard-user');
