@@ -3,7 +3,7 @@
     Quản lý ngành học
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('major.index') }}"> Major </a>
+    <a class="navbar-brand" href="{{ route('major.index') }}"> CHUYÊN NGÀNH </a>
 @endsection
 @section('content2')
     <div class="form-group form-search is-empty">
@@ -16,8 +16,8 @@
     </button>
 @endsection
 @section('content')
-    <h1>Danh sách ngành học</h1>
-    <a href="{{ route('major.create') }}" class="btn btn-info" style="color:black;">Thêm ngành học</a>
+    {{-- <h1>Danh sách ngành học</h1> --}}
+    <a href="{{ route('major.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;" >Thêm ngành học</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -25,7 +25,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Chuyên ngành</h4>
+                    <h4 class="card-title">CHUYÊN NGÀNH</h4>
                     <div class="toolbar">
 
                     </div>

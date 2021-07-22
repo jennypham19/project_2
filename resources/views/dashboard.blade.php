@@ -1,6 +1,6 @@
 @extends('layout.index')
 @section('content1')
-<a class="navbar-brand" href="#"> Dashboard </a>
+<a class="navbar-brand" href="{{ route('dashboard-admin') }}"> TRANG ĐIỀU KHIỂN </a>
 @endsection
 @section('content2')
 <div class="form-group form-search is-empty">

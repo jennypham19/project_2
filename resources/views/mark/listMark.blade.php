@@ -3,11 +3,11 @@
     Quản lý điểm
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('mark.index') }}"> Mark </a>
+    <a class="navbar-brand" href="{{ route('mark.index') }}"> ĐIỂM </a>
 @endsection
 @section('content')
-    <h1>Điểm</h1>
-    <a href="{{ route('mark.create') }}" class="btn btn-info" style="color:black;">Thêm điểm</a>
+    {{-- <h1>Điểm</h1> --}}
+    <a href="{{ route('mark.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm điểm</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -15,7 +15,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Sinh viên</h4>
+                    <h4 class="card-title">ĐIỂM</h4>
                     <div class="toolbar">
 
                     </div>

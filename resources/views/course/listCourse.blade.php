@@ -3,7 +3,7 @@
     Quản lý khóa
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('course.index') }}"> Course </a>
+    <a class="navbar-brand" href="{{ route('course.index') }}"> KHÓA </a>
 @endsection
 @section('content2')
 <div class="form-group form-search is-empty">
@@ -16,8 +16,8 @@
 </button>
 @endsection
 @section('content')
-    <h1>Danh sách khóa</h1>
-    <a href="{{ route('course.create') }}" class="btn btn-info" style="color:black;">Thêm khóa </a>
+    {{-- <h1>Danh sách khóa</h1> --}}
+    <a href="{{ route('course.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm khóa </a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -25,7 +25,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Khóa</h4>
+                    <h4 class="card-title">KHÓA</h4>
                     <div class="toolbar">
 
                     </div>
@@ -44,7 +44,7 @@
                                         <td>{{ $course->courseCode }}</td>
                                         <td>{{ $course->nameCourse }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="">
+                                            <a href="{{ route('course.edit', $course->courseCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

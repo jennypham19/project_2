@@ -101,7 +101,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('logout-student') }}">
                     <i class="pe-7s-plugin"></i>
                     <p>Logout
                     </p>

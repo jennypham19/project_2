@@ -3,11 +3,11 @@
     Quản lý lớp
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('grade.index') }}"> Grade </a>
+    <a class="navbar-brand" href="{{ route('grade.index') }}"> LỚP </a>
 @endsection
 @section('content')
-    <h1>Danh sách lớp</h1>
-    <a href="{{ route('grade.create') }}" class="btn btn-info" style="color:black;">Thêm lớp</a>
+    {{-- <h1>Danh sách lớp</h1> --}}
+    <a href="{{ route('grade.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm lớp</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -15,7 +15,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Lớp</h4>
+                    <h4 class="card-title">LỚP</h4>
                     <div class="toolbar">
 
                     </div>

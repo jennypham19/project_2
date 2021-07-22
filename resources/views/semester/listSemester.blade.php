@@ -3,7 +3,7 @@
     Quản lý học kỳ
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('semester.index') }}"> Semester </a>
+    <a class="navbar-brand" href="{{ route('semester.index') }}"> HỌC KỲ </a>
 @endsection
 @section('content2')
 <div class="form-group form-search is-empty">
@@ -16,8 +16,8 @@
 </button>
 @endsection
 @section('content')
-    <h1>Danh sách học kỳ</h1>
-    <a href="{{ route('semester.create') }}" class="btn btn-info" style="color:black;">Thêm học kỳ</a>
+    {{-- <h1>Danh sách học kỳ</h1> --}}
+    <a href="{{ route('semester.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm học kỳ</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -25,7 +25,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Học kỳ</h4>
+                    <h4 class="card-title">HỌC KỲ</h4>
                     <div class="toolbar">
 
                     </div>
@@ -46,7 +46,7 @@
                                         <td>{{ $semester->nameSemester }}</td>
                                         <td>{{ $semester->FullYear }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="">
+                                            <a href="{{ route('semester.edit',$semester->semesterCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

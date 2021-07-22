@@ -71,7 +71,10 @@ class SemesterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $semester = Semester::find($id);
+        return view('semester.editSemester',[
+            "semester"=>$semester,
+        ]);
     }
 
     /**
@@ -83,7 +86,15 @@ class SemesterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nameSemester = $request->get('name-semester');
+        $year1 = $request->get('year-semester1');
+        $year2 = $request->get('year-semester2');
+        $semester = Semester::find($id);
+        $semester->nameSemester = $nameSemester;
+        $semester->year1 = $year1;
+        $semester->year2 = $year2;
+        $semester -> save();
+        return Redirect::route('semester.index');
     }
 
     /**

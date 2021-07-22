@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-class CheckLogin
+
+class CheckLoginUser
 {
     /**
      * Handle an incoming request.
@@ -19,9 +20,7 @@ class CheckLogin
         if ($request->session()->exists('id')) {
             return $next($request);
         } else {
-            return Redirect::route('login-admin')->with('error',"Bạn chưa đăng nhập");
+            return Redirect::route('login-student')->with('error',"Bạn chưa đăng nhập");
         }
-        
-        
     }
 }

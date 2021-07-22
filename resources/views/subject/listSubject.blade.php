@@ -3,11 +3,11 @@
     Quản lý môn học
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('subject.index') }}"> Subject </a>
+    <a class="navbar-brand" href="{{ route('subject.index') }}"> MÔN HỌC </a>
 @endsection
 @section('content')
-    <h1>Danh sách môn học</h1>
-    <a href="{{ route('subject.create') }}" class="btn btn-info" style="color:black;">Thêm môn học</a>
+    {{-- <h1>Danh sách môn học</h1> --}}
+    <a href="{{ route('subject.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm môn học</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -15,7 +15,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Môn học</h4>
+                    <h4 class="card-title">MÔN HỌC</h4>
                     <div class="toolbar">
 
                     </div>

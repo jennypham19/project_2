@@ -1,4 +1,4 @@
-<div class="sidebar" data-active-color="rose" data-background-color="black" data-image="/assets/img/sidebar-1.jpg">
+<div class="sidebar" data-active-color="rose" data-background-color="black" data-image="{{ asset('assets') }}/img/sidebar-1.jpg">
     <!--
     Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
     Tip 2: you can also add an image using data-image tag
@@ -8,12 +8,15 @@
         
         <div class="user">
             <div class="photo">
-                <img src="/assets/img/faces/avatar.jpg" />
+                <img src="{{ asset('assets') }}/img/faces/avatar.jpg" />
             </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        Phạm Ngọc Ánh
+                        @if (Session::exists('nameAdmin'))
+                            {{ Session::get("nameAdmin") }}    
+                        @endif
+                        {{-- Quản trị viên --}}
                         <b class="caret"></b>
                     </span>
                 </a>
@@ -52,55 +55,55 @@
             <li>
                 <a href="{{ route('major.index') }}">
                     <i class="material-icons">article</i>
-                    <p>Major</p>
+                    <p>CHUYÊN NGÀNH</p>
                 </a>
             </li>
             <li>
                 <a href="{{ route('course.index') }}">
                     <i class="material-icons">apps</i>
-                    <p>Course</p>
+                    <p>KHÓA</p>
                 </a>
             </li>
             <li>
                 <a href="{{ route('semester.index') }}">
                     <i class="material-icons">schedule</i>
-                    <p>Semester</p>
+                    <p>HỌC KỲ</p>
                 </a>
             </li>
             <li>
                 <a href="{{ route('subject.index') }}">
                     <i class="material-icons">menu_book</i>
-                    <p>Subject</p>
+                    <p>MÔN HỌC</p>
                 </a>
             </li>
             <li>
                 <a href="{{ route('grade.index') }}">
                     <i class="material-icons">class</i>
-                    <p>Grade</p>
+                    <p>LỚP</p>
                 </a>
             </li>
             <li>
                 <a href="{{ route('student.index') }}">
                     <i class="material-icons">person</i>
-                    <p>Student</p>
+                    <p>SINH VIÊN</p>
                 </a>
             </li>
             <li>
                 <a href="{{ route('mark.index') }}">
                     <i class="material-icons">place</i>
-                    <p>Mark</p>
+                    <p>ĐIỂM</p>
                 </a>
             </li>
             <li>
                 <a href="{{ route('calendar') }}">
                     <i class="material-icons">date_range</i>
-                    <p> Calendar </p>
+                    <p> LỊCH HỌC </p>
                 </a>
             </li>
             <li>
-                <a href="{{ route('logout') }}">
+                <a href="{{ route('logout-admin') }}">
                     <i class="material-icons">logout</i>
-                    <p> Đăng xuất </p>
+                    <p> ĐĂNG XUẤT </p>
                 </a>
             </li>
         </ul>

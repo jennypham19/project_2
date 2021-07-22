@@ -3,11 +3,11 @@
     Quản lý sinh viên
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('student.index') }}"> Student </a>
+    <a class="navbar-brand" href="{{ route('student.index') }}"> SINH VIÊN </a>
 @endsection
 @section('content')
-    <h1>Danh sách sinh viên</h1>
-    <a href="{{ route('student.create') }}" class="btn btn-info" style="color:black;">Thêm sinh viên</a>
+    {{-- <h1>Danh sách sinh viên</h1> --}}
+    <a href="{{ route('student.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm sinh viên</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -15,7 +15,7 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">Sinh viên</h4>
+                    <h4 class="card-title">SINH VIÊN</h4>
                     <div class="toolbar">
 
                     </div>

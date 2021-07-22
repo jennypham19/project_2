@@ -1,6 +1,6 @@
 @extends('layout.index')
 @section('content1')
-    <a class="navbar-brand" href="#"> Major </a>
+    <a class="navbar-brand" href="{{ route('major.index') }}"> CHUYÊN NGÀNH </a>
 @endsection
 @section('content')
     <h1>Thêm chuyên ngành</h1>
