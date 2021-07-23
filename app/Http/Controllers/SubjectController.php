@@ -82,7 +82,10 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subject = Subject::find($id);
+        return view('subject.editSubject',[
+            'subject'=>$subject,
+        ]);
     }
 
     /**
@@ -94,7 +97,21 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nameSubject = $request->get('name-subject');
+        $totalHours = $request->get('total-hour');
+        $startDate = $request->get('start-date');
+        $final = $request->get('final');
+        $skill = $request->get('skill');
+        $semesterCode = $request->get('semester');
+        $subject = Subject::find($id);
+        $subject->nameSubject = $nameSubject;
+        $subject->totalClassHour = $totalHours;
+        $subject->startDate = $startDate;
+        $subject->isFinal= $final;
+        $subject->isSkill = $skill;
+        $subject->semesterCode = $semesterCode;
+        $subject->save();
+        return Redirect::route('subject.index');
     }
 
     /**

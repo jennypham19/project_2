@@ -45,7 +45,7 @@
                                         <td>{{ $subject->Skill }}</td>
                                         <td>{{ $subject->FullSemester }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="">
+                                            <a href="{{ route('subject.edit',$subject->subjectCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>
