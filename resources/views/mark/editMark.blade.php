@@ -1,13 +1,58 @@
 @extends('layout.index')
+@section('title')
+    Cập nhật điểm
+@endsection
 @section('content1')
-<a class="navbar-brand" href="{{ route('mark.index')}}"> Điểm </a>
+    <a class="navbar-brand" href="{{ route('mark.index') }}">ĐIỂM</a>
 @endsection
 @section('content')
     <h1>Cập nhật điểm</h1>
-    <!-- <form action="{{ route('mark.update') }}" method="post">
-        @method('PUT')
-        @csrf -->
-        <!-- Tên chuyên ngành:<input type="text" name="name-major" value="{{ $major->nameMajor}}"><br> -->
-        <!-- <button>Cập nhật</button> -->
-    <!-- </form> -->
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">ĐIỂM</h4>
+            <form action="{{ route('mark.update', $mark->markCode) }}" method="post">
+                @csrf
+                @method('PUT')
+                <div class="form-group label-floating">
+                    <label style="color:black;">Sinh viên</label>
+                    <input type="text" class="form-control" name="name-sv" value="{{ $mark->studentCode }}"
+                    placeholder="{{ $mark->FullName }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Môn học</label>
+                    <input type="text" class="form-control" name="name-subject" value="{{ $mark->subjectCode }}"
+                    placeholder="{{ $mark->nameSubject }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Điểm final lần 1</label>
+                    <input type="text" class="form-control" name="mark-final1" value="{{ $mark->final1st }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Điểm final lần 2</label>
+                    <input type="text" class="form-control" name="mark-final2" value="{{ $mark->final2nd }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Điểm skill lần 1</label>
+                    <input type="text" class="form-control" name="mark-skill1" value="{{ $mark->skill1st }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Điểm skill lần 2</label>
+                    <input type="text" class="form-control" name="mark-skill2" value="{{ $mark->skill2nd }}">
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+                {{-- Sinh viên: <input type="text" name="name-sv" value="{{ $mark->studentCode }}"
+                    placeholder="{{ $mark->FullName }}"><br>
+                Môn học: <input type="text" name="name-subject" value="{{ $mark->subjectCode }}"
+                    placeholder="{{ $mark->nameSubject }}"><br>
+                Điểm final lần 1: <input type="text" name="mark-final1" value="{{ $mark->final1st }}"><br>
+                Điểm final lần 2: <input type="text" name="mark-final2" value="{{ $mark->final2nd }}"><br>
+                Điểm skill lần 1: <input type="text" name="mark-skill1" value="{{ $mark->skill1st }}"><br>
+                Điểm skill lần 2: <input type="text" name="mark-skill2" value="{{ $mark->skill2nd }}"><br>
+                <button>Cập nhật</button> --}}
+            </form>
+        </div>
+    </div>
 @endsection

@@ -43,7 +43,7 @@
                                         <td>{{ $mark->skill1st }}</td>
                                         <td>{{ $mark->skill2st }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{route('mark.edit', $mark->final1st)}}">
+                                            <a href="{{ route('mark.edit',$mark->markCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

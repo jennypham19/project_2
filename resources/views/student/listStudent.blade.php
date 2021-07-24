@@ -53,7 +53,7 @@
                                         <td>{{ $student->dateEnrollment }}</td>
                                         <td>{{ $student->FullGrade }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('student.edit',$student->studentCode) }}">
+                                            <a href="{{ route('student.edit', $student->studentCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                      <i class="material-icons">edit</i>Edit
                                                 </button>

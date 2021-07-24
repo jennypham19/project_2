@@ -17,7 +17,10 @@
 
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                       Phạm Ngọc Ánh
+                        @if (Session::exists('nameStudent'))
+                            {{ Session::get("nameStudent") }}    
+                        @endif
+                        
                         <b class="caret"></b>
                     </span>
                 </a>

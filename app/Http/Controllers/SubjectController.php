@@ -82,9 +82,12 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $subject = Subject::find($id);
+        $semester = Semester::all();
+        $subject = Subject::join("semester","subject.semesterCode","=","semester.semesterCode")
+                    ->find($id);
         return view('subject.editSubject',[
             'subject'=>$subject,
+            "semester" => $semester,
         ]);
     }
 

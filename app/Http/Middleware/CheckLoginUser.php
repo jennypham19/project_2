@@ -17,7 +17,7 @@ class CheckLoginUser
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->exists('id')) {
+        if ($request->session()->exists('nameStudent')) {
             return $next($request);
         } else {
             return Redirect::route('login-student')->with('error',"Bạn chưa đăng nhập");

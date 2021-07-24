@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Cập nhật khóa
+@endsection
 @section('content1')
     <a class="navbar-brand" href="{{ route('course.index') }}"> KHÓA </a> 
 @endsection

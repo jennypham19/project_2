@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Thêm lớp
+@endsection
 @section('content1')
     <a class="navbar-brand" href="{{ route('grade.index') }}"> Grade </a>
 @endsection
