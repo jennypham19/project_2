@@ -43,15 +43,6 @@
                     <input type="text" class="form-control" name="mark-skill2" value="{{ $mark->skill2nd }}">
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
-                {{-- Sinh viên: <input type="text" name="name-sv" value="{{ $mark->studentCode }}"
-                    placeholder="{{ $mark->FullName }}"><br>
-                Môn học: <input type="text" name="name-subject" value="{{ $mark->subjectCode }}"
-                    placeholder="{{ $mark->nameSubject }}"><br>
-                Điểm final lần 1: <input type="text" name="mark-final1" value="{{ $mark->final1st }}"><br>
-                Điểm final lần 2: <input type="text" name="mark-final2" value="{{ $mark->final2nd }}"><br>
-                Điểm skill lần 1: <input type="text" name="mark-skill1" value="{{ $mark->skill1st }}"><br>
-                Điểm skill lần 2: <input type="text" name="mark-skill2" value="{{ $mark->skill2nd }}"><br>
-                <button>Cập nhật</button> --}}
             </form>
         </div>
     </div>
