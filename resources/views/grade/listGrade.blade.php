@@ -36,7 +36,7 @@
                                         <td>{{ $grade->FullGrade }}</td>
                                         <td>{{ $grade->nameMajor }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="">
+                                            <a href="{{ route('grade.edit',$grade->classCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

@@ -20,7 +20,6 @@ class AuthenticateController extends Controller
         $password = $request->get('password');
         try {
             $admin = Admin::where('email',$email)->where('password',$password)->firstOrFail();
-            $request->session()->put('id',$admin->codeAdmin);
             $request->session()->put('nameAdmin',$admin->nameAdmin);
             return Redirect::route('dashboard-admin');
         }catch(Exception $e){
@@ -46,7 +45,7 @@ class AuthenticateController extends Controller
         $passStudent = $request->get('password-student');
         try {
             $student = Student::where('email',$emailStudent)->where('passWord',$passStudent)->firstOrFail();
-            $request->session()->put('id',$student->studentCode);
+            $request->session()->put('nameStudent',$student->FullName);
             return Redirect::route('dashboard-student');
         } catch (Exception $e) {
             return Redirect::route('login-student')->with('error',"Tài khoản hoặc mật khẩu của bạn bị sai");

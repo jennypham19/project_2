@@ -19,11 +19,11 @@ class GradeController extends Controller
     {
         $listCourse = Course::all();
         $listMajor = Major::all();
-        $listGrade = Grade::join("course","grade.courseCode","=","course.courseCode")
-                    ->join("major","grade.majorCode","=","major.majorCode")
-                    ->get();
-        return view('grade.listGrade',[
-            'listGrade'=> $listGrade,
+        $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
+            ->join("major", "grade.majorCode", "=", "major.majorCode")
+            ->get();
+        return view('grade.listGrade', [
+            'listGrade' => $listGrade,
             'listCourse' => $listCourse,
             'listMajor' => $listMajor,
         ]);
@@ -38,7 +38,7 @@ class GradeController extends Controller
     {
         $listCourse = Course::all();
         $listMajor = Major::all();
-        return view('grade.createGrade',[
+        return view('grade.createGrade', [
             'listCourse' => $listCourse,
             'listMajor' => $listMajor,
         ]);
@@ -56,10 +56,10 @@ class GradeController extends Controller
         $courseCode = $request->get('id-course');
         $majorCode = $request->get('id-major');
         $grade = new Grade();
-        $grade -> nameClass = $nameGrade;
-        $grade -> courseCode = $courseCode;
-        $grade -> majorCode = $majorCode;
-        $grade ->save();
+        $grade->nameClass = $nameGrade;
+        $grade->courseCode = $courseCode;
+        $grade->majorCode = $majorCode;
+        $grade->save();
         return Redirect::route('grade.index');
     }
 
@@ -82,7 +82,16 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course= Course::all();
+        $major = Major::all();
+        $grade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
+            ->join("major", "grade.majorCode", "=", "major.majorCode")
+            ->find($id);
+        return view('grade.editGrade', [
+            "grade" => $grade,
+            "course" => $course,
+            "major" => $major,
+        ]);
     }
 
     /**
@@ -94,7 +103,15 @@ class GradeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nameGrade = $request->get('name-grade');
+        $course = $request->get('course');
+        $major = $request->get('major');
+        $grade = Grade::find($id);
+        $grade->nameClass= $nameGrade;
+        $grade->courseCode = $course;
+        $grade->majorCode = $major;
+        $grade->save();
+        return Redirect::route('grade.index');
     }
 
     /**

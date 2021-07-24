@@ -84,7 +84,12 @@ class MarkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mark = Mark::join("student","student.studentCode","=","mark.studentCode")
+                    -> join("subject","subject.subjectCode","=","mark.subjectCode")
+                   ->find($id);
+        return view('mark.editMark',[
+            'mark'=>$mark,
+        ]);
     }
 
     /**
@@ -96,7 +101,21 @@ class MarkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $studentCode = $request->get('name-sv');
+        $subjectCode = $request->get('name-subject');
+        $final1st = $request->get('mark-final1');
+        $final2nd = $request->get('mark-final2');
+        $skill1st = $request->get('mark-skill1');
+        $skill2nd = $request->get('mark-skill2');
+        $mark = Mark::find($id);
+        $mark->studentCode = $studentCode;
+        $mark->subjectCode = $subjectCode;
+        $mark->final1st = $final1st;
+        $mark->final2nd = $final2nd;
+        $mark->skill1st = $skill1st;
+        $mark->skill2nd = $skill2nd;
+        $mark->save();
+        return Redirect::route('mark.index');
     }
 
     /**

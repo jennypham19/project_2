@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    thêm sinh viên
+@endsection
 @section('content1')
     <a class="navbar-brand" href="#"> Student </a>
 @endsection

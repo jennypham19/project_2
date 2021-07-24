@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Cập nhật chuyên ngành
+@endsection
 @section('content1')
 <a class="navbar-brand" href="{{ route('major.index')}}"> CHUYÊN NGÀNH </a>
 @endsection

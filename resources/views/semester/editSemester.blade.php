@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Cập nhật học kỳ
+@endsection
 @section('content1')
 <a class="navbar-brand" href="{{ route('semester.index') }}">HỌC KỲ </a> 
 @endsection
