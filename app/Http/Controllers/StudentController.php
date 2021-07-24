@@ -132,7 +132,7 @@ class StudentController extends Controller
         $address = $request->get('address');
         $status = $request->get('status');
         $dateEnrolled = $request->get('dateEnrolled');
-        $class = $request->get('class');
+        $classCode = $request->get('class');
         $student = Student::find($id);
         $student->email = $email;
         $student->passWord = $password;
@@ -145,7 +145,7 @@ class StudentController extends Controller
         $student->address = $address;
         $student->status = $status;
         $student->dateEnrollment = $dateEnrolled;
-        $student->classCode = $class;
+        $student->classCode = $classCode;
         $student->save();
         return Redirect::route('student.index');
     }
