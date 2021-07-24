@@ -6,10 +6,20 @@
     <a class="navbar-brand" href="{{ route('major.index') }}"> CHUYÊN NGÀNH </a>
 @endsection
 @section('content')
-    <h1>Thêm chuyên ngành</h1>
-    <form action="{{route('major.store')}}" method="post">
-        @csrf
-        Tên chuyên ngành:<input type="text" name="name" required><br>
-        <button>Thêm</button>
-    </form>
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">CHUYÊN NGÀNH</h4>
+            <form action="{{ route('major.store') }}" method="post">
+                @csrf
+                <div class="form-group label-floating">
+                    <label style="color:black;">Chuyên ngành</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+            </form>
+        </div>
+    </div>
 @endsection

@@ -3,14 +3,24 @@
     Cập nhật chuyên ngành
 @endsection
 @section('content1')
-<a class="navbar-brand" href="{{ route('major.index')}}"> CHUYÊN NGÀNH </a>
+    <a class="navbar-brand" href="{{ route('major.index') }}"> CHUYÊN NGÀNH </a>
 @endsection
 @section('content')
-    <h1>Cập nhập chuyên ngành</h1>
-    <form action="{{ route('major.update',$major->majorCode) }}" method="post">
-        @method('PUT')
-        @csrf
-        Tên chuyên ngành:<input type="text" name="name-major" value="{{ $major->nameMajor}}"><br>
-        <button>Cập nhập</button>
-    </form>
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">ĐIỂM</h4>
+            <form action="{{ route('major.update', $major->majorCode) }}" method="post">
+                @method('PUT')
+                @csrf
+                <div class="form-group label-floating">
+                    <label style="color:black;">Chuyên ngành</label>
+                    <input type="text" class="form-control" name="name-major" value="{{ $major->nameMajor }}">
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+            </form>
+        </div>
+    </div>
 @endsection
