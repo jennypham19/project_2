@@ -101,7 +101,13 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student= Student::find($id);
+        $grade = Grade::join("course","grade.courseCode","=","course.courseCode")
+                ->get();
+        return view('student.editStudent',[
+            'student' => $student,
+            'grade' => $grade,
+        ]);
     }
 
     /**
@@ -113,7 +119,34 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $firstName = $request->get('first-name');
+        $middleName = $request->get('middle-name');
+        $lastName = $request->get('last-name');
+        $dateOfBirth = $request->get('dob');
+        $gender = $request->get('gender');
+        $phone = $request->get('phone');
+        $address = $request->get('address');
+        $status = $request->get('status');
+        $dateEnrollment = $request->get('date');
+        $grade= $request->get('grade');
+
+        $student = Student::find($id);
+        $student->email = $email;
+        $student->password = $password;
+        $student->firstName = $firstName;
+        $student->middleName= $middleName;
+        $student->lastName = $lastName;
+        $student->dateOfBirth = $dateOfBirth;
+        $student->gender = $gender;
+        $student->phone = $phone;
+        $student->address = $address;
+        $student->status = $status;
+        $student->dateEnrollment = $dateEnrollment;
+        $student->classCode = $grade;
+        $student->save();
+        return Redirect::route('student.index');
     }
 
     /**

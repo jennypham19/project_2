@@ -3,7 +3,7 @@
 <a class="navbar-brand" href="{{ route('major.index')}}"> CHUYÊN NGÀNH </a>
 @endsection
 @section('content')
-    <h1>Cập nhập chuyên ngành</h1>
+    <h1>Cập nhật chuyên ngành</h1>
     <form action="{{ route('major.update',$major->majorCode) }}" method="post">
         @method('PUT')
         @csrf

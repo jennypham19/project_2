@@ -82,7 +82,14 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $major = Major::all();
+        $course = Course::all();
+        $grade = Grade::find($id);
+        return view('grade.editGrade',[
+            'grade' => $grade,
+            'major' =>$major,
+            'course' => $course,
+        ]);
     }
 
     /**
@@ -94,7 +101,17 @@ class GradeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nameClass = $request->get('name-class');
+        $nameCourse = $request->get('id-course');
+        $nameMajor = $request->get('name-major');
+
+        $grade = Grade::find($id);
+        $grade->nameClass = $nameClass;
+        $grade->courseCode = $nameCourse;
+        $grade->majorCode = $nameMajor;
+
+        $grade->save();
+        return redirect()->route('grade.index');
     }
 
     /**

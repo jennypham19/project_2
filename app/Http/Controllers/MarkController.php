@@ -84,7 +84,10 @@ class MarkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mark = Mark::find($id);
+        return view('mark.editMark',[
+            'mark' => $mark
+        ]);
     }
 
     /**
