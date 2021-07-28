@@ -24,6 +24,7 @@
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>STT</th>
                                     <th>Tên sinh viên</th>
                                     <th>Môn học</th>
                                     <th>Điểm lý thuyết lần 1</th>
@@ -36,6 +37,7 @@
                             <tbody>
                                 @foreach ($listMark as $mark)
                                     <tr>
+                                        <td>{{ $mark->numberMark }}</td>
                                         <td>{{ $mark->FullName }}</td>
                                         <td>{{ $mark->nameSubject }}</td>
                                         <td>{{ $mark->final1st }}</td>
@@ -43,7 +45,7 @@
                                         <td>{{ $mark->skill1st }}</td>
                                         <td>{{ $mark->skill2st }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('mark.edit',$mark->markCode) }}">
+                                            <a href="{{ route('mark.edit',$mark->numberMark) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

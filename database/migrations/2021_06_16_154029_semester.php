@@ -14,7 +14,8 @@ class Semester extends Migration
     public function up()
     {
         Schema::create('semester', function (Blueprint $table) {
-            $table->increments('semesterCode');
+            $table->increments('numberSemester');
+            $table->string('semesterCode',20);
             $table->string('nameSemester',20);
             $table->year('year1');
 

@@ -12,9 +12,13 @@
         </div>
         <div class="card-content">
             <h4 class="card-title">ĐIỂM</h4>
-            <form action="{{ route('major.update', $major->majorCode) }}" method="post">
+            <form action="{{ route('major.update', $major->numberMajor) }}" method="post">
                 @method('PUT')
                 @csrf
+                <div class="form-group label-floating">
+                    <label style="color:black;"> Mã chuyên ngành</label>
+                    <input type="text" class="form-control" name="code-major" value="{{ $major->majorCode }}">
+                </div>
                 <div class="form-group label-floating">
                     <label style="color:black;">Chuyên ngành</label>
                     <input type="text" class="form-control" name="name-major" value="{{ $major->nameMajor }}">

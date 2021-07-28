@@ -6,13 +6,32 @@
     <a class="navbar-brand" href="{{ route('semester.index') }}"> HỌC KỲ </a>
 @endsection
 @section('content')
-    <h1>Thêm học kỳ</h1>
-    @csrf
-    <form action="{{ route('semester.store') }}" method="post">
-        @csrf
-        Tên học kỳ: <input type="text" name="name-semester"><br>
-        Năm: <input type="text" name="year-semester1"><br>
-        Năm: <input type="text" name="year-semester2"><br>
-        <button type="submit">Thêm</button>
-    </form>
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">HỌC KỲ</h4>
+            <form action="{{ route('semester.store') }}" method="post">
+                @csrf
+                <div class="form-group label-floating">
+                    <label style="color:black;">Mã học kỳ</label>
+                    <input type="text" class="form-control" name="code-semester">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Học kỳ</label>
+                    <input type="text" class="form-control" name="name-semester">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Năm</label>
+                    <input type="text" class="form-control" name="year-semester1">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Năm</label>
+                    <input type="text" class="form-control" name="year-semester2">
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+            </form>
+        </div>
+    </div>
 @endsection

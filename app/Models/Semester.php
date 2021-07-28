@@ -10,7 +10,7 @@ class Semester extends Model
     use HasFactory;
     protected $table = 'semester';
     public $timestamps = false;
-    public $primaryKey = 'semesterCode';
+    public $primaryKey = 'numberSemester';
 
     public function getFullYearAttribute(){
         return $this->year1 . "-" . $this->year2;

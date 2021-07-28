@@ -34,18 +34,20 @@
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Mã ngành học</th>
-                                    <th>Tên ngành học</th>
+                                    <th>STT</th>
+                                    <th>Mã chuyên ngành</th>
+                                    <th>Tên chuyên ngành</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($listMajor as $major)
                                     <tr>
+                                        <td>{{ $major->numberMajor }}</td>
                                         <td>{{ $major->majorCode }}</td>
                                         <td>{{ $major->nameMajor }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('major.edit',$major->majorCode) }}">
+                                            <a href="{{ route('major.edit',$major->numberMajor) }}">
                                                 <button class="btn btn-success btn-xs">
                                                      <i class ="material-icons">edit</i>Edit
                                                 </button>

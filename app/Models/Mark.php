@@ -10,7 +10,7 @@ class Mark extends Model
     use HasFactory;
     protected $table = 'mark';
     public $timestamps = false;
-    public $primaryKey = 'markCode';
+    public $primaryKey = 'numberMark';
 
     public function getFullNameAttribute()
     {

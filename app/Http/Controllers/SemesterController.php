@@ -41,10 +41,12 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
+        $semesterCode = $request->get('code-semester');
         $nameSemester = $request->get('name-semester');
         $yearSemester1 = $request->get('year-semester1');
         $yearSemester2 = $request->get('year-semester2');
         $semester = new Semester();
+        $semester->semesterCode = $semesterCode;
         $semester->nameSemester = $nameSemester;
         $semester->year1 = $yearSemester1;
         $semester->year2 = $yearSemester2;
@@ -86,10 +88,12 @@ class SemesterController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $semesterCode = $request->get('code-semester');
         $nameSemester = $request->get('name-semester');
         $year1 = $request->get('year-semester1');
         $year2 = $request->get('year-semester2');
         $semester = Semester::find($id);
+        $semester->semesterCode = $semesterCode;
         $semester->nameSemester = $nameSemester;
         $semester->year1 = $year1;
         $semester->year2 = $year2;

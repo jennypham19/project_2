@@ -41,7 +41,7 @@ class UserController extends Controller
     public function indexSubject()
     {
         $listSemester= Semester::all();
-        $listSubject = Subject::join("semester","subject.semesterCode","=","semester.semesterCode")
+        $listSubject = Subject::join("semester","subject.numberSemester","=","semester.numberSemester")
                        ->get();
         return view('user.list-subject',[
             'listSubject'=>$listSubject,

@@ -3,14 +3,28 @@
     Cập nhật khóa
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('course.index') }}"> KHÓA </a> 
+    <a class="navbar-brand" href="{{ route('course.index') }}"> KHÓA </a>
 @endsection
 @section('content')
-    <h1>Cập nhập khóa học</h1>
-    <form action="{{ route('course.update',$course->courseCode)}}" method="post">
-        @method('PUT')
-        @csrf
-        Tên khóa: <input type="text" name="name_course" value="{{ $course->nameCourse}}"><br>
-        <button>Cập nhập</button>
-    </form>
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">KHÓA</h4>
+            <form action="{{ route('course.update', $course->numberCourse) }}" method="post">
+                @method('PUT')
+                @csrf
+                <div class="form-group label-floating">
+                    <label style="color:black;">Mã khóa</label>
+                    <input type="text" class="form-control" name="code_course" value="{{ $course->courseCode }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Khóa</label>
+                    <input type="text" class="form-control" name="name_course" value="{{ $course->nameCourse }}">
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+            </form>
+        </div>
+    </div>
 @endsection

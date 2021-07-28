@@ -6,25 +6,52 @@
     <a class="navbar-brand" href="{{ route('subject.index') }}"> MÔN HỌC </a>
 @endsection
 @section('content')
-    <h1>Cập nhật môn học </h1>
-    <form action="{{ route('subject.update', $subject->subjectCode) }}" method="post">
-        @csrf
-        @method("PUT")
-        Tên môn học: <input type="text" name="name-subject" value="{{ $subject->nameSubject }}"><br>
-        Tổng số giờ học: <input type="text" name="total-hour" value="{{ $subject->totalClassHour }}"><br>
-        Ngày bắt đầu: <input type="date" name="start-date" value="{{ $subject->startDate }}"><br>
-        Final: <input type="radio" name="final" value="{{ $subject->isFinal }}" @if ($subject->isFinal == 1) checked @endif>Yes
-        <input type="radio" name="final" value="{{ $subject->isFinal }}" @if ($subject->isFinal == 0) checked @endif>No
-        <br>
-        Skill:<input type="radio" name="skill" value="{{ $subject->isSkill }}" @if ($subject->isSkill == 1) checked @endif>Yes
-            <input type="radio" name="skill" value="{{ $subject->isSkill }}" @if ($subject->isSkill == 0) checked @endif>No<br>
-        Học kỳ: <select name="semester">
-            @foreach ($semester as $sem)
-                <option value="{{ $sem->semesterCode }}" @if ($subject->semesterCode == $sem->semesterCode) selected @endif>
-                    {{ $sem->FullSemester }}</option>
-            @endforeach
-        </select><br>
-        {{-- <input type="text" name="semester" value="{{ $subject->semesterCode}}" placeholder="{{ $subject->FullSemester}}"><br> --}}
-        <button>Cập nhật</button>
-    </form>
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">MÔN HỌC</h4>
+            <form action="{{ route('subject.update', $subject->numberSubject) }}" method="post">
+                @csrf
+                @method("PUT")
+                <div class="form-group label-floating">
+                    <label style="color:black;">Mã môn học</label>
+                    <input type="text" class="form-control" name="code-subject" value="{{ $subject->subjectCode }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Môn học</label>
+                    <input type="text" class="form-control" name="name-subject" value="{{ $subject->nameSubject }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Số giờ</label>
+                    <input type="text" class="form-control" name="total-hour" value="{{ $subject->totalClassHour }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Ngày bắt đầu</label>
+                    <input type="date" class="form-control" name="start-date" value="{{ $subject->startDate }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Lý thuyết:</label>
+                    <input type="radio" name="final" value="1" @if ($subject->isFinal == 1) checked @endif>Yes
+                    <input type="radio" name="final" value="0" @if ($subject->isFinal == 0) checked @endif>No
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Thực hành:</label>
+                    <input type="radio" name="skill" value="1" @if ($subject->isSkill == 1) checked @endif>Yes
+                    <input type="radio" name="skill" value="0" @if ($subject->isSkill == 0) checked @endif>No
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Học kỳ</label>
+                    <select name="semester" class="form-control">
+                        @foreach ($semester as $sem)
+                            <option value="{{ $sem->numberSemester }}" @if ($subject->numberSemester == $sem->numberSemester) selected @endif>
+                                {{ $sem->FullSemester }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+            </form>
+        </div>
+    </div>
 @endsection

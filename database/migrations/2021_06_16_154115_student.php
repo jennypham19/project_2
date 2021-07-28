@@ -14,7 +14,8 @@ class Student extends Migration
     public function up()
     {
         Schema::create('student', function (Blueprint $table) {
-            $table->increments('studentCode');
+            $table->increments('numberStudent');
+            $table->string('studentCode',20);
             $table->string('email',255);
             $table->string('passWord',100);
             $table->string('firstName',255);
@@ -25,8 +26,8 @@ class Student extends Migration
             $table->string('address',255);
             $table->boolean('status');
             $table->date('dateEnrollment');
-            $table->unsignedInteger('classCode');
-            $table->foreign('classCode')->references('classCode')->on('grade');
+            $table->unsignedInteger('numberClass');
+            $table->foreign('numberClass')->references('numberClass')->on('grade');
         });
     }
 

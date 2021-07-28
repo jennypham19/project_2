@@ -14,7 +14,8 @@ class Major extends Migration
     public function up()
     {
         Schema::create('major', function (Blueprint $table) {
-            $table->increments('majorCode');
+            $table->increments('numberMajor');
+            $table->string('majorCode',20);
             $table->string('nameMajor',150);
         });
     }

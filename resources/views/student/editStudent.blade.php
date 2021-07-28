@@ -6,41 +6,76 @@
     <a class="navbar-brand" href="">SINH VIÊN</a>
 @endsection
 @section('content')
-    <h1>Cập nhật sinh viên</h1>
-    <form action="{{ route('student.update',$student->studentCode) }}" method="post">
-        @csrf
-        @method('PUT')
-        Email: <input type="text" name="email" value="{{ $student->email }}"><br>
-        Password: <input type="text" name="password" value="{{ $student->passWord }}"><br>
-        FirstName: <input type="text" name="first-name" value="{{ $student->firstName }}"><br>
-        MiddleName: <input type="text" name="middle-name" value="{{ $student->middleName }}"><br>
-        LastName: <input type="text" name="last-name" value="{{ $student->lastName }}"><br>
-        DateOfBirth: <input type="date" name="dob" value="{{ $student->dateOfBirth }}"><br>
-        Gender: <input type="radio" name="gender" value="0" @if ($student->genDer==0)
-            checked
-        @endif>Nữ
-                <input type="radio" name="gender" value="1" @if ($student->genDer==1)
-            checked     
-                @endif>Nam
-        <br>
-        Phone: <input type="text" name="phone" value="{{ $student->phone }}"><br>
-        Address: <input type="text" name="address" value="{{ $student->address }}"><br>
-        Status: <input type="radio" name="status" value="1" @if ($student->status==1)
-            checked
-        @endif>Hoạt động
-            <input type="radio" name="status" value="0" @if ($student->status==0)
-                checked
-            @endif>Không hoạt động
-        <br>
-        DateEnrolled: <input type="date" name="dateEnrolled" value="{{ $student->dateEnrollment }}"><br>
-        Class: <select name="class">
-            @foreach ($grade as $class)
-                <option value="{{ $class->classCode }}" @if ($student->classCode == $class->classCode)
-                    selected
-                @endif>{{ $class->FullGrade }}</option>
-            @endforeach
-        </select>
-       <br>
-        <button>Cập nhật</button>
-    </form>
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">SINH VIÊN</h4>
+            <form action="{{ route('student.update', $student->numberStudent) }}" method="post">
+                @csrf
+                @method('PUT')
+                <div class="form-group label-floating">
+                    <label style="color:black;">Mã SV</label>
+                    <input type="text" name="code-student" value="{{ $student->studentCode }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Email</label>
+                    <input type="text" name="email" value="{{ $student->email }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Mật khẩu</label>
+                    <input type="text" name="password" value="{{ $student->passWord }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Tên</label>
+                    <input type="text" name="first-name" value="{{ $student->firstName }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Tên đệm</label>
+                    <input type="text" name="middle-name" value="{{ $student->middleName }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Họ</label>
+                    <input type="text" name="last-name" value="{{ $student->lastName }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Ngày sinh</label>
+                    <input type="date" name="dob" value="{{ $student->dateOfBirth }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Giới tính</label>
+                    <input type="radio" name="gender" value="0" @if ($student->genDer == 0) checked @endif>Nữ
+                    <input type="radio" name="gender" value="1" @if ($student->genDer == 1) checked @endif>Nam
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Số điện thoại</label>
+                    <input type="text" name="phone" value="{{ $student->phone }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Địa chỉ</label>
+                    <input type="text" name="address" value="{{ $student->address }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Trạng thái</label>
+                    <input type="radio" name="status" value="1" @if ($student->status == 1) checked @endif>Hoạt động
+                    <input type="radio" name="status" value="0" @if ($student->status == 0) checked @endif>Không hoạt động
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Ngày nhập học</label>
+                    <input type="date" name="dateEnrolled" value="{{ $student->dateEnrollment }}" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Lớp</label>
+                    <select name="class" class="form-control">
+                        @foreach ($grade as $class)
+                            <option value="{{ $class->numberClass }}" @if ($student->numberClass == $class->numberClass) selected @endif>
+                                {{ $class->FullGrade }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+            </form>
+        </div>
+    </div>
 @endsection

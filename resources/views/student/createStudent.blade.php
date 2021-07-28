@@ -3,30 +3,77 @@
     thêm sinh viên
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="#"> Student </a>
+    <a class="navbar-brand" href="{{ route('student.index') }}"> SINH VIÊN </a>
 @endsection
 @section('content')
-    <h1>Thêm sinh viên</h1>
-    <form action="{{ route('student.store') }}" method="post">
-        @csrf
-        Email: <input type="text" name="email"><br>
-        Mật khẩu: <input type="password" name="password"><br>
-        Tên: <input type="text" name="first-name"><br>
-        Tên đệm: <input type="text" name="middle-name"><br>
-        Họ: <input type="text" name="last-name"><br>
-        Ngày sinh: <input type="date" name="dob"><br>
-        Giới tính: <input type="radio" name="gender" value="1">Nam
-        <input type="radio" name="gender" value="0">Nữ <br>
-        Số điện thoại: <input type="text" name="phone"><br>
-        Địa chỉ: <input type="text" name="address"><br>
-        Trạng thái: <input type="radio" name="status" value="1">Hoạt động
-        <input type="radio" name="status" value="0">Không hoạt động <br>
-        Ngày nhập học: <input type="date" name="date"><br>
-        Lớp: <select name="grade">
-            @foreach ($grade as $grade1)
-                <option value="{{ $grade1->classCode }}">{{ $grade1->FullGrade }}</option>
-            @endforeach
-        </select><br>
-        <button>Thêm</button>
-    </form>
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">SINH VIÊN</h4>
+            <form action="{{ route('student.store') }}" method="post">
+                @csrf
+                <div class="form-group label-floating">
+                    <label style="color:black;">Mã SV</label>
+                    <input type="text" name="code-student" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Email</label>
+                    <input type="text" name="email" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Mật khẩu</label>
+                    <input type="text" name="password" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Tên</label>
+                    <input type="text" name="first-name" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Tên đệm</label>
+                    <input type="text" name="middle-name" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Họ</label>
+                    <input type="text" name="last-name" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Ngày sinh</label>
+                    <input type="date" name="dob" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Giới tính</label>
+                    <input type="radio" name="gender" value="1">Nam
+                    <input type="radio" name="gender" value="0">Nữ
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Địa chỉ</label>
+                    <input type="text" name="address" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Trạng thái</label>
+                    <input type="radio" name="status" value="1">Hoạt động
+                    <input type="radio" name="status" value="0">Không hoạt động
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Ngày nhập học</label>
+                    <input type="date" name="date" class="form-control">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Lớp</label>
+                    <select name="grade" class="form-control">
+                        @foreach ($grade as $grade1)
+                            <option value="{{ $grade1->numberClass }}">{{ $grade1->FullGrade }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+            </form>
+        </div>
+    </div>
 @endsection

@@ -24,6 +24,7 @@
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>STT</th>
                                     <th>Mã MH</th>
                                     <th>Tên MH</th>
                                     <th>Số giờ</th>
@@ -37,6 +38,7 @@
                             <tbody>
                                 @foreach ($listSubject as $subject)
                                     <tr>
+                                        <td>{{ $subject->numberSubject }}</td>
                                         <td>{{ $subject->subjectCode }}</td>
                                         <td>{{ $subject->nameSubject }}</td>
                                         <td>{{ $subject->totalClassHour }}</td>
@@ -45,7 +47,7 @@
                                         <td>{{ $subject->Skill }}</td>
                                         <td>{{ $subject->FullSemester }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('subject.edit',$subject->subjectCode) }}">
+                                            <a href="{{ route('subject.edit',$subject->numberSubject) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

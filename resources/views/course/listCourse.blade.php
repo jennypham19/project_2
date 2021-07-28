@@ -33,6 +33,7 @@
                         <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>STT</th>
                                     <th>Mã khóa</th>
                                     <th>Tên khóa</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
@@ -41,10 +42,11 @@
                             <tbody>
                                 @foreach ($listCourse as $course)
                                     <tr>
+                                        <td>{{ $course->numberCourse }}</td>
                                         <td>{{ $course->courseCode }}</td>
                                         <td>{{ $course->nameCourse }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('course.edit', $course->courseCode) }}">
+                                            <a href="{{ route('course.edit', $course->numberCourse) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

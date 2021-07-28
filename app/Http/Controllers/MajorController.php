@@ -39,8 +39,10 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
+        $majorCode = $request->get('code');
         $nameMajor = $request->get('name');
         $major = new Major();
+        $major->majorCode = $majorCode;
         $major->nameMajor= $nameMajor;
         $major->save();
         return redirect(route('major.index'));
@@ -81,8 +83,10 @@ class MajorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $majorCode = $request->get('code-major');
         $nameMajor = $request->get('name-major');
         $major = Major::find($id);
+        $major->majorCode = $majorCode;
         $major->nameMajor = $nameMajor;
         $major->save();
         return redirect()->route('major.index');

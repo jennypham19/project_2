@@ -14,7 +14,8 @@ class Course extends Migration
     public function up()
     {
         Schema::create('course', function (Blueprint $table) {
-            $table->increments('courseCode');
+            $table->increments('numberCourse');
+            $table->string('courseCode',20);
             $table->string('nameCourse',150);
 
         });

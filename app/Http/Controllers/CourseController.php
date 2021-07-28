@@ -41,9 +41,11 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $courseCode = $request->get('code_course');
         $nameCourse = $request->get('name_course');
         $course = new Course();
-        $course ->nameCourse = $nameCourse;
+        $course -> courseCode = $courseCode;
+        $course -> nameCourse = $nameCourse;
         $course->save();
         return redirect()->route('course.index');
 
@@ -83,8 +85,10 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $courseCode = $request->get('code_course');
         $nameCourse = $request->get('name_course');
         $course = Course::find($id);
+        $course-> courseCode = $courseCode;
         $course->nameCourse = $nameCourse;
         $course->save();
         return Redirect::route('course.index');

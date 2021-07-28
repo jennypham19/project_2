@@ -33,6 +33,7 @@
                         <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>STT</th>
                                     <th>Mã học kỳ</th>
                                     <th>Tên học kỳ</th>
                                     <th>Năm</th>
@@ -42,11 +43,12 @@
                             <tbody>
                                 @foreach ($listSemester as $semester)
                                     <tr>
+                                        <td>{{ $semester->numberSemester }}</td>
                                         <td>{{ $semester->semesterCode }}</td>
                                         <td>{{ $semester->nameSemester }}</td>
                                         <td>{{ $semester->FullYear }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('semester.edit',$semester->semesterCode) }}">
+                                            <a href="{{ route('semester.edit',$semester->numberSemester) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

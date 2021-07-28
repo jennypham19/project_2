@@ -14,14 +14,15 @@ class Subject extends Migration
     public function up()
     {
         Schema::create('subject', function (Blueprint $table) {
-            $table->increments('subjectCode');
+            $table->increments('numberSubject');
+            $table->string('subjectCode',20);
             $table->string('nameSubject',150);
             $table->integer('totalClassHour');
             $table->date('startDate');
             $table->boolean('isFinal');
             $table->boolean('isSkill');
-            $table->unsignedInteger('semesterCode');
-            $table->foreign('semesterCode')->references('semesterCode')->on('semester');
+            $table->unsignedInteger('numberSemester');
+            $table->foreign('numberSemester')->references('numberSemester')->on('semester');
 
         });
     }

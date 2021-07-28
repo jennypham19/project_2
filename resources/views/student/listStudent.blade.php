@@ -24,6 +24,7 @@
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>STT</th>
                                     <th>Mã SV</th>
                                     <th>Email</th>
                                     <th>Mật khẩu</th>
@@ -41,6 +42,7 @@
                             <tbody>
                                 @foreach ($listStudent as $student)
                                     <tr>
+                                        <td>{{ $student->numberStudent }}</td>
                                         <td>{{ $student->studentCode }}</td>
                                         <td>{{ $student->email }}</td>
                                         <td>{{ $student->passWord }}</td>
@@ -53,7 +55,7 @@
                                         <td>{{ $student->dateEnrollment }}</td>
                                         <td>{{ $student->FullGrade }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('student.edit', $student->studentCode) }}">
+                                            <a href="{{ route('student.edit', $student->numberStudent) }}">
                                                 <button class="btn btn-success btn-xs">
                                                      <i class="material-icons">edit</i>Edit
                                                 </button>

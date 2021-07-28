@@ -19,8 +19,8 @@ class GradeController extends Controller
     {
         $listCourse = Course::all();
         $listMajor = Major::all();
-        $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
-            ->join("major", "grade.majorCode", "=", "major.majorCode")
+        $listGrade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+            ->join("major", "grade.numberMajor", "=", "major.numberMajor")
             ->get();
         return view('grade.listGrade', [
             'listGrade' => $listGrade,
@@ -52,13 +52,15 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
+        $gradeCode = $request->get('code-grade');
         $nameGrade = $request->get('name-grade');
         $courseCode = $request->get('id-course');
         $majorCode = $request->get('id-major');
         $grade = new Grade();
+        $grade-> classCode = $gradeCode;
         $grade->nameClass = $nameGrade;
-        $grade->courseCode = $courseCode;
-        $grade->majorCode = $majorCode;
+        $grade->numberCourse = $courseCode;
+        $grade->numberMajor = $majorCode;
         $grade->save();
         return Redirect::route('grade.index');
     }
@@ -82,10 +84,10 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
-        $course= Course::all();
+        $course = Course::all();
         $major = Major::all();
-        $grade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
-            ->join("major", "grade.majorCode", "=", "major.majorCode")
+        $grade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+            ->join("major", "grade.numberMajor", "=", "major.numberMajor")
             ->find($id);
         return view('grade.editGrade', [
             "grade" => $grade,
@@ -103,13 +105,15 @@ class GradeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $gradeCode = $request->get('code-grade');
         $nameGrade = $request->get('name-grade');
         $course = $request->get('course');
         $major = $request->get('major');
         $grade = Grade::find($id);
-        $grade->nameClass= $nameGrade;
-        $grade->courseCode = $course;
-        $grade->majorCode = $major;
+        $grade->classCode = $gradeCode;
+        $grade->nameClass = $nameGrade;
+        $grade->numberCourse = $course;
+        $grade->numberMajor = $major;
         $grade->save();
         return Redirect::route('grade.index');
     }

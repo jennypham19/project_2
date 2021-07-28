@@ -15,6 +15,10 @@
             <form action="{{ route('major.store') }}" method="post">
                 @csrf
                 <div class="form-group label-floating">
+                    <label style="color:black;">Mã chuyên ngành</label>
+                    <input type="text" class="form-control" name="code">
+                </div>
+                <div class="form-group label-floating">
                     <label style="color:black;">Chuyên ngành</label>
                     <input type="text" class="form-control" name="name">
                 </div>

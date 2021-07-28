@@ -16,12 +16,12 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $listStudent = Student::join("grade","student.classCode","=","grade.classCode")
-                        ->join("course","grade.courseCode","=","course.courseCode")
-                       ->get();
-      
-        return view('student.listStudent',[
-            'listStudent'=>$listStudent,
+        $listStudent = Student::join("grade", "student.numberClass", "=", "grade.numberClass")
+            ->join("course", "grade.numberCourse", "=", "course.numberCourse")
+            ->get();
+
+        return view('student.listStudent', [
+            'listStudent' => $listStudent,
         ]);
     }
 
@@ -32,10 +32,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $grade = Grade::join("course","grade.courseCode","=","course.courseCode")
-                ->get(); 
-        return view('student.createStudent',[
-            'grade'=>$grade,
+        $grade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+            ->get();
+        return view('student.createStudent', [
+            'grade' => $grade,
         ]);
     }
 
@@ -48,6 +48,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         // $submit = $request->get('btn btn-submit');
+        $studentCode = $request->get('code-student');
         $email = $request->get('email');
         $password = $request->get('password');
         $fistName = $request->get('first-name');
@@ -63,23 +64,22 @@ class StudentController extends Controller
 
         $student = new Student();
 
-        $student ->email = $email;
-        $student ->passWord = $password;
+        $student->studentCode = $studentCode;
+        $student->email = $email;
+        $student->passWord = $password;
         $student->firstName = $fistName;
         $student->middleName = $middleName;
         $student->lastName = $lastName;
-        $student ->dateOfBirth = $dob;
-        $student ->genDer = $gender;
-        $student ->phone= $phone;
-        $student ->address= $address;
-        $student ->status = $status;
-        $student ->dateEnrollment = $dateEnrollment;
-        $student ->classCode = $grade;
+        $student->dateOfBirth = $dob;
+        $student->genDer = $gender;
+        $student->phone = $phone;
+        $student->address = $address;
+        $student->status = $status;
+        $student->dateEnrollment = $dateEnrollment;
+        $student->numberClass = $grade;
 
         $student->save();
         return Redirect::route('student.index');
-        
-
     }
 
     /**
@@ -101,14 +101,14 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $grade = Grade::join("course","grade.courseCode","=","course.courseCode")
-                ->get();
-        $student = Student::join("grade","student.classCode","=","grade.classCode")
-                ->join("course","grade.courseCode","=","course.courseCode")
-                ->find($id);
-        return view('student.editStudent',[
-            "student"=>$student,
-            "grade"=> $grade,
+        $grade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+            ->get();
+        $student = Student::join("grade", "student.numberClass", "=", "grade.numberClass")
+            ->join("course", "grade.numberCourse", "=", "course.numberCourse")
+            ->find($id);
+        return view('student.editStudent', [
+            "student" => $student,
+            "grade" => $grade,
         ]);
     }
 
@@ -121,6 +121,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $studentCode = $request->get('code-student');
         $email = $request->get('email');
         $password = $request->get('password');
         $firstName = $request->get('first-name');
@@ -134,6 +135,7 @@ class StudentController extends Controller
         $dateEnrollment = $request->get('dateEnrolled');
         $classCode = $request->get('class');
         $student = Student::find($id);
+        $student-> studentCode = $studentCode;
         $student->email = $email;
         $student->passWord = $password;
         $student->firstName = $firstName;
@@ -145,7 +147,7 @@ class StudentController extends Controller
         $student->address = $address;
         $student->status = $status;
         $student->dateEnrollment = $dateEnrollment;
-        $student->classCode = $classCode;
+        $student->numberClass = $classCode;
         $student->save();
         return Redirect::route('student.index');
     }

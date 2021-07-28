@@ -17,11 +17,11 @@ class MarkController extends Controller
      */
     public function index()
     {
-        $listMark = Mark::join("student","student.studentCode","=","mark.studentCode")
-                        -> join("subject","subject.subjectCode","=","mark.subjectCode")
-                        ->get();
-        return view('mark.listMark',[
-            'listMark'=>$listMark,
+        $listMark = Mark::join("student", "student.numberStudent", "=", "mark.numberStudent")
+            ->join("subject", "subject.numberSubject", "=", "mark.numberSubject")
+            ->get();
+        return view('mark.listMark', [
+            'listMark' => $listMark,
         ]);
     }
 
@@ -34,7 +34,7 @@ class MarkController extends Controller
     {
         $listStudent = Student::all();
         $listSubject = Subject::all();
-        return view('mark.createMark',[
+        return view('mark.createMark', [
             'listStudent' => $listStudent,
             'listSubject' => $listSubject,
         ]);
@@ -55,8 +55,8 @@ class MarkController extends Controller
         $skill1st = $request->get('skill-1st');
         $skill2nd = $request->get('skill-2nd');
         $mark = new Mark();
-        $mark->studentCode = $nameStudent;
-        $mark->subjectCode = $nameSubject;
+        $mark->numberStudent = $nameStudent;
+        $mark->numberSubject = $nameSubject;
         $mark->final1st = $final1st;
         $mark->final2nd = $final2nd;
         $mark->skill1st = $skill1st;
@@ -84,11 +84,15 @@ class MarkController extends Controller
      */
     public function edit($id)
     {
-        $mark = Mark::join("student","student.studentCode","=","mark.studentCode")
-                    -> join("subject","subject.subjectCode","=","mark.subjectCode")
-                   ->find($id);
-        return view('mark.editMark',[
-            'mark'=>$mark,
+        $student = Student::all();
+        $subject = Subject::all();
+        $mark = Mark::join("student", "student.numberStudent", "=", "mark.numberStudent")
+            ->join("subject", "subject.numberSubject", "=", "mark.numberSubject")
+            ->find($id);
+        return view('mark.editMark', [
+            'mark' => $mark,
+            'student' => $student,
+            'subject' => $subject,
         ]);
     }
 
@@ -108,8 +112,8 @@ class MarkController extends Controller
         $skill1st = $request->get('mark-skill1');
         $skill2nd = $request->get('mark-skill2');
         $mark = Mark::find($id);
-        $mark->studentCode = $studentCode;
-        $mark->subjectCode = $subjectCode;
+        $mark->numberStudent = $studentCode;
+        $mark->numberSubject = $subjectCode;
         $mark->final1st = $final1st;
         $mark->final2nd = $final2nd;
         $mark->skill1st = $skill1st;

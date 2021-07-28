@@ -10,7 +10,7 @@ class Student extends Model
     use HasFactory;
     protected $table = 'student';
     public $timestamps = false;
-    public $primaryKey = 'studentCode';
+    public $primaryKey = 'numberStudent';
 
     public function getFullGradeAttribute()
     {

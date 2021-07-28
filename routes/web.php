@@ -28,12 +28,12 @@ use App\Http\Controllers\AuthenticateController;
 */
 
 //admin
-Route::get('/login-admin', [AuthenticateController::class, 'loginAdmin'])->name('login-admin');
+Route::get('/admin/login', [AuthenticateController::class, 'loginAdmin'])->name('login-admin');
 Route::post('/login-process-admin', [AuthenticateController::class, 'loginProcessAdmin'])->name('loginProcessAdmin');
-Route::get('/logout-admin', [AuthenticateController::class, 'logoutAdmin'])->name('logout-admin');
+Route::get('/admin/logout', [AuthenticateController::class, 'logoutAdmin'])->name('logout-admin');
 
 Route::middleware([CheckLogin::class])->group(function () {
-    Route::get('/dashboard-admin', function () {
+    Route::get('/admin/dashboard', function () {
         return view('dashboard');
     })->name('dashboard-admin');
     Route::resource('major', MajorController::class);
@@ -47,19 +47,19 @@ Route::middleware([CheckLogin::class])->group(function () {
 });
 
  //user
-Route::get('/login-student', [AuthenticateController::class, 'loginUser'])->name('login-student');
-Route::post('/login-process-student', [AuthenticateController::class, 'loginProcessUser'])->name('loginProcessStudent');
-Route::get('/logout-student', [AuthenticateController::class, 'logoutUser'])->name('logout-student');
+Route::get('/user/login', [AuthenticateController::class, 'loginUser'])->name('login-student');
+Route::post('/user/login-process', [AuthenticateController::class, 'loginProcessUser'])->name('loginProcessStudent');
+Route::get('/user/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-student');
 
 Route::middleware([CheckLoginUser::class])->group(function(){
-    Route::get('/dashboard-student', [UserController::class, 'index'])->name('dashboard-student');
-    Route::get('/major-student', [UserController::class, 'indexMajor'])->name('major-student');
-    Route::get('/course-student', [UserController::class, 'indexCourse'])->name('course-student');
-    Route::get('/semester-student', [UserController::class, 'indexSemester'])->name('semester-student');
-    Route::get('/subject-student', [UserController::class, 'indexSubject'])->name('subject-student');
-    Route::get('/grade-student', [UserController::class, 'indexGrade'])->name('grade-student');
-    Route::get('/mark-student', [UserController::class, 'indexMark'])->name('mark-student');
-    Route::get('/calendar-student', [UserController::class, 'indexCalendar'])->name('calendar-student');
+    Route::get('/user/dashboard', [UserController::class, 'index'])->name('dashboard-student');
+    Route::get('/user/major', [UserController::class, 'indexMajor'])->name('major-student');
+    Route::get('/user/course', [UserController::class, 'indexCourse'])->name('course-student');
+    Route::get('/user/semester', [UserController::class, 'indexSemester'])->name('semester-student');
+    Route::get('/user/subject', [UserController::class, 'indexSubject'])->name('subject-student');
+    Route::get('/user/grade', [UserController::class, 'indexGrade'])->name('grade-student');
+    Route::get('/user/mark', [UserController::class, 'indexMark'])->name('mark-student');
+    Route::get('/user/calendar', [UserController::class, 'indexCalendar'])->name('calendar-student');
 });
 
 
