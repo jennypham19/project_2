@@ -54,14 +54,14 @@
                 </a>
             </li>
             <li>
-                <a data-toggle="collapse" href="#manageExamples">
+                <a data-toggle="collapse" href="#listExamples">
                     <i class="material-icons">
-                        manage_accounts</i>
-                    <p> QUẢN LÝ
+                        list</i>
+                    <p> DANH MỤC
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse" id="manageExamples">
+                <div class="collapse" id="listExamples">
                     <ul class="nav">
                         <li>
                             <a href="{{ route('major.index') }}">
@@ -99,12 +99,44 @@
                                 <p>SINH VIÊN</p>
                             </a>
                         </li>
+                        
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#manageExamples">
+                    <i class="material-icons">
+                        manage_accounts</i>
+                    <p> QUẢN LÝ
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="manageExamples">
+                    <ul class="nav">
                         <li>
                             <a href="{{ route('mark.index') }}">
-                                <i class="material-icons">place</i>
+                                <i class="material-icons">grade</i>
                                 <p>ĐIỂM</p>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('mark-resit.index') }}">
+                                <i class="material-icons">assignment</i>
+                                <p>ĐIỂM THI LẠI</p>
+                            </a>
+                        </li>
+                        {{-- <li>
+                            <a href="{{ route('student.student-resit') }}">
+                                <i class="material-icons">people</i>
+                                <p>SINH VIÊN THI LẠI</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="material-icons">people</i>
+                                <p>SINH VIÊN HỌC LẠI</p>
+                            </a>
+                        </li> --}}
 
                     </ul>
                 </div>

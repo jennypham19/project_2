@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mark;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\MarkResit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class MarkController extends Controller
+class MarkResitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,11 @@ class MarkController extends Controller
      */
     public function index()
     {
-        $listMark = Mark::join("student", "student.numberStudent", "=", "mark.numberStudent")
-            ->join("subject", "subject.numberSubject", "=", "mark.numberSubject")
+        $listMark = MarkResit::join("student", "student.numberStudent", "=", "mark_resit.numberStudent")
+            ->join("subject", "subject.numberSubject", "=", "mark_resit.numberSubject")
             ->get();
-        return view('mark.listMark', [
-            'listMark' => $listMark,
+        return view('mark.listMark-resit',[
+            'listMark'=>$listMark,
         ]);
     }
 
@@ -50,15 +50,15 @@ class MarkController extends Controller
     {
         $nameStudent = $request->get('student');
         $nameSubject = $request->get('subject');
-        $mark_final = $request->get('mark_final');
-        $mark_skill = $request->get('mark_skill');
-        $mark = new Mark();
+        $mark1 = $request->get('mark_resit_final');
+        $mark2 = $request->get('mark_resit_skill');
+        $mark = new MarkResit();
         $mark->numberStudent = $nameStudent;
         $mark->numberSubject = $nameSubject;
-        $mark->mark_final = $mark_final;
-        $mark->mark_skill = $mark_skill;
+        $mark->mark_resit_final = $mark1;
+        $mark->mark_resit_skill = $mark2;
         $mark->save();
-        return Redirect::route('mark.index');
+        return Redirect::route('mark-resit.index');
     }
 
     /**
@@ -80,16 +80,7 @@ class MarkController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::all();
-        $subject = Subject::all();
-        $mark = Mark::join("student", "student.numberStudent", "=", "mark.numberStudent")
-            ->join("subject", "subject.numberSubject", "=", "mark.numberSubject")
-            ->find($id);
-        return view('mark.editMark', [
-            'mark' => $mark,
-            'student' => $student,
-            'subject' => $subject,
-        ]);
+        //
     }
 
     /**
@@ -101,17 +92,7 @@ class MarkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $studentCode = $request->get('name-sv');
-        $subjectCode = $request->get('name-subject');
-        $mark_final = $request->get('mark_final');
-        $mark_skill = $request->get('mark_skill');
-        $mark = Mark::find($id);
-        $mark->numberStudent = $studentCode;
-        $mark->numberSubject = $subjectCode;
-        $mark->mark_final = $mark_final;
-        $mark->mark_skill = $mark_skill;
-        $mark->save();
-        return Redirect::route('mark.index');
+        //
     }
 
     /**
@@ -124,5 +105,4 @@ class MarkController extends Controller
     {
         //
     }
-
 }

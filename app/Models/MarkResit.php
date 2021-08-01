@@ -5,17 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mark extends Model
+class MarkResit extends Model
 {
     use HasFactory;
-    protected $table = 'mark';
+    protected $table = 'mark_resit';
     public $timestamps = false;
     public $primaryKey = 'numberMark';
-
-    public function getFullNameAttribute()
-    {
-        return $this->lastName. " ".$this->middleName." ".$this->firstName;
-    }
-
-    
 }

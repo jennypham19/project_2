@@ -57,11 +57,6 @@
                     <input type="text" name="address" value="{{ $student->address }}" class="form-control">
                 </div>
                 <div class="form-group label-floating">
-                    <label style="color:black;">Trạng thái</label>
-                    <input type="radio" name="status" value="1" @if ($student->status == 1) checked @endif>Hoạt động
-                    <input type="radio" name="status" value="0" @if ($student->status == 0) checked @endif>Không hoạt động
-                </div>
-                <div class="form-group label-floating">
                     <label style="color:black;">Ngày nhập học</label>
                     <input type="date" name="dateEnrolled" value="{{ $student->dateEnrollment }}" class="form-control">
                 </div>

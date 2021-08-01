@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
-use App\Models\Semester;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,12 +15,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $listSemester = Semester::all();
-        $listSubject = Subject::join("semester","subject.numberSemester","=","semester.numberSemester")
-                        ->get();
+        $listSubject = Subject::get();
         return view('subject.listSubject',[
             'listSubject'=>$listSubject,
-            'listSemester'=>$listSemester
         ]);
     }
 
@@ -32,10 +28,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $semester = Semester::all();
-        return view('subject.createSubject',[
-            'semester' => $semester,
-        ]);
+        return view('subject.createSubject');
     }
 
     /**
@@ -49,18 +42,16 @@ class SubjectController extends Controller
         $subjectCode = $request->get('code-subject');
         $nameSubject = $request->get('name-subject');
         $hours = $request->get('hour');
-        $startDate = $request->get('start-date');
         $final = $request->get('final');
         $skill = $request->get('skill');
-        $semester = $request->get('semester');
+        $startDate = $request->get('start-date');
         $subject = new Subject();
         $subject -> subjectCode = $subjectCode;
         $subject -> nameSubject = $nameSubject;
         $subject -> totalClassHour = $hours;
+        $subject -> final = $final;
+        $subject -> skill = $skill;
         $subject -> startDate = $startDate;
-        $subject -> isFinal = $final;
-        $subject -> isSkill = $skill;
-        $subject -> numberSemester = $semester;
         $subject ->save();
         return Redirect::route('subject.index');
     }
@@ -84,12 +75,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $semester = Semester::all();
-        $subject = Subject::join("semester","subject.numberSemester","=","semester.numberSemester")
-                    ->find($id);
+        $subject = Subject::find($id);
         return view('subject.editSubject',[
             'subject'=>$subject,
-            "semester" => $semester,
         ]);
     }
 
@@ -105,18 +93,16 @@ class SubjectController extends Controller
         $subjectCode = $request->get('code-subject');
         $nameSubject = $request->get('name-subject');
         $totalHours = $request->get('total-hour');
-        $startDate = $request->get('start-date');
         $final = $request->get('final');
         $skill = $request->get('skill');
-        $semesterCode = $request->get('semester');
+        $startDate = $request->get('start-date');
         $subject = Subject::find($id);
         $subject-> subjectCode = $subjectCode;
         $subject->nameSubject = $nameSubject;
         $subject->totalClassHour = $totalHours;
+        $subject -> final = $final;
+        $subject -> skill = $skill;
         $subject->startDate = $startDate;
-        $subject->isFinal= $final;
-        $subject->isSkill = $skill;
-        $subject->numberSemester = $semesterCode;
         $subject->save();
         return Redirect::route('subject.index');
     }

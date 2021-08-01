@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
 </head>
 
 <body>
@@ -78,8 +79,44 @@
 <script src="{{ asset('assets') }}/js/material-dashboard.js?v=1.2.1"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('assets') }}/js/demo.js"></script>
+<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+<script src='https://github.com/mozilla-comm/ical.js/releases/download/v1.4.0/ical.js'></script>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "pagingType": "full_numbers",
+            responsive: true,
+            "aLengthMenu": [
+                [2, 25, 50, 100, -1], 
+                [2, 25, 50, 100, "Tất cả"]
+            ],
+				"iDisplayLength": 2,
+				"oLanguage": {
+					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
+					"oPaginate": {
+						"sFirst": "<span aria-hidden='true'>First</span>",
+						"sLast": "<span  aria-hidden='true'>Last</span>",
+						"sNext": "<span aria-hidden='true'><i class='material-icons'>arrow_forward</i></span>",
+						"sPrevious": "<span aria-hidden='true'><i class='material-icons'>arrow_back</i></span>"
+					},
+					"sEmptyTable": "Không có dữ liệu",
+					"sSearch": "Tìm kiếm:",
+					"sZeroRecords": "Không có dữ liệu",
+					"sInfo": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ dòng được tìm thấy",
+					"sInfoEmpty" : "Không tìm thấy",
+					"sInfoFiltered": " (trong tổng số _MAX_ dòng)"
+				}
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        demo.initFullCalendar();
+    });
+</script>
+
+{{-- <script type="text/javascript">
     $(document).ready(function() {
 
         // Javascript method's body can be found in assets/js/demos.js
@@ -87,47 +124,5 @@
 
         demo.initVectorMap();
     });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#datatables').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [2, 25, 50, -1],
-                [2, 25, 50, "All"]
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Search records",
-            }
-
-        });
-
-
-        var table = $('#datatables').DataTable();
-
-        // Edit record
-        table.on('click', '.edit', function() {
-            $tr = $(this).closest('tr');
-
-            var data = table.row($tr).data();
-            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-        });
-
-        // Delete a record
-        table.on('click', '.remove', function(e) {
-            $tr = $(this).closest('tr');
-            table.row($tr).remove().draw();
-            e.preventDefault();
-        });
-
-        //Like record
-        // table.on('click', '.like', function() {
-        //     alert('You clicked on Like button');
-        // });
-
-        $('.card .material-datatables label').addClass('form-group');
-    });
-</script>
+</script> --}}
 </html>

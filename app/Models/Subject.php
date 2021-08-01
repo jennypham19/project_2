@@ -12,26 +12,22 @@ class Subject extends Model
     public $timestamps = false;
     public $primaryKey = 'numberSubject';
 
-    public function getFinalAttribute()
+    public function getNameFinalAttribute()
     {
-        if ($this->isFinal==1){
-            return "Yes";
+        if ($this->final==1){
+            return "Có";
         }else{
-            return "No";
+            return "Không";
         }
     }
 
-    public function getSkillAttribute()
+    public function getNameSkillAttribute()
     {
-        if ($this->isSkill==1){
-            return "Yes";
+        if ($this->skill==1){
+            return "Có";
         }else{
-            return "No";
+            return "Không";
         }
     }
 
-    public function getFullSemesterAttribute()
-    {
-        return $this->nameSemester."/".$this->year1."-".$this->year2;
-    }
 }

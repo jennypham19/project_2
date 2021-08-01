@@ -24,11 +24,7 @@
                 </div>
                 <div class="form-group label-floating">
                     <label style="color:black;">Năm</label>
-                    <input type="text" class="form-control" name="year-semester1">
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Năm</label>
-                    <input type="text" class="form-control" name="year-semester2">
+                    <input type="text" class="form-control" name="year-semester">
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>

@@ -3,7 +3,7 @@
     Thêm điểm
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('mark.index') }}"> ĐIỂM </a>
+    <a class="navbar-brand" href="{{ route('mark-resit.index') }}"> ĐIỂM </a>
 @endsection
 @section('content')
     {{-- <h1>Thêm điểm cho sinh viên</h1> --}}
@@ -12,8 +12,8 @@
             <i class="material-icons">mail_outline</i>
         </div>
         <div class="card-content">
-            <h4 class="card-title">ĐIỂM</h4>
-            <form action="{{ route('mark.store') }}" method="post">
+            <h4 class="card-title">ĐIỂM THI LẠI</h4>
+            <form action="{{ route('mark-resit.store') }}" method="post">
                 @csrf
                 <div class="form-group label-floating">
                     <label class="control-label">Tên sinh viên</label>
@@ -32,12 +32,12 @@
                     </select>
                 </div>
                 <div class="form-group label-floating">
-                    <label class="control-label">Điểm lý thuyết </label>
-                    <input type="text" class="form-control" name="mark_final">
+                    <label class="control-label">Điểm thi lại lý thuyết</label>
+                    <input type="text" class="form-control" name="mark_resit_final">
                 </div>
                 <div class="form-group label-floating">
-                    <label class="control-label">Điểm thực hành </label>
-                    <input type="text" class="form-control" name="mark_skill">
+                    <label class="control-label">Điểm thi lại thực hành</label>
+                    <input type="text" class="form-control" name="mark_resit_skill">
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>

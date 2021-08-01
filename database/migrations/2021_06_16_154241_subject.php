@@ -18,11 +18,9 @@ class Subject extends Migration
             $table->string('subjectCode',20);
             $table->string('nameSubject',150);
             $table->integer('totalClassHour');
+            $table->boolean('final');
+            $table->boolean('skill');
             $table->date('startDate');
-            $table->boolean('isFinal');
-            $table->boolean('isSkill');
-            $table->unsignedInteger('numberSemester');
-            $table->foreign('numberSemester')->references('numberSemester')->on('semester');
 
         });
     }

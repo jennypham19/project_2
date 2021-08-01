@@ -17,7 +17,7 @@ class Semester extends Migration
             $table->increments('numberSemester');
             $table->string('semesterCode',20);
             $table->string('nameSemester',20);
-            $table->year('year1');
+            $table->string('year');
 
         });
     }

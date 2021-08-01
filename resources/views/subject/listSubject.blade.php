@@ -20,7 +20,7 @@
 
                     </div>
                     <div class="material-datatables">
-                        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
@@ -28,10 +28,9 @@
                                     <th>Mã MH</th>
                                     <th>Tên MH</th>
                                     <th>Số giờ</th>
-                                    <th>Ngày bắt đầu</th>
-                                    <th>Lý Thuyết</th>
+                                    <th>Lý thuyết</th>
                                     <th>Thực hành</th>
-                                    <th>Học kỳ</th>
+                                    <th>Ngày bắt đầu</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
@@ -42,10 +41,9 @@
                                         <td>{{ $subject->subjectCode }}</td>
                                         <td>{{ $subject->nameSubject }}</td>
                                         <td>{{ $subject->totalClassHour }}</td>
+                                        <td>{{ $subject->NameFinal }}</td>
+                                        <td>{{ $subject->NameSkill }}</td>
                                         <td>{{ $subject->startDate }}</td>
-                                        <td>{{ $subject->Final }}</td>
-                                        <td>{{ $subject->Skill }}</td>
-                                        <td>{{ $subject->FullSemester }}</td>
                                         <td class="td-actions text-center">
                                             <a href="{{ route('subject.edit',$subject->numberSubject) }}">
                                                 <button class="btn btn-success btn-xs">

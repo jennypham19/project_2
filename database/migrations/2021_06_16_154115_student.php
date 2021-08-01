@@ -24,7 +24,6 @@ class Student extends Migration
             $table->boolean('genDer');
             $table->string('phone',11);
             $table->string('address',255);
-            $table->boolean('status');
             $table->date('dateEnrollment');
             $table->unsignedInteger('numberClass');
             $table->foreign('numberClass')->references('numberClass')->on('grade');

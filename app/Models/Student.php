@@ -31,13 +31,5 @@ class Student extends Model
         }
     }
 
-    public function getNameStatusAttribute()
-    {
-        if ($this-> status ==1){
-            return "Hoạt động";
-        }else{
-            return "Không hoạt động";
-        }
-    }
 
 }

@@ -36,20 +36,12 @@
                     </select>
                 </div>
                 <div class="form-group label-floating">
-                    <label style="color:black;">Điểm final lần 1</label>
-                    <input type="text" class="form-control" name="mark-final1" value="{{ $mark->final1st }}">
+                    <label style="color:black;">Điểm lý thuyết</label>
+                    <input type="text" class="form-control" name="mark" value="{{ $mark->mark_final }}">
                 </div>
                 <div class="form-group label-floating">
-                    <label style="color:black;">Điểm final lần 2</label>
-                    <input type="text" class="form-control" name="mark-final2" value="{{ $mark->final2nd }}">
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Điểm skill lần 1</label>
-                    <input type="text" class="form-control" name="mark-skill1" value="{{ $mark->skill1st }}">
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Điểm skill lần 2</label>
-                    <input type="text" class="form-control" name="mark-skill2" value="{{ $mark->skill2nd }}">
+                    <label style="color:black;">Điểm thực hành</label>
+                    <input type="text" class="form-control" name="mark" value="{{ $mark->mark_skill }}">
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>

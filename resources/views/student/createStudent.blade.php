@@ -56,11 +56,6 @@
                     <input type="text" name="address" class="form-control">
                 </div>
                 <div class="form-group label-floating">
-                    <label style="color:black;">Trạng thái</label>
-                    <input type="radio" name="status" value="1">Hoạt động
-                    <input type="radio" name="status" value="0">Không hoạt động
-                </div>
-                <div class="form-group label-floating">
                     <label style="color:black;">Ngày nhập học</label>
                     <input type="date" name="date" class="form-control">
                 </div>

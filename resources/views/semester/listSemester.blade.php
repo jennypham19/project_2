@@ -30,7 +30,7 @@
 
                     </div>
                     <div class="material-datatables">
-                        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -46,7 +46,7 @@
                                         <td>{{ $semester->numberSemester }}</td>
                                         <td>{{ $semester->semesterCode }}</td>
                                         <td>{{ $semester->nameSemester }}</td>
-                                        <td>{{ $semester->FullYear }}</td>
+                                        <td>{{ $semester->year }}</td>
                                         <td class="td-actions text-center">
                                             <a href="{{ route('semester.edit',$semester->numberSemester) }}">
                                                 <button class="btn btn-success btn-xs">

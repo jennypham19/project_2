@@ -58,7 +58,6 @@ class StudentController extends Controller
         $gender = $request->get('gender');
         $phone = $request->get('phone');
         $address = $request->get('address');
-        $status = $request->get('status');
         $dateEnrollment = $request->get('date');
         $grade = $request->get('grade');
 
@@ -74,7 +73,6 @@ class StudentController extends Controller
         $student->genDer = $gender;
         $student->phone = $phone;
         $student->address = $address;
-        $student->status = $status;
         $student->dateEnrollment = $dateEnrollment;
         $student->numberClass = $grade;
 
@@ -131,7 +129,6 @@ class StudentController extends Controller
         $gender = $request->get('gender');
         $phone = $request->get('phone');
         $address = $request->get('address');
-        $status = $request->get('status');
         $dateEnrollment = $request->get('dateEnrolled');
         $classCode = $request->get('class');
         $student = Student::find($id);
@@ -145,7 +142,6 @@ class StudentController extends Controller
         $student->genDer = $gender;
         $student->phone = $phone;
         $student->address = $address;
-        $student->status = $status;
         $student->dateEnrollment = $dateEnrollment;
         $student->numberClass = $classCode;
         $student->save();
@@ -161,5 +157,8 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function showStudentResit(){
+        return view('student.listStudentResit');
     }
 }

@@ -14,7 +14,7 @@
                 <tr>
                     <td>{{ $semester->semesterCode }}</td>
                     <td>{{ $semester->nameSemester }}</td>
-                    <td>{{ $semester->FullYear }}</td>
+                    <td>{{ $semester->year }}</td>
                 </tr>
             </tbody>
         @endforeach

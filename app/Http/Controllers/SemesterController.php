@@ -43,13 +43,11 @@ class SemesterController extends Controller
     {
         $semesterCode = $request->get('code-semester');
         $nameSemester = $request->get('name-semester');
-        $yearSemester1 = $request->get('year-semester1');
-        $yearSemester2 = $request->get('year-semester2');
+        $yearSemester = $request->get('year-semester');
         $semester = new Semester();
         $semester->semesterCode = $semesterCode;
         $semester->nameSemester = $nameSemester;
-        $semester->year1 = $yearSemester1;
-        $semester->year2 = $yearSemester2;
+        $semester->year = $yearSemester;
         $semester->save();
         return Redirect::route('semester.index');
     }
@@ -90,13 +88,11 @@ class SemesterController extends Controller
     {
         $semesterCode = $request->get('code-semester');
         $nameSemester = $request->get('name-semester');
-        $year1 = $request->get('year-semester1');
-        $year2 = $request->get('year-semester2');
+        $year = $request->get('year-semester');
         $semester = Semester::find($id);
         $semester->semesterCode = $semesterCode;
         $semester->nameSemester = $nameSemester;
-        $semester->year1 = $year1;
-        $semester->year2 = $year2;
+        $semester->year = $year;
         $semester -> save();
         return Redirect::route('semester.index');
     }

@@ -14,9 +14,10 @@ class Admin extends Migration
     public function up()
     {
         Schema::create('admin',function (Blueprint $table){
-            $table->increments('codeAdmin');
+            $table->increments('numberAdmin');
             $table->string('email',50);
             $table->string('password',30);
+            $table->string('fullName',50);
             $table->boolean('role');
         });
     }

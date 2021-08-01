@@ -27,26 +27,18 @@
                     <input type="text" class="form-control" name="hour">
                 </div>
                 <div class="form-group label-floating">
+                    <label style="color:black;">Lý thuyết</label>
+                    <input type="radio"  name="final" value="1">Có
+                    <input type="radio"  name="final" value="0">Không
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Thực hành</label>
+                    <input type="radio" name="skill" value="1">Có
+                    <input type="radio" name="skill" value="0">Không
+                </div>
+                <div class="form-group label-floating">
                     <label style="color:black;">Ngày bắt đầu</label>
                     <input type="date" class="form-control" name="start-date">
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Lý thuyết:</label>
-                    <input type="radio"  name="final" value="1">Yes
-                    <input type="radio"  name="final" value="0">No
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Thực hành:</label>
-                    <input type="radio" name="skill" value="1">Yes
-                    <input type="radio" name="skill" value="0">No
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Học kỳ</label>
-                    <select name="semester" class="form-control">
-                        @foreach ($semester as $sem)
-                            <option value="{{ $sem->numberSemester }}">{{ $sem->FullSemester }}</option>
-                        @endforeach
-                    </select>
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>

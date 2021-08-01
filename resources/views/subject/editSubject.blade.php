@@ -32,23 +32,22 @@
                     <input type="date" class="form-control" name="start-date" value="{{ $subject->startDate }}">
                 </div>
                 <div class="form-group label-floating">
-                    <label style="color:black;">Lý thuyết:</label>
-                    <input type="radio" name="final" value="1" @if ($subject->isFinal == 1) checked @endif>Yes
-                    <input type="radio" name="final" value="0" @if ($subject->isFinal == 0) checked @endif>No
+                    <label style="color:black;">Lý thuyết</label>
+                    <input type="radio" name="final" value="1" @if ($subject->final==1)
+                        checked
+                    @endif>Có
+                    <input type="radio" name="final" value="0" @if ($subject->final==0)
+                    checked
+                @endif >Không
                 </div>
                 <div class="form-group label-floating">
-                    <label style="color:black;">Thực hành:</label>
-                    <input type="radio" name="skill" value="1" @if ($subject->isSkill == 1) checked @endif>Yes
-                    <input type="radio" name="skill" value="0" @if ($subject->isSkill == 0) checked @endif>No
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Học kỳ</label>
-                    <select name="semester" class="form-control">
-                        @foreach ($semester as $sem)
-                            <option value="{{ $sem->numberSemester }}" @if ($subject->numberSemester == $sem->numberSemester) selected @endif>
-                                {{ $sem->FullSemester }}</option>
-                        @endforeach
-                    </select>
+                    <label style="color:black;">Thực hành</label>
+                    <input type="radio" name="skill" value="1" @if ($subject->skill==1)
+                        checked
+                    @endif>Có
+                    <input type="radio" name="skill" value="0" @if ($subject->skill==0)
+                    checked
+                @endif >Không
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>

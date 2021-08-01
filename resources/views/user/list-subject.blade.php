@@ -8,9 +8,6 @@
                 <th>Tên MH</th>
                 <th>Số giờ</th>
                 <th>Ngày bắt đầu</th>
-                <th>Lý Thuyết</th>
-                <th>Thực hành</th>
-                <th>Học kỳ</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +17,6 @@
                     <td>{{ $subject->nameSubject }}</td>
                     <td>{{ $subject->totalClassHour }}</td>
                     <td>{{ $subject->startDate }}</td>
-                    <td>{{ $subject->Final }}</td>
-                    <td>{{ $subject->Skill }}</td>
-                    <td>{{ $subject->FullSemester }}</td>
                 </tr>
             @endforeach
         </tbody>

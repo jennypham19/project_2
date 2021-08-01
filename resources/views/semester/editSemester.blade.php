@@ -25,11 +25,8 @@
                 </div>
                 <div class="form-group label-floating">
                     <label style="color:black;">Năm</label>
-                    <input type="text" class="form-control" name="year-semester1" value="{{ $semester->year1 }}">
+                    <input type="text" class="form-control" name="year-semester" value="{{ $semester->year }}">
                 </div>
-                <div class="form-group label-floating">
-                    <label style="color:black;">Năm</label>
-                    <input type="text" class="form-control" name="year-semester2" value="{{ $semester->year2 }}">
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>
