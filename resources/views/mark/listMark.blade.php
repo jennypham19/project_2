@@ -7,7 +7,6 @@
 @endsection
 @section('content')
     {{-- <h1>Điểm</h1> --}}
-    <a href="{{ route('mark.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm điểm</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -61,4 +60,6 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('mark.create') }}" class="btn btn-info" style="color:black;">Thêm điểm</a>
+
 @endsection

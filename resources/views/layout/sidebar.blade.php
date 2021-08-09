@@ -125,27 +125,53 @@
                                 <p>ĐIỂM THI LẠI</p>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="{{ route('student.student-resit') }}">
+                        <li>
+                            <a href="">
                                 <i class="material-icons">people</i>
-                                <p>SINH VIÊN THI LẠI</p>
+                                <p>ĐIỂM TRUNG BÌNH</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="material-icons">people</i>
-                                <p>SINH VIÊN HỌC LẠI</p>
-                            </a>
-                        </li> --}}
 
                     </ul>
                 </div>
             </li>
             <li>
-                <a href="#">
-                    <i class="material-icons">analytics</i>
-                    <p> THỐNG KÊ </p>
+                <a data-toggle="collapse" href="#analyticExamples">
+                    <i class="material-icons">
+                        analytics</i>
+                    <p> THỐNG KÊ
+                        <b class="caret"></b>
+                    </p>
                 </a>
+                <div class="collapse" id="analyticExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{ route('list-student-pass') }}">
+                                <i class="material-icons">grade</i>
+                                <p>DANH SÁCH QUA MÔN</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="material-icons">people</i>
+                                <p>DANH SÁCH THI LẠI</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="material-icons">assignment</i>
+                                <p> DANH SÁCH ĐIỂM</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="material-icons">people</i>
+                                <p>DANH SÁCH HỌC LẠI</p>
+                            </a>
+                        </li> 
+
+                    </ul>
+                </div>
             </li>
             <li>
                 <a href="{{ route('calendar') }}">

@@ -14,14 +14,20 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $grade = $request->get('grade');
+        $listGrade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+        ->get();
         $listStudent = Student::join("grade", "student.numberClass", "=", "grade.numberClass")
             ->join("course", "grade.numberCourse", "=", "course.numberCourse")
+            ->where("student.numberClass",$grade)
             ->get();
 
         return view('student.listStudent', [
             'listStudent' => $listStudent,
+            'listGrade' => $listGrade,
+            'grade' => $grade,
         ]);
     }
 

@@ -88,10 +88,10 @@
             "pagingType": "full_numbers",
             responsive: true,
             "aLengthMenu": [
-                [2, 25, 50, 100, -1], 
-                [2, 25, 50, 100, "Tất cả"]
+                [10, 25, 50, 100, -1], 
+                [10, 25, 50, 100, "Tất cả"]
             ],
-				"iDisplayLength": 2,
+				"iDisplayLength": 10,
 				"oLanguage": {
 					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
 					"oPaginate": {

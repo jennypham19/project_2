@@ -7,10 +7,7 @@
 @endsection
 @section('content')
     {{-- <h1>Danh sách sinh viên</h1> --}}
-    <a href="{{ route('student.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm sinh viên</a>
-    <div>Tìm kiếm</div>
     <div class="row">
-        
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-icon" data-background-color="rose">
@@ -19,6 +16,19 @@
                 <div class="card-content">
                     <h4 class="card-title">SINH VIÊN</h4>
                     <div class="toolbar">
+                    </div>
+                    <div>
+                        <form action="">
+                            <select name="grade">
+                                <option>All</option>
+                                @foreach ($listGrade as $grade)
+                                    <option value="{{ $grade->classCode }}" @if ($grade->classCode == $grade)
+                                        selected
+                                    @endif>{{ $grade->FullGrade }}</option>
+                                @endforeach
+                            </select>
+                            <button>Tìm</button>
+                        </form>
                     </div>
                     <div class="material-datatables">
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
@@ -74,4 +84,6 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('student.create') }}" class="btn btn-info" style="color:black;">Thêm sinh viên</a>
+
 @endsection

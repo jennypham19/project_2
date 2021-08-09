@@ -14,8 +14,9 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\SemesterController;
-use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\MarkResitController;
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\AuthenticateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +44,7 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::resource('subject', SubjectController::class);
     Route::resource('grade', GradeController::class);
     Route::resource('student', StudentController::class);
-    Route::prefix("student")->name('student.')->group(function(){
-        Route::get('/student-resit',[StudentController::class,'showStudentResit'])->name('student-resit');
-    });
+    Route::get('statistic/list-student',[StatisticController::class,'indexStudent'])->name('list-student-pass');
     Route::resource('mark', MarkController::class);
     Route::resource('mark-resit',MarkResitController::class);
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');

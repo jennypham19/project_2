@@ -36,6 +36,7 @@ class AuthenticateController extends Controller
 
     public function loginUser()
     {
+        
         return view('user.login-user');
     }
 
