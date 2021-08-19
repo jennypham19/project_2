@@ -10,11 +10,13 @@ class Student extends Model
     use HasFactory;
     protected $table = 'student';
     public $timestamps = false;
-    public $primaryKey = 'numberStudent';
+    public $primaryKey = 'studentCode';
+    public $incrementing = 'false';
+    public $keyType = 'string';
 
     public function getFullGradeAttribute()
     {
-        return $this->nameClass . $this->nameCourse;
+        return $this->nameClass . $this->courseCode;
     }
 
     public function getFullNameAttribute()

@@ -9,9 +9,11 @@ class Grade extends Model
     use HasFactory;
     protected $table = 'grade';
     public $timestamps = false;
-    public $primaryKey = 'numberClass';
+    public $primaryKey = 'classCode';
+    public $incrementing ='false';
+    public $keyType = 'string';
 
     public function getFullGradeAttribute(){
-        return $this->nameClass.$this->nameCourse;
+        return $this->nameClass.$this->courseCode;
     }
 }

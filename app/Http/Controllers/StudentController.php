@@ -17,11 +17,11 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $grade = $request->get('grade');
-        $listGrade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+        $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
         ->get();
-        $listStudent = Student::join("grade", "student.numberClass", "=", "grade.numberClass")
-            ->join("course", "grade.numberCourse", "=", "course.numberCourse")
-            ->where("student.numberClass",$grade)
+        $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
+            ->join("course", "grade.courseCode", "=", "course.courseCode")
+            ->where("student.classCode",$grade)
             ->get();
 
         return view('student.listStudent', [
@@ -38,7 +38,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $grade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+        $grade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
             ->get();
         return view('student.createStudent', [
             'grade' => $grade,
@@ -80,7 +80,7 @@ class StudentController extends Controller
         $student->phone = $phone;
         $student->address = $address;
         $student->dateEnrollment = $dateEnrollment;
-        $student->numberClass = $grade;
+        $student->classCode = $grade;
 
         $student->save();
         return Redirect::route('student.index');
@@ -105,10 +105,10 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $grade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
+        $grade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
             ->get();
-        $student = Student::join("grade", "student.numberClass", "=", "grade.numberClass")
-            ->join("course", "grade.numberCourse", "=", "course.numberCourse")
+        $student = Student::join("grade", "student.classCode", "=", "grade.classCode")
+            ->join("course", "grade.courseCode", "=", "course.courseCode")
             ->find($id);
         return view('student.editStudent', [
             "student" => $student,
@@ -149,7 +149,7 @@ class StudentController extends Controller
         $student->phone = $phone;
         $student->address = $address;
         $student->dateEnrollment = $dateEnrollment;
-        $student->numberClass = $classCode;
+        $student->classCode = $classCode;
         $student->save();
         return Redirect::route('student.index');
     }

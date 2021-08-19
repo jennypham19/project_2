@@ -63,7 +63,7 @@
                     <label style="color:black;">Lớp</label>
                     <select name="grade" class="form-control">
                         @foreach ($grade as $grade1)
-                            <option value="{{ $grade1->numberClass }}">{{ $grade1->FullGrade }}</option>
+                            <option value="{{ $grade1->classCode }}">{{ $grade1->FullGrade }}</option>
                         @endforeach
                     </select>
                 </div>

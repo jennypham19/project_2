@@ -28,19 +28,21 @@
                                     <th>Môn học</th>
                                     <th>Điểm lý thuyết</th>
                                     <th>Điểm thực hành</th>
+                                    <th>Ghi chú</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($listMark as $mark)
                                     <tr>
-                                        <td>{{ $mark->numberMark }}</td>
+                                        <td>{{ $mark->number }}</td>
                                         <td>{{ $mark->FullName }}</td>
                                         <td>{{ $mark->nameSubject }}</td>
                                         <td>{{ $mark->mark_final }}</td>
                                         <td>{{ $mark->mark_skill}}</td>
+                                        <td>{{ $mark->note }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('mark.edit',$mark->numberMark) }}">
+                                            <a href="{{ route('mark.edit',$mark->number) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>

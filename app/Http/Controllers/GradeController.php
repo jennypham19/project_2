@@ -19,8 +19,8 @@ class GradeController extends Controller
     {
         $listCourse = Course::all();
         $listMajor = Major::all();
-        $listGrade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
-            ->join("major", "grade.numberMajor", "=", "major.numberMajor")
+        $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
+            ->join("major", "grade.majorCode", "=", "major.majorCode")
             ->get();
         return view('grade.listGrade', [
             'listGrade' => $listGrade,
@@ -59,8 +59,8 @@ class GradeController extends Controller
         $grade = new Grade();
         $grade-> classCode = $gradeCode;
         $grade->nameClass = $nameGrade;
-        $grade->numberCourse = $courseCode;
-        $grade->numberMajor = $majorCode;
+        $grade->courseCode = $courseCode;
+        $grade->majorCode = $majorCode;
         $grade->save();
         return Redirect::route('grade.index');
     }
@@ -86,8 +86,8 @@ class GradeController extends Controller
     {
         $course = Course::all();
         $major = Major::all();
-        $grade = Grade::join("course", "grade.numberCourse", "=", "course.numberCourse")
-            ->join("major", "grade.numberMajor", "=", "major.numberMajor")
+        $grade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
+            ->join("major", "grade.majorCode", "=", "major.majorCode")
             ->find($id);
         return view('grade.editGrade', [
             "grade" => $grade,
@@ -112,8 +112,8 @@ class GradeController extends Controller
         $grade = Grade::find($id);
         $grade->classCode = $gradeCode;
         $grade->nameClass = $nameGrade;
-        $grade->numberCourse = $course;
-        $grade->numberMajor = $major;
+        $grade->courseCode = $course;
+        $grade->majorCode = $major;
         $grade->save();
         return Redirect::route('grade.index');
     }

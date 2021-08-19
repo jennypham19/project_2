@@ -7,7 +7,6 @@
 @endsection
 @section('content')
     {{-- <h1>Danh sách lớp</h1> --}}
-    <a href="{{ route('grade.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm lớp</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -23,7 +22,6 @@
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
                                     <th>Mã lớp</th>
                                     <th>Tên lớp</th>
                                     <th>Chuyên ngành</th>
@@ -33,19 +31,18 @@
                             <tbody>
                                 @foreach ($listGrade as $grade)
                                     <tr>
-                                        <td>{{ $grade->numberClass }}</td>
                                         <td>{{ $grade->classCode }}</td>
                                         <td>{{ $grade->FullGrade }}</td>
                                         <td>{{ $grade->nameMajor }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('grade.edit',$grade->numberClass) }}">
+                                            <a href="{{ route('grade.edit',$grade->classCode) }}">
                                                 <button class="btn btn-success btn-xs">
-                                                    <i class="material-icons">edit</i>Edit
+                                                    <i class="material-icons">edit</i>
                                                 </button>
                                             </a>
                                             <form action="" method="post">
                                                 <button class="btn btn-danger btn-xs">
-                                                    <i class="material-icons">lock</i>Hide
+                                                    <i class="material-icons">lock</i>
                                                 </button>
                                             </form>
                                         </td>
@@ -58,4 +55,5 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('grade.create') }}" class="btn btn-info" style="color:black;">Thêm lớp</a>
 @endsection

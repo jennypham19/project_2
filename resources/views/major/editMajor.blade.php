@@ -12,7 +12,7 @@
         </div>
         <div class="card-content">
             <h4 class="card-title">ĐIỂM</h4>
-            <form action="{{ route('major.update', $major->numberMajor) }}" method="post">
+            <form action="{{ route('major.update',[$major->majorCode] ) }}" method="post">
                 @method('PUT')
                 @csrf
                 <div class="form-group label-floating">

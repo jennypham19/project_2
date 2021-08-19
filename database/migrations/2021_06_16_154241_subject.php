@@ -14,9 +14,8 @@ class Subject extends Migration
     public function up()
     {
         Schema::create('subject', function (Blueprint $table) {
-            $table->increments('numberSubject');
-            $table->string('subjectCode',20);
-            $table->string('nameSubject',150);
+            $table->string('subjectCode',20)->primary();
+            $table->string('nameSubject',150)->unique();
             $table->integer('totalClassHour');
             $table->boolean('final');
             $table->boolean('skill');

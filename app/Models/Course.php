@@ -9,5 +9,7 @@ class Course extends Model
 {
     protected $table = 'course';
     public $timestamps = false;
-    public $primaryKey = 'numberCourse';
+    public $primaryKey = 'courseCode';
+    public $incrementing = 'false';
+    public $keyType = 'string';
 }

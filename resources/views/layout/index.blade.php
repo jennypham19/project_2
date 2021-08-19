@@ -93,7 +93,7 @@
             ],
 				"iDisplayLength": 10,
 				"oLanguage": {
-					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
+					"sLengthMenu": "Hiển thị _MENU_",
 					"oPaginate": {
 						"sFirst": "<span aria-hidden='true'>First</span>",
 						"sLast": "<span  aria-hidden='true'>Last</span>",

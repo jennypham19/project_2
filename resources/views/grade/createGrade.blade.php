@@ -26,7 +26,7 @@
                     <label style="color:black;">Khóa</label>
                     <select name="id-course" class="form-control">
                         @foreach ($listCourse as $course)
-                            <option value="{{ $course->numberCourse }}">{{ $course->nameCourse }}</option>
+                            <option value="{{ $course->courseCode }}">{{ $course->nameCourse }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -34,7 +34,7 @@
                     <label style="color:black;">Chuyên ngành</label>
                     <select name="id-major" class="form-control">
                         @foreach ($listMajor as $major)
-                            <option value="{{ $major->numberMajor }}">{{ $major->nameMajor }}</option>
+                            <option value="{{ $major->majorCode }}">{{ $major->nameMajor }}</option>
                         @endforeach
                     </select>
                 </div>

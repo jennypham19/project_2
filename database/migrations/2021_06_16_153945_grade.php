@@ -14,13 +14,12 @@ class Grade extends Migration
     public function up()
     {
         Schema::create('grade', function (Blueprint $table) {
-            $table->increments('numberClass');
-            $table->string('classCode',20);
-            $table->string('nameClass',150);
-            $table->unsignedInteger('numberCourse');
-            $table->foreign('numberCourse')->references('numberCourse')->on('course');
-            $table->unsignedInteger('numberMajor');
-            $table->foreign('numberMajor')->references('numberMajor')->on('major');
+            $table->string('classCode',20)->primary();
+            $table->string('nameClass',150)->unique();
+            $table->string('courseCode');
+            $table->foreign('courseCode')->references('courseCode')->on('course');
+            $table->string('majorCode');
+            $table->foreign('majorCode')->references('majorCode')->on('major');
 
         });
     }

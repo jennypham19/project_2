@@ -10,5 +10,5 @@ class MarkResit extends Model
     use HasFactory;
     protected $table = 'mark_resit';
     public $timestamps = false;
-    public $primaryKey = 'numberMark';
+    public $primaryKey = 'number';
 }

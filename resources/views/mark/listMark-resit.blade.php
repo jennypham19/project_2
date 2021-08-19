@@ -34,7 +34,7 @@
                         <tbody>
                             @foreach ($listMark as $mark)
                                 <tr>
-                                    <td>{{ $mark->numberMark }}</td>
+                                    <td>{{ $mark->number }}</td>
                                     <td>{{ $mark->FullName }}</td>
                                     <td>{{ $mark->nameSubject }}</td>
                                     <td>{{ $mark->mark_resit_final }}</td>

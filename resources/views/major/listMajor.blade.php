@@ -17,7 +17,6 @@
 @endsection
 @section('content')
     {{-- <h1>Danh sách ngành học</h1> --}}
-    <a href="{{ route('major.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;" >Thêm ngành học</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -34,7 +33,6 @@
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
                                     <th>Mã chuyên ngành</th>
                                     <th>Tên chuyên ngành</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
@@ -43,11 +41,10 @@
                             <tbody>
                                 @foreach ($listMajor as $major)
                                     <tr>
-                                        <td>{{ $major->numberMajor }}</td>
                                         <td>{{ $major->majorCode }}</td>
                                         <td>{{ $major->nameMajor }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('major.edit',$major->numberMajor) }}">
+                                            <a href="{{ route('major.edit', [$major->majorCode]) }}">
                                                 <button class="btn btn-success btn-xs">
                                                      <i class ="material-icons">edit</i>Edit
                                                 </button>
@@ -67,4 +64,6 @@
             </div>
         </div>
     </div>
+    
+    <a href="{{ route('major.create') }}" class="btn btn-info" style="color:black;" >Thêm ngành học</a>
 @endsection

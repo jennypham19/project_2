@@ -10,7 +10,9 @@ class Semester extends Model
     use HasFactory;
     protected $table = 'semester';
     public $timestamps = false;
-    public $primaryKey = 'numberSemester';
+    public $primaryKey = 'semesterCode';
+    public $incrementing = 'false';
+    public $keyType = 'string';
 
     public function getFullSemesterAttribute()
     {

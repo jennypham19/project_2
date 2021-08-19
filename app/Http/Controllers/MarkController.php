@@ -17,8 +17,8 @@ class MarkController extends Controller
      */
     public function index()
     {
-        $listMark = Mark::join("student", "student.numberStudent", "=", "mark.numberStudent")
-            ->join("subject", "subject.numberSubject", "=", "mark.numberSubject")
+        $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+            ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
             ->get();
         return view('mark.listMark', [
             'listMark' => $listMark,
@@ -52,11 +52,13 @@ class MarkController extends Controller
         $nameSubject = $request->get('subject');
         $mark_final = $request->get('mark_final');
         $mark_skill = $request->get('mark_skill');
+        $note = $request->get('note');
         $mark = new Mark();
-        $mark->numberStudent = $nameStudent;
-        $mark->numberSubject = $nameSubject;
+        $mark->studentCode = $nameStudent;
+        $mark->subjectCode = $nameSubject;
         $mark->mark_final = $mark_final;
         $mark->mark_skill = $mark_skill;
+        $mark->note = $note;
         $mark->save();
         return Redirect::route('mark.index');
     }
@@ -82,8 +84,8 @@ class MarkController extends Controller
     {
         $student = Student::all();
         $subject = Subject::all();
-        $mark = Mark::join("student", "student.numberStudent", "=", "mark.numberStudent")
-            ->join("subject", "subject.numberSubject", "=", "mark.numberSubject")
+        $mark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+            ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
             ->find($id);
         return view('mark.editMark', [
             'mark' => $mark,
@@ -105,11 +107,13 @@ class MarkController extends Controller
         $subjectCode = $request->get('name-subject');
         $mark_final = $request->get('mark_final');
         $mark_skill = $request->get('mark_skill');
+        $note = $request->get('note');
         $mark = Mark::find($id);
-        $mark->numberStudent = $studentCode;
-        $mark->numberSubject = $subjectCode;
+        $mark->studentCode = $studentCode;
+        $mark->subjectCode = $subjectCode;
         $mark->mark_final = $mark_final;
         $mark->mark_skill = $mark_skill;
+        $mark->note = $note;
         $mark->save();
         return Redirect::route('mark.index');
     }

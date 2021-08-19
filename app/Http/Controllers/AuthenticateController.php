@@ -20,7 +20,7 @@ class AuthenticateController extends Controller
         $password = $request->get('password');
         try {
             $admin = Admin::where('email',$email)->where('password',$password)->firstOrFail();
-            $request->session()->put('nameAdmin',$admin->nameAdmin);
+            $request->session()->put('nameAdmin',$admin->fullName);
             return Redirect::route('dashboard-admin');
         }catch(Exception $e){
             return Redirect::route('login-admin')->with('error',"Tài khoản hoặc mật khẩu bị sai");

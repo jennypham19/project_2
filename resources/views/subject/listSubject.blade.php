@@ -7,7 +7,6 @@
 @endsection
 @section('content')
     {{-- <h1>Danh sách môn học</h1> --}}
-    <a href="{{ route('subject.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm môn học</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -24,7 +23,6 @@
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
                                     <th>Mã MH</th>
                                     <th>Tên MH</th>
                                     <th>Số giờ</th>
@@ -37,7 +35,6 @@
                             <tbody>
                                 @foreach ($listSubject as $subject)
                                     <tr>
-                                        <td>{{ $subject->numberSubject }}</td>
                                         <td>{{ $subject->subjectCode }}</td>
                                         <td>{{ $subject->nameSubject }}</td>
                                         <td>{{ $subject->totalClassHour }}</td>
@@ -45,7 +42,7 @@
                                         <td>{{ $subject->NameSkill }}</td>
                                         <td>{{ $subject->startDate }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('subject.edit',$subject->numberSubject) }}">
+                                            <a href="{{ route('subject.edit',$subject->subjectCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>
@@ -65,4 +62,5 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('subject.create') }}" class="btn btn-info" style="color:black;">Thêm môn học</a>
 @endsection

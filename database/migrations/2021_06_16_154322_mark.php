@@ -14,13 +14,14 @@ class Mark extends Migration
     public function up()
     {
         Schema::create('mark', function (Blueprint $table) {
-            $table->increments('numberMark');
-            $table->unsignedInteger('numberStudent');
-            $table->unsignedInteger('numberSubject');
-            $table->foreign('numberStudent')->references('numberStudent')->on('student');
-            $table->foreign('numberSubject')->references('numberSubject')->on('subject');
+            $table->increments('number');
+            $table->string('studentCode');
+            $table->string('subjectCode');
+            $table->foreign('studentCode')->references('studentCode')->on('student');
+            $table->foreign('subjectCode')->references('subjectCode')->on('subject');
             $table->string('mark_final');
             $table->string('mark_skill');
+            
         });
     }
 

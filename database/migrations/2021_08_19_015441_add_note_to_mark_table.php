@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Semester extends Migration
+class AddNoteToMarkTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class Semester extends Migration
      */
     public function up()
     {
-        Schema::create('semester', function (Blueprint $table) {
-            $table->string('semesterCode',20)->primary();
-            $table->string('nameSemester',20);
-            $table->string('year');
-
+        Schema::table('mark', function (Blueprint $table) {
+            $table->string('note')->after('mark_skill');
         });
     }
 
@@ -28,6 +25,8 @@ class Semester extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('semester');
+        Schema::table('mark', function (Blueprint $table) {
+            $table->dropColumn('note');
+        });
     }
 }

@@ -12,7 +12,7 @@
         </div>
         <div class="card-content">
             <h4 class="card-title">SINH VIÊN</h4>
-            <form action="{{ route('student.update', $student->numberStudent) }}" method="post">
+            <form action="{{ route('student.update', $student->studentCode) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="form-group label-floating">
@@ -64,7 +64,7 @@
                     <label style="color:black;">Lớp</label>
                     <select name="class" class="form-control">
                         @foreach ($grade as $class)
-                            <option value="{{ $class->numberClass }}" @if ($student->numberClass == $class->numberClass) selected @endif>
+                            <option value="{{ $class->classCode }}" @if ($student->classCode == $class->classCode) selected @endif>
                                 {{ $class->FullGrade }}</option>
                         @endforeach
                     </select>

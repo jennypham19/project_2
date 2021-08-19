@@ -14,19 +14,18 @@ class Student extends Migration
     public function up()
     {
         Schema::create('student', function (Blueprint $table) {
-            $table->increments('numberStudent');
-            $table->string('studentCode',20);
-            $table->string('email',255);
+            $table->string('studentCode',20)->primary();
+            $table->string('email',255)->unique();
             $table->string('passWord',100);
             $table->string('firstName',255);
             $table->string('lastName',255);
             $table->date('dateOfBirth');
             $table->boolean('genDer');
-            $table->string('phone',11);
-            $table->string('address',255);
+            $table->string('phone',11)->unique();
+            $table->string('address',255)->unique();
             $table->date('dateEnrollment');
-            $table->unsignedInteger('numberClass');
-            $table->foreign('numberClass')->references('numberClass')->on('grade');
+            $table->string('classCode');
+            $table->foreign('classCode')->references('classCode')->on('grade');
         });
     }
 

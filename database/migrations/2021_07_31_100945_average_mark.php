@@ -15,11 +15,11 @@ class AverageMark extends Migration
     {
         Schema::create('average_mark', function (Blueprint $table) {
             $table->increments('number');
-            $table->unsignedInteger('numberStudent');
-            $table->foreign('numberStudent')->references('numberStudent')->on('student');
+            $table->string('studentCode');
+            $table->foreign('studentCode')->references('studentCode')->on('student');
             $table->float('averageMark');
-            $table->unsignedInteger('numberSemester');
-            $table->foreign('numberSemester')->references('numberSemester')->on('semester');
+            $table->string('semesterCode');
+            $table->foreign('semesterCode')->references('semesterCode')->on('semester');
             
         });
     }

@@ -10,7 +10,9 @@ class Subject extends Model
     use HasFactory;
     protected $table = 'subject';
     public $timestamps = false;
-    public $primaryKey = 'numberSubject';
+    public $primaryKey = 'subjectCode';
+    public $incrementing = 'false';
+    public $keyType = 'string';
 
     public function getNameFinalAttribute()
     {

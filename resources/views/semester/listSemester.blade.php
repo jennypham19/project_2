@@ -17,7 +17,6 @@
 @endsection
 @section('content')
     {{-- <h1>Danh sách học kỳ</h1> --}}
-    <a href="{{ route('semester.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm học kỳ</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -33,7 +32,6 @@
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
                                     <th>Mã học kỳ</th>
                                     <th>Tên học kỳ</th>
                                     <th>Năm</th>
@@ -43,12 +41,11 @@
                             <tbody>
                                 @foreach ($listSemester as $semester)
                                     <tr>
-                                        <td>{{ $semester->numberSemester }}</td>
                                         <td>{{ $semester->semesterCode }}</td>
                                         <td>{{ $semester->nameSemester }}</td>
                                         <td>{{ $semester->year }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('semester.edit',$semester->numberSemester) }}">
+                                            <a href="{{ route('semester.edit',$semester->semesterCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>Edit
                                                 </button>
@@ -68,5 +65,5 @@
             </div>
         </div>
     </div>
-
+    <a href="{{ route('semester.create') }}" class="btn btn-info" style="color:black;">Thêm học kỳ</a>
 @endsection

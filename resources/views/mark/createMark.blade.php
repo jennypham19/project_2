@@ -19,7 +19,7 @@
                     <label class="control-label">Tên sinh viên</label>
                     <select name="student" class="form-control">
                         @foreach ($listStudent as $student)
-                            <option value="{{ $student->numberStudent }}">{{ $student->FullName }}</option>
+                            <option value="{{ $student->studentCode }}">{{ $student->FullName }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -27,7 +27,7 @@
                     <label class="control-label">Môn học</label>
                     <select name="subject" class="form-control">
                         @foreach ($listSubject as $subject)
-                            <option value="{{ $subject->numberSubject }}">{{ $subject->nameSubject }}</option>
+                            <option value="{{ $subject->subjectCode }}">{{ $subject->nameSubject }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -38,6 +38,10 @@
                 <div class="form-group label-floating">
                     <label class="control-label">Điểm thực hành </label>
                     <input type="text" class="form-control" name="mark_skill">
+                </div>
+                <div class="form-group label-floating">
+                    <label class="control-label">Ghi chú</label>
+                    <input type="text" class="form-control" name="note">
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>

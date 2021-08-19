@@ -12,7 +12,7 @@
         </div>
         <div class="card-content">
             <h4 class="card-title">KHÓA</h4>
-            <form action="{{ route('course.update', $course->numberCourse) }}" method="post">
+            <form action="{{ route('course.update', $course->courseCode) }}" method="post">
                 @method('PUT')
                 @csrf
                 <div class="form-group label-floating">
