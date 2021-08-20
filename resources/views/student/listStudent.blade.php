@@ -17,7 +17,7 @@
                     <h4 class="card-title">SINH VIÊN</h4>
                     <div class="toolbar">
                     </div>
-                    <div>
+                    {{-- <div>
                         <form action="">
                             <select name="grade">
                                 <option>All</option>
@@ -29,12 +29,13 @@
                             </select>
                             <button>Tìm</button>
                         </form>
-                    </div>
+                    </div> --}}
                     <div class="material-datatables">
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>STT</th>
                                     <th>Mã SV</th>
                                     <th>Tài khoản</th>
                                     <th>Mật khẩu</th>
@@ -51,6 +52,7 @@
                             <tbody>
                                 @foreach ($listStudent as $student)
                                     <tr>
+                                        <td>{{ $student->numberStudent }}</td>
                                         <td>{{ $student->studentCode }}</td>
                                         <td>{{ $student->email }}</td>
                                         <td>{{ $student->passWord }}</td>
