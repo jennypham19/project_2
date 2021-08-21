@@ -49,7 +49,7 @@
                                                      <i class ="material-icons">edit</i>
                                                 </button>
                                             </a>
-                                            <form action="{{ route('major.destroy',$major->majorCode) }}" method="post">
+                                            <form action="{{ route('major.destroy',$major->majorCode) }}" method="post" onclick="return confirm('Xóa không???')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-xs">

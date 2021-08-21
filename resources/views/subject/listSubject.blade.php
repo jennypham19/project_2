@@ -47,7 +47,7 @@
                                                     <i class="material-icons">edit</i>
                                                 </button>
                                             </a>
-                                            <form action="{{ route('subject.destroy',$subject->subjectCode) }}" method="post">
+                                            <form action="{{ route('subject.destroy',$subject->subjectCode) }}" method="post" onclick="return confirm('Xóa không???')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-xs">

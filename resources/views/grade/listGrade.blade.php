@@ -40,7 +40,7 @@
                                                     <i class="material-icons">edit</i>
                                                 </button>
                                             </a>
-                                            <form action="{{ route('grade.destroy',$grade->classCode) }}" method="post">
+                                            <form action="{{ route('grade.destroy',$grade->classCode) }}" method="post" onclick="return confirm('Xóa không???')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-xs">
