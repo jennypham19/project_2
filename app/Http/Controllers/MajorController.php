@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Major;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class MajorController extends Controller
 {
@@ -13,8 +14,10 @@ class MajorController extends Controller
      */
     public function index(Request $request)
     {
+        
         $search = $request->get('search');
-        $listMajor = Major::where('nameMajor','like',"%$search%")->get();
+        $listMajor = Major::where('nameMajor','like',"%$search%")
+        ->get();
         return view('major.listMajor',[
             'listMajor' => $listMajor,
             'search' => $search
@@ -102,5 +105,11 @@ class MajorController extends Controller
     {
         Major::where('majorCode',$id)->delete();
         return redirect(route('major.index'));
+    }
+
+    public function hide($id){
+        // Major::where('majorCode',$id);
+        echo $id;
+        // return Redirect::route('major.index');
     }
 }

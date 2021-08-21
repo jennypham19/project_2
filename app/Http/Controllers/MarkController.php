@@ -126,7 +126,8 @@ class MarkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Mark::where('number',$id)->delete();
+        return Redirect::route('mark.index');
     }
 
 }

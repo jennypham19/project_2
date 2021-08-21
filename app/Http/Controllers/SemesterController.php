@@ -105,6 +105,7 @@ class SemesterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Semester::where('semesterCode',$id)->delete();
+        return Redirect::route('semester.index');
     }
 }

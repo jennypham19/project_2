@@ -126,6 +126,7 @@ class GradeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Grade::where('classCode',$id)->delete();
+        return Redirect::route('grade.index');
     }
 }

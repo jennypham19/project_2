@@ -102,6 +102,7 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Course::where('courseCode',$id)->delete();
+        return Redirect::route('course.index');
     }
 }

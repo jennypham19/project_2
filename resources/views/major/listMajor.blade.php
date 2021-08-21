@@ -46,12 +46,14 @@
                                         <td class="td-actions text-center">
                                             <a href="{{ route('major.edit', [$major->majorCode]) }}">
                                                 <button class="btn btn-success btn-xs">
-                                                     <i class ="material-icons">edit</i>Edit
+                                                     <i class ="material-icons">edit</i>
                                                 </button>
                                             </a>
-                                            <form action="" method="post">
+                                            <form action="{{ route('major.destroy',$major->majorCode) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
                                                 <button class="btn btn-danger btn-xs">
-                                                    <i class="material-icons">lock</i>Hide
+                                                    <i class="material-icons">close</i>
                                                 </button>
                                             </form>
                                         </td>

@@ -16,18 +16,18 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        // $grade = $request->get('grade');
+        $grade = $request->get('grade');
         $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
         ->get();
         $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
             ->join("course", "grade.courseCode", "=", "course.courseCode")
-            // ->where("student.classCode",$grade)
+            ->where("student.classCode",$grade)
             ->get();
 
         return view('student.listStudent', [
             'listStudent' => $listStudent,
             'listGrade' => $listGrade,
-            // 'grade' => $grade,
+            'grade' => $grade,
         ]);
     }
 
@@ -162,7 +162,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::where('studentCode',$id)->delete();
+        return Redirect::route('student.index');
     }
     public function showStudentResit(){
         return view('student.listStudentResit');

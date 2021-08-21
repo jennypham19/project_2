@@ -34,11 +34,15 @@ Route::get('/admin/login', [AuthenticateController::class, 'loginAdmin'])->name(
 Route::post('/login-process-admin', [AuthenticateController::class, 'loginProcessAdmin'])->name('loginProcessAdmin');
 Route::get('/admin/logout', [AuthenticateController::class, 'logoutAdmin'])->name('logout-admin');
 
+//tạo middleware để  check xem ng dùng có đăng nhập hay không.Nếu có thì cho vào, không thì mời đăng nhập
 Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('dashboard');
     })->name('dashboard-admin');
     Route::resource('major', MajorController::class);
+    Route::prefix('major')->name('major.')->group(function(){
+        Route::get('hide/{id}',[MajorController::class,'hide'])->name('hide');
+    });
     Route::resource('course', CourseController::class);
     Route::resource('semester', SemesterController::class);
     Route::resource('subject', SubjectController::class);

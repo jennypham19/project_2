@@ -115,6 +115,8 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subject::where('subjectCode',$id)->delete();
+        return Redirect::route('subject.index');
+
     }
 }

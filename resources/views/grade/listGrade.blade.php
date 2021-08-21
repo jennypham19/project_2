@@ -40,9 +40,11 @@
                                                     <i class="material-icons">edit</i>
                                                 </button>
                                             </a>
-                                            <form action="" method="post">
+                                            <form action="{{ route('grade.destroy',$grade->classCode) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
                                                 <button class="btn btn-danger btn-xs">
-                                                    <i class="material-icons">lock</i>
+                                                    <i class="material-icons">close</i>
                                                 </button>
                                             </form>
                                         </td>
