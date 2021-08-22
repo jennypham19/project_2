@@ -11,4 +11,10 @@ class Admin extends Model
     protected $table = 'admin';
     public $timestamps = false;
     public $primaryKey = 'codeAdmin';
+
+    public function getRightAttribute(){
+        if($this->role == 1){
+            return "Giáo vụ";
+        }
+    }
 }

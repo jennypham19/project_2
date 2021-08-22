@@ -17,7 +17,6 @@
                         @if (Session::exists('nameAdmin'))
                             {{ Session::get('nameAdmin') }}
                         @endif
-                        {{-- Quản trị viên --}}
                         <b class="caret"></b>
                     </span>
                 </a>
@@ -25,21 +24,21 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="#">
-                                <span class="sidebar-mini"> MP </span>
-                                <span class="sidebar-normal"> My Profile </span>
+                            <a href="{{ route('profile')}}">
+                                <i class="material-icons">list</i>
+                                <span class="sidebar-normal"> Thông tin </span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span class="sidebar-mini"> EP </span>
-                                <span class="sidebar-normal"> Edit Profile </span>
+                                <i class="material-icons">password</i>
+                                <span class="sidebar-normal"> Thay đổi mật khẩu </span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span class="sidebar-mini"> S </span>
-                                <span class="sidebar-normal"> Settings </span>
+                                <i class="material-icons">image</i>
+                                <span class="sidebar-normal"> Avatar </span>
                             </a>
                         </li>
                     </ul>
@@ -99,7 +98,12 @@
                                 <p>SINH VIÊN</p>
                             </a>
                         </li>
-                        
+                        <li>
+                            <a href="{{ route('admin.index') }}">
+                                <i class="material-icons">person</i>
+                                <p>NHÂN VIÊN</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

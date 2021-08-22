@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Major;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
 class MajorController extends Controller
@@ -48,7 +49,6 @@ class MajorController extends Controller
         $major->majorCode = $majorCode;
         $major->nameMajor= $nameMajor;
         $major->save();
-        return redirect(route('major.index'));
     }
 
     /**

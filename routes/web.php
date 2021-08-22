@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLoginUser;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CalendarController;
@@ -36,18 +38,30 @@ Route::get('/admin/logout', [AuthenticateController::class, 'logoutAdmin'])->nam
 
 //tạo middleware để  check xem ng dùng có đăng nhập hay không.Nếu có thì cho vào, không thì mời đăng nhập
 Route::middleware([CheckLogin::class])->group(function () {
+    //dashboard
     Route::get('/admin/dashboard', function () {
         return view('dashboard');
     })->name('dashboard-admin');
+    //major
     Route::resource('major', MajorController::class);
-    Route::prefix('major')->name('major.')->group(function(){
-        Route::get('hide/{id}',[MajorController::class,'hide'])->name('hide');
-    });
+    //course
     Route::resource('course', CourseController::class);
+    //semester
     Route::resource('semester', SemesterController::class);
+    //subject
     Route::resource('subject', SubjectController::class);
+    //grade
     Route::resource('grade', GradeController::class);
+    //student
     Route::resource('student', StudentController::class);
+    //admin
+    Route::resource('admin',AdminController::class);
+    //profile
+    
+    Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+    Route::get('/profile/edit-profile',[ProfileController::class,'editProfile'])->name('edit-profile');
+    Route::put('/profile/edit-profile-process',[ProfileController::class,'editProfileProcess'])->name('edit-profile-process');
+
     Route::get('statistic/list-student',[StatisticController::class,'indexStudent'])->name('list-student-pass');
     Route::resource('mark', MarkController::class);
     Route::resource('mark-resit',MarkResitController::class);
