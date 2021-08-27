@@ -39,10 +39,10 @@
                     <label class="control-label">Điểm thực hành </label>
                     <input type="text" class="form-control" name="mark_skill">
                 </div>
-                <div class="form-group label-floating">
+                {{-- <div class="form-group label-floating">
                     <label class="control-label">Ghi chú</label>
                     <input type="text" class="form-control" name="note">
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>
         </div>

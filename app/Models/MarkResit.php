@@ -11,4 +11,8 @@ class MarkResit extends Model
     protected $table = 'mark_resit';
     public $timestamps = false;
     public $primaryKey = 'number';
+
+    public function getStudentAttribute(){
+        
+    }
 }

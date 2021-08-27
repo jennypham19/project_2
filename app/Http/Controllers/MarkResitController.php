@@ -17,11 +17,11 @@ class MarkResitController extends Controller
      */
     public function index()
     {
-        $listMark = MarkResit::join("student", "student.numberStudent", "=", "mark_resit.numberStudent")
-            ->join("subject", "subject.numberSubject", "=", "mark_resit.numberSubject")
+        $listMark = MarkResit::join("student", "student.studentCode", "=", "mark_resit.studentCode")
+            ->join("subject", "subject.subjectCode", "=", "mark_resit.subjectCode")
             ->get();
-        return view('mark.listMark-resit',[
-            'listMark'=>$listMark,
+        return view('mark.listMark-resit', [
+            'listMark' => $listMark,
         ]);
     }
 
@@ -53,8 +53,8 @@ class MarkResitController extends Controller
         $mark1 = $request->get('mark_resit_final');
         $mark2 = $request->get('mark_resit_skill');
         $mark = new MarkResit();
-        $mark->numberStudent = $nameStudent;
-        $mark->numberSubject = $nameSubject;
+        $mark->studentCode = $nameStudent;
+        $mark->subjectCode = $nameSubject;
         $mark->mark_resit_final = $mark1;
         $mark->mark_resit_skill = $mark2;
         $mark->save();

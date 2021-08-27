@@ -15,13 +15,51 @@ class MarkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
-            ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
-            ->get();
+        $filterStudent = $request->get('filter_student');
+        $filterSubject = $request->get('filter_subject');
+        $listStudent = Student::all();
+        $listSubject = Subject::all();
+        //filter through student
+        switch ($filterStudent) {
+            case 'All':
+            case '':
+                $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+                    ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
+                    ->orderBy("student.studentCode", "DESC")
+                    ->get();
+                break;
+            default:
+                $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+                    ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
+                    ->where("student.studentCode", $filterStudent)
+                    ->get();
+                break;
+        }
+        //filter through subject
+        // switch ($filterSubject) {
+        //     case 'All':
+        //     case '':
+        //         $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+        //             ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
+        //             ->orderBy("subject.subjectCode", "DESC")
+        //             ->get();
+        //         break;
+        //     default:
+        //         $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+        //             ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
+        //             ->where("subject.subjectCode", $filterSubject)
+        //             ->get();
+        //         break;
+        // }
         return view('mark.listMark', [
             'listMark' => $listMark,
+            'listStudent'=> $listStudent,
+            'listSubject' => $listSubject,
+            'filterStudent' => $filterStudent,
+            'filterSubject' => $filterSubject,
+
         ]);
     }
 
@@ -58,7 +96,7 @@ class MarkController extends Controller
         $mark->subjectCode = $nameSubject;
         $mark->mark_final = $mark_final;
         $mark->mark_skill = $mark_skill;
-        $mark->note = $note;
+        // $mark->note = $note;
         $mark->save();
         return Redirect::route('mark.index');
     }
@@ -107,13 +145,13 @@ class MarkController extends Controller
         $subjectCode = $request->get('name-subject');
         $mark_final = $request->get('mark_final');
         $mark_skill = $request->get('mark_skill');
-        $note = $request->get('note');
+        // $note = $request->get('note');
         $mark = Mark::find($id);
         $mark->studentCode = $studentCode;
         $mark->subjectCode = $subjectCode;
         $mark->mark_final = $mark_final;
         $mark->mark_skill = $mark_skill;
-        $mark->note = $note;
+        // $mark->note = $note;
         $mark->save();
         return Redirect::route('mark.index');
     }
@@ -126,8 +164,7 @@ class MarkController extends Controller
      */
     public function destroy($id)
     {
-        Mark::where('number',$id)->delete();
+        Mark::where('number', $id)->delete();
         return Redirect::route('mark.index');
     }
-
 }

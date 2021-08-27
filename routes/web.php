@@ -19,6 +19,7 @@ use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\MarkResitController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\UserAuthenticateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,10 +58,12 @@ Route::middleware([CheckLogin::class])->group(function () {
     //admin
     Route::resource('admin',AdminController::class);
     //profile
-    
     Route::get('/profile',[ProfileController::class,'index'])->name('profile');
-    Route::get('/profile/edit-profile',[ProfileController::class,'editProfile'])->name('edit-profile');
-    Route::put('/profile/edit-profile-process',[ProfileController::class,'editProfileProcess'])->name('edit-profile-process');
+    Route::get('/profile/edit-profile/{id}',[ProfileController::class,'editProfile'])->name('edit-profile');
+    Route::put('/profile/edit-profile-process/{id}',[ProfileController::class,'editProfileProcess'])->name('edit-profile-process');
+    //change-password
+    Route::get('/profile/change-password',[ProfileController::class,'changePassword'])->name('change-password');
+    Route::post('/profile/change-password-process/{id}',[ProfileController::class,'changePasswordProcess'])->name('change-password-process');
 
     Route::get('statistic/list-student',[StatisticController::class,'indexStudent'])->name('list-student-pass');
     Route::resource('mark', MarkController::class);
@@ -69,9 +72,9 @@ Route::middleware([CheckLogin::class])->group(function () {
 });
 
  //user
-Route::get('/user/login', [AuthenticateController::class, 'loginUser'])->name('login-student');
-Route::post('/user/login-process', [AuthenticateController::class, 'loginProcessUser'])->name('loginProcessStudent');
-Route::get('/user/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-student');
+Route::get('/user/login', [UserAuthenticateController::class, 'loginUser'])->name('login-student');
+Route::post('/user/login-process', [UserAuthenticateController::class, 'loginProcessUser'])->name('loginProcessStudent');
+Route::get('/user/logout', [UserAuthenticateController::class, 'logoutUser'])->name('logout-student');
 
 Route::middleware([CheckLoginUser::class])->group(function(){
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('dashboard-student');

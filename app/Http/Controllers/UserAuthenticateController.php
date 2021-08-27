@@ -10,6 +10,7 @@ class UserAuthenticateController extends Controller
 {
     public function loginUser()
     {
+        
         return view('user.login-user');
     }
 
@@ -19,7 +20,7 @@ class UserAuthenticateController extends Controller
         $passStudent = $request->get('password-student');
         try {
             $student = Student::where('email',$emailStudent)->where('passWord',$passStudent)->firstOrFail();
-            $request->session()->put('nameStudent',$student->FullName);
+            $request->session()->put('user',$student->FullName);
             return Redirect::route('dashboard-student');
         } catch (Exception $e) {
             return Redirect::route('login-student')->with('error',"Tài khoản hoặc mật khẩu của bạn bị sai");
@@ -28,7 +29,7 @@ class UserAuthenticateController extends Controller
 
     public function logoutUser(Request $request)
     {
-        $request->session()->flush();
+        $request->session()->pull('user');
         return Redirect::route('login-student');
 
     }

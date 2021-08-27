@@ -43,10 +43,10 @@
                     <label style="color:black;">Điểm thực hành</label>
                     <input type="text" class="form-control" name="mark" value="{{ $mark->mark_skill }}">
                 </div>
-                <div class="form-group label-floating">
+                {{-- <div class="form-group label-floating">
                     <label style="color:black;">Ghi chú</label>
                     <input type="text" class="form-control" name="note" value="{{ $mark->note }}">
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>
         </div>

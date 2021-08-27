@@ -16,18 +16,28 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $grade = $request->get('grade');
+        $filter = $request->get('filter');
         $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
-        ->get();
-        $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
-            ->join("course", "grade.courseCode", "=", "course.courseCode")
-            ->where("student.classCode",$grade)
             ->get();
-
+        switch ($filter) {
+            case 'All':
+            case '':
+                $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
+                    ->join("course", "grade.courseCode", "=", "course.courseCode")
+                    ->orderBy("grade.classCode", "DESC")
+                    ->get();
+                break;
+            default:
+                $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
+                    ->join("course", "grade.courseCode", "=", "course.courseCode")
+                    ->where("grade.classCode", $filter)
+                    ->get();
+                break;
+        }
         return view('student.listStudent', [
             'listStudent' => $listStudent,
             'listGrade' => $listGrade,
-            'grade' => $grade,
+            'filter' =>$filter,
         ]);
     }
 
@@ -138,7 +148,7 @@ class StudentController extends Controller
         $dateEnrollment = $request->get('dateEnrolled');
         $classCode = $request->get('class');
         $student = Student::find($id);
-        $student-> studentCode = $studentCode;
+        $student->studentCode = $studentCode;
         $student->email = $email;
         $student->passWord = $password;
         $student->firstName = $firstName;
@@ -162,10 +172,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::where('studentCode',$id)->delete();
+        Student::where('studentCode', $id)->delete();
         return Redirect::route('student.index');
     }
-    public function showStudentResit(){
+    public function showStudentResit()
+    {
         return view('student.listStudentResit');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -27,7 +29,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create-admin');
     }
 
     /**
@@ -38,7 +40,17 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $fullName = $request->get('full-name');
+        $role = $request->get('role');
+        $admin = new Admin();
+        $admin -> email = $email;
+        $admin -> password = $password;
+        $admin -> fullName = $fullName;
+        $admin -> role = $role;
+        $admin -> save();
+        return Redirect::route('admin.index');
     }
 
     /**
@@ -60,7 +72,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        
+        $admin = Admin::find($id);
+        return view('admin.edit-admin',[
+            'admin' => $admin,
+        ]);
     }
 
     /**
@@ -72,7 +87,17 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $fullName = $request->get('full-name');
+        $role = $request->get('role');
+        $admin = Admin::find($id);
+        $admin -> email = $email;
+        $admin -> password = $password;
+        $admin -> fullName = $fullName;
+        $admin -> role = $role;
+        $admin -> save();
+        return Redirect::route('admin.index');
     }
 
     /**
@@ -83,6 +108,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Admin::where('codeAdmin',$id)->delete();
+        return redirect(route('admin.index'));
     }
 }

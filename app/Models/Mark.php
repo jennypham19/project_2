@@ -17,5 +17,15 @@ class Mark extends Model
         return $this->lastName. " ".$this->middleName." ".$this->firstName;
     }
 
-    
+    public function getNoteAttribute(){
+        if($this->mark_final >=5 && $this->mark_skill <=5){
+            return "Thi lại thực hành";
+        }else if($this->mark_final <=5 && $this->mark_skill >=5){
+            return "Thi lại lý thuyết";
+        }else if($this->mark_final >=5 && $this->mark_skill >=5 ){
+            return "Qua";
+        }else{
+            return "Thi lại";
+        }
+    }
 }

@@ -27,6 +27,7 @@
                                     <th>Mật khẩu</th>
                                     <th>Họ tên</th>
                                     <th>Quyền</th>
+                                    <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,6 +38,20 @@
                                         <td>{{ $admin->password }}</td>
                                         <td>{{ $admin->fullName }}</td>
                                         <td>{{ $admin->Right }}</td>
+                                        <td class="td-actions text-center">
+                                            <a href="{{ route('admin.edit', $admin->codeAdmin) }}">
+                                                <button class="btn btn-success btn-xs">
+                                                     <i class ="material-icons">edit</i>
+                                                </button>
+                                            </a>
+                                            <form action="{{ route('admin.destroy',$admin->codeAdmin) }}" method="post" onclick="return confirm('Xóa không???')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-xs">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -46,4 +61,5 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('admin.create') }}" class="btn btn-info" style="color:black;" >Thêm nhân viên</a>
 @endsection

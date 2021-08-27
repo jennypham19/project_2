@@ -8352,7 +8352,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 .dropdown.open .caret,
 .dropup.open .caret,
 .btn-group.bootstrap-select.open .caret {
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=2);
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
@@ -11014,7 +11014,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 .panel .panel-heading a[aria-expanded="true"] .panel-title>i,
 .panel .panel-heading a.expanded .panel-title>i {
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=2);
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
@@ -12447,7 +12447,7 @@ footer .btn {
 }
 
 .card .card-footer {
-    margin: 0 20px 10px;
+    margin: 0 90px 10px;
     padding-top: 10px;
     border-top: 1px solid #eeeeee;
 }

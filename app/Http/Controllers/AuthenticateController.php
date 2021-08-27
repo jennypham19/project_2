@@ -20,7 +20,7 @@ class AuthenticateController extends Controller
         $password = $request->get('password');
         try {
             $admin = Admin::where('email',$email)->where('password',$password)->firstOrFail();
-            $request->session()->put('nameAdmin',$admin->fullName);
+            $request->session()->put('admin',$admin);
             return Redirect::route('dashboard-admin');
         }catch(Exception $e){
             return Redirect::route('login-admin')->with('error',"Tài khoản hoặc mật khẩu bị sai");
@@ -29,34 +29,8 @@ class AuthenticateController extends Controller
 
     public function logoutAdmin(Request $request)
     {
-        $request->session()->flush();
+        $request->session()->pull('admin');
         return Redirect::route('login-admin');
-
-    }
-
-    public function loginUser()
-    {
-        
-        return view('user.login-user');
-    }
-
-    public function loginProcessUser(Request $request)
-    {
-        $emailStudent = $request->get('email-student');
-        $passStudent = $request->get('password-student');
-        try {
-            $student = Student::where('email',$emailStudent)->where('passWord',$passStudent)->firstOrFail();
-            $request->session()->put('nameStudent',$student->FullName);
-            return Redirect::route('dashboard-student');
-        } catch (Exception $e) {
-            return Redirect::route('login-student')->with('error',"Tài khoản hoặc mật khẩu của bạn bị sai");
-        }
-    }
-
-    public function logoutUser(Request $request)
-    {
-        $request->session()->flush();
-        return Redirect::route('login-student');
 
     }
 }

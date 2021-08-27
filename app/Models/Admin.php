@@ -14,6 +14,8 @@ class Admin extends Model
 
     public function getRightAttribute(){
         if($this->role == 1){
+            return "Admin";
+        }else{
             return "Giáo vụ";
         }
     }

@@ -14,7 +14,7 @@ class AddNoteToMarkTable extends Migration
     public function up()
     {
         Schema::table('mark', function (Blueprint $table) {
-            $table->string('note')->after('mark_skill');
+            $table->boolean('note')->nullable();
         });
     }
 

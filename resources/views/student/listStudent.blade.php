@@ -19,10 +19,10 @@
                     </div>
                     <div>
                         <form action="">
-                            <select name="grade">
+                            <select name="filter">
                                 <option>All</option>
                                 @foreach ($listGrade as $grade)
-                                    <option value="{{ $grade->classCode }}" @if ($grade->classCode == $grade)
+                                    <option value="{{ $grade->classCode }}" @if ($grade->classCode == $filter)
                                         selected
                                     @endif>{{ $grade->FullGrade }}</option>
                                 @endforeach
@@ -79,6 +79,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
