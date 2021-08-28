@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExcelExportsStudent;
 use App\Models\Grade;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
@@ -16,18 +18,28 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $grade = $request->get('grade');
+        $filter = $request->get('filter');
         $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
         ->get();
-        $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
-            ->join("course", "grade.courseCode", "=", "course.courseCode")
-            ->where("student.classCode",$grade)
-            ->get();
-
+        switch ($filter) {
+            case 'All':
+            case '':
+                $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
+                ->join("course", "grade.courseCode", "=", "course.courseCode")
+                ->orderBy('grade.classCode','DESC')
+                ->get(); 
+                break;
+            default:
+                $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
+                ->join("course", "grade.courseCode", "=", "course.courseCode")
+                ->where("grade.classCode",$filter)
+                ->get();
+                break;
+        }
         return view('student.listStudent', [
             'listStudent' => $listStudent,
             'listGrade' => $listGrade,
-            'grade' => $grade,
+            'filter' => $filter,
         ]);
     }
 
@@ -168,4 +180,8 @@ class StudentController extends Controller
     public function showStudentResit(){
         return view('student.listStudentResit');
     }
+    public function export_csv(){
+        return Excel::download(new ExcelExportsStudent,'student.xlsx');
+    }
+    
 }

@@ -18,17 +18,19 @@
                     <div class="toolbar">
                     </div>
                     <div>
-                        <form action="">
-                            <select name="grade">
-                                <option>All</option>
+                        <form action="" method="GET">
+                            <select name="filter">
+                                <option >All</option>
                                 @foreach ($listGrade as $grade)
-                                    <option value="{{ $grade->classCode }}" @if ($grade->classCode == $grade)
+                                    <option value="{{ $grade->classCode }}"
+                                     @if ( $grade->classCode == $filter )
                                         selected
-                                    @endif>{{ $grade->FullGrade }}</option>
-                                @endforeach
-                            </select>
+                                    @endif >{{ $grade->FullGrade }}</option>
+                                @endforeach 
+                            </select> 
                             <button>Lọc</button>
                         </form>
+                       
                     </div>
                     <div class="material-datatables">
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
@@ -85,5 +87,8 @@
         </div>
     </div>
     <a href="{{ route('student.create') }}" class="btn btn-info" style="color:black;">Thêm sinh viên</a>
-
+    <form action="{{url('export-csv')}}" method="POST">
+        @csrf
+        <input type="submit" value="Xuất danh sách sinh viên" name="export_csv" class="btn-btn-success">
+    </form>
 @endsection

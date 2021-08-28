@@ -32,7 +32,8 @@
                                 @foreach ($listGrade as $grade)
                                     <tr>
                                         <td>{{ $grade->classCode }}</td>
-                                        <td>{{ $grade->FullGrade }}</td>
+                                        <td> <a href="student?filter={{$grade->classCode}}"> {{ $grade->FullGrade }}</a></td> 
+                                        {{-- <td><a href="student?filter=2">BKD03K11</a></td> --}}
                                         <td>{{ $grade->nameMajor }}</td>
                                         <td class="td-actions text-center">
                                             <a href="{{ route('grade.edit',$grade->classCode) }}">

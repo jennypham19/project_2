@@ -52,6 +52,7 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::resource('mark', MarkController::class);
     Route::resource('mark-resit',MarkResitController::class);
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
+    Route::post('/export-csv',[StudentController::class,'export_csv']);
 });
 
  //user
