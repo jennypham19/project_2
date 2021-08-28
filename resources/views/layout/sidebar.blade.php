@@ -9,15 +9,14 @@
 
         <div class="user">
             <div class="photo">
-                <img src="{{ asset('assets') }}/img/faces/avatar.jpg" />
+                {{-- <img src="{{ asset('assets') }}/img/faces/avatar.jpg" /> --}}
             </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        @if (Session::exists('nameAdmin'))
-                            {{ Session::get('nameAdmin') }}
+                        @if (Session::exists('admin'))
+                            {{ session('admin')->fullName }}
                         @endif
-                        {{-- Quản trị viên --}}
                         <b class="caret"></b>
                     </span>
                 </a>
@@ -25,21 +24,15 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="#">
-                                <span class="sidebar-mini"> MP </span>
-                                <span class="sidebar-normal"> My Profile </span>
+                            <a href="{{ route('profile') }}">
+                                <i class="material-icons">list</i>
+                                <span class="sidebar-normal"> Thông tin </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <span class="sidebar-mini"> EP </span>
-                                <span class="sidebar-normal"> Edit Profile </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="sidebar-mini"> S </span>
-                                <span class="sidebar-normal"> Settings </span>
+                            <a href="{{ route('change-password') }}">
+                                <i class="material-icons">password</i>
+                                <span class="sidebar-normal"> Thay đổi mật khẩu </span>
                             </a>
                         </li>
                     </ul>
@@ -99,7 +92,16 @@
                                 <p>SINH VIÊN</p>
                             </a>
                         </li>
-                        
+                        @if (session('admin')->role == 1)
+                            <li>
+                                <a href="{{ route('admin.index') }}">
+                                    <i class="material-icons">person</i>
+                                    <p>NHÂN VIÊN</p>
+                                </a>
+                            </li>
+                        @endif
+
+
                     </ul>
                 </div>
             </li>
@@ -168,7 +170,7 @@
                                 <i class="material-icons">people</i>
                                 <p>DANH SÁCH HỌC LẠI</p>
                             </a>
-                        </li> 
+                        </li>
 
                     </ul>
                 </div>

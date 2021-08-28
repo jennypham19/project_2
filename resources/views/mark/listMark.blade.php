@@ -16,7 +16,36 @@
                 <div class="card-content">
                     <h4 class="card-title">ĐIỂM</h4>
                     <div class="toolbar">
-
+                    </div>
+                    <div style="float:left;">
+                        <form action="">
+                            <select name="filter_student">
+                                <option>All</option>
+                                @foreach ($listStudent as $student)
+                                    <option value="{{ $student->studentCode }}" @if ($student->studentCode == $filterStudent)
+                                        selected
+                                    @endif>
+                                        {{ $student->FullName }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <button>Lọc</button>
+                        </form> 
+                    </div>
+                    <div style="margin-left:250px; ">
+                        <form action="">
+                            <select name="filter_subject">
+                                <option>All</option>
+                                @foreach ($listSubject as $subject)
+                                    <option value="{{ $subject->subjectCode }}" @if ($subject->subjectCode == $filterSubject)
+                                        selected
+                                    @endif>
+                                        {{ $subject->nameSubject }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <button>Lọc</button>
+                        </form>
                     </div>
                     <div class="material-datatables">
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
@@ -40,7 +69,7 @@
                                         <td>{{ $mark->nameSubject }}</td>
                                         <td>{{ $mark->mark_final }}</td>
                                         <td>{{ $mark->mark_skill}}</td>
-                                        <td>{{ $mark->note }}</td>
+                                        <td>{{ $mark->Note }}</td>
                                         <td class="td-actions text-center">
                                             <a href="{{ route('mark.edit',$mark->number) }}">
                                                 <button class="btn btn-success btn-xs">

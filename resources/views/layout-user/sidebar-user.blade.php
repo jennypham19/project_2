@@ -17,8 +17,8 @@
 
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        @if (Session::exists('nameStudent'))
-                            {{ Session::get("nameStudent") }}    
+                        @if (Session::exists('user'))
+                            {{ Session::get("user") }}    
                         @endif
                         
                         <b class="caret"></b>

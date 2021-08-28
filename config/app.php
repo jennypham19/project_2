@@ -174,7 +174,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+<<<<<<< HEAD
         Maatwebsite\Excel\ExcelServiceProvider::class,
+=======
+        App\Providers\ViewServiceProvider::class,
+>>>>>>> b4a8bad7e511581c2d6855bdb5350848c25f03cf
 
     ],
 

@@ -150,7 +150,7 @@ class StudentController extends Controller
         $dateEnrollment = $request->get('dateEnrolled');
         $classCode = $request->get('class');
         $student = Student::find($id);
-        $student-> studentCode = $studentCode;
+        $student->studentCode = $studentCode;
         $student->email = $email;
         $student->passWord = $password;
         $student->firstName = $firstName;
@@ -174,10 +174,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::where('studentCode',$id)->delete();
+        Student::where('studentCode', $id)->delete();
         return Redirect::route('student.index');
     }
-    public function showStudentResit(){
+    public function showStudentResit()
+    {
         return view('student.listStudentResit');
     }
     public function export_csv(){

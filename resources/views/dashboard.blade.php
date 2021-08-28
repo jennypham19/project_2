@@ -109,6 +109,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Sinh Viên</p>
+                    <p >{{$student}}</p>
                     <h3 class="card-title"></h3>
                 </div>
                 <div class="card-footer">
@@ -125,6 +126,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Lớp</p>
+                    <p>{{ $grade }}</p>
                     <h3 class="card-title"></h3>
                 </div>
                 <div class="card-footer">
@@ -141,6 +143,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Môn Học</p>
+                    <p>{{ $subject }}</p>
                     <h3 class="card-title"></h3>
                 </div>
                 <div class="card-footer">
@@ -157,6 +160,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Điểm</p>
+                    <p>{{ $mark }}</p>
                     <h3 class="card-title"></h3>
                 </div>
                 <div class="card-footer">
@@ -168,7 +172,7 @@
         </div>
     </div>
     <br>
-    <div class="row">
+    {{-- <div class="row">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="card card-calendar">
@@ -178,6 +182,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     </div>
 @endsection

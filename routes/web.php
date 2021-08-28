@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLoginUser;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CalendarController;
@@ -17,6 +19,7 @@ use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\MarkResitController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\UserAuthenticateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,18 +39,32 @@ Route::get('/admin/logout', [AuthenticateController::class, 'logoutAdmin'])->nam
 
 //tạo middleware để  check xem ng dùng có đăng nhập hay không.Nếu có thì cho vào, không thì mời đăng nhập
 Route::middleware([CheckLogin::class])->group(function () {
+    //dashboard
     Route::get('/admin/dashboard', function () {
         return view('dashboard');
     })->name('dashboard-admin');
+    //major
     Route::resource('major', MajorController::class);
-    Route::prefix('major')->name('major.')->group(function(){
-        Route::get('hide/{id}',[MajorController::class,'hide'])->name('hide');
-    });
+    //course
     Route::resource('course', CourseController::class);
+    //semester
     Route::resource('semester', SemesterController::class);
+    //subject
     Route::resource('subject', SubjectController::class);
+    //grade
     Route::resource('grade', GradeController::class);
+    //student
     Route::resource('student', StudentController::class);
+    //admin
+    Route::resource('admin',AdminController::class);
+    //profile
+    Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+    Route::get('/profile/edit-profile/{id}',[ProfileController::class,'editProfile'])->name('edit-profile');
+    Route::put('/profile/edit-profile-process/{id}',[ProfileController::class,'editProfileProcess'])->name('edit-profile-process');
+    //change-password
+    Route::get('/profile/change-password',[ProfileController::class,'changePassword'])->name('change-password');
+    Route::post('/profile/change-password-process/{id}',[ProfileController::class,'changePasswordProcess'])->name('change-password-process');
+
     Route::get('statistic/list-student',[StatisticController::class,'indexStudent'])->name('list-student-pass');
     Route::resource('mark', MarkController::class);
     Route::resource('mark-resit',MarkResitController::class);
@@ -56,9 +73,9 @@ Route::middleware([CheckLogin::class])->group(function () {
 });
 
  //user
-Route::get('/user/login', [AuthenticateController::class, 'loginUser'])->name('login-student');
-Route::post('/user/login-process', [AuthenticateController::class, 'loginProcessUser'])->name('loginProcessStudent');
-Route::get('/user/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-student');
+Route::get('/user/login', [UserAuthenticateController::class, 'loginUser'])->name('login-student');
+Route::post('/user/login-process', [UserAuthenticateController::class, 'loginProcessUser'])->name('loginProcessStudent');
+Route::get('/user/logout', [UserAuthenticateController::class, 'logoutUser'])->name('logout-student');
 
 Route::middleware([CheckLoginUser::class])->group(function(){
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('dashboard-student');

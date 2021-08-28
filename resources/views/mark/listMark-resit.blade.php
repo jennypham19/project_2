@@ -3,10 +3,9 @@
     Điểm thi lại
 @endsection
 @section('content1')
-    <a class="navbar-brand" href="{{ route('mark-resit.index') }}">ĐIỂM</a>
+    <a class="navbar-brand" href="{{ route('mark-resit.index') }}">ĐIỂM THI LẠI</a>
 @endsection
 @section('content')
-<a href="{{ route('mark-resit.create') }}" class="btn btn-info" style="color:black;margin:50px 0px 0px 1050px;">Thêm mới</a>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -60,4 +59,5 @@
         </div>
     </div>
 </div>
+<a href="{{ route('mark-resit.create') }}" class="btn btn-info" style="color:black;">Thêm mới</a>
 @endsection

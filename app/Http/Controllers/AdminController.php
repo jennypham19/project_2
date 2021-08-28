@@ -1,27 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Major;
+
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
-class MajorController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        
-        $search = $request->get('search');
-        $listMajor = Major::where('nameMajor','like',"%$search%")
-        ->get();
-        return view('major.listMajor',[
-            'listMajor' => $listMajor,
-            'search' => $search
+        $listAdmin = Admin::get();
+        return view('admin.list-admin',[
+            "listAdmin"=>$listAdmin,
         ]);
     }
 
@@ -32,7 +29,7 @@ class MajorController extends Controller
      */
     public function create()
     {
-        return view('major.createMajor');
+        return view('admin.create-admin');
     }
 
     /**
@@ -43,12 +40,17 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
-        $majorCode = $request->get('code');
-        $nameMajor = $request->get('name');
-        $major = new Major();
-        $major->majorCode = $majorCode;
-        $major->nameMajor= $nameMajor;
-        $major->save();
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $fullName = $request->get('full-name');
+        $role = $request->get('role');
+        $admin = new Admin();
+        $admin -> email = $email;
+        $admin -> password = $password;
+        $admin -> fullName = $fullName;
+        $admin -> role = $role;
+        $admin -> save();
+        return Redirect::route('admin.index');
     }
 
     /**
@@ -59,8 +61,7 @@ class MajorController extends Controller
      */
     public function show($id)
     {
-        $major = Major::find($id);
-        return $major;
+        
     }
 
     /**
@@ -71,9 +72,9 @@ class MajorController extends Controller
      */
     public function edit($id)
     {
-        $major= Major::find($id);
-        return view('major.editMajor',[
-            'major' => $major
+        $admin = Admin::find($id);
+        return view('admin.edit-admin',[
+            'admin' => $admin,
         ]);
     }
 
@@ -86,13 +87,17 @@ class MajorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $majorCode = $request->get('code-major');
-        $nameMajor = $request->get('name-major');
-        $major = Major::find($id);
-        $major->majorCode = $majorCode;
-        $major->nameMajor = $nameMajor;
-        $major->save();
-        return redirect()->route('major.index');
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $fullName = $request->get('full-name');
+        $role = $request->get('role');
+        $admin = Admin::find($id);
+        $admin -> email = $email;
+        $admin -> password = $password;
+        $admin -> fullName = $fullName;
+        $admin -> role = $role;
+        $admin -> save();
+        return Redirect::route('admin.index');
     }
 
     /**
@@ -103,13 +108,7 @@ class MajorController extends Controller
      */
     public function destroy($id)
     {
-        Major::where('majorCode',$id)->delete();
-        return redirect(route('major.index'));
-    }
-
-    public function hide($id){
-        // Major::where('majorCode',$id);
-        echo $id;
-        // return Redirect::route('major.index');
+        Admin::where('codeAdmin',$id)->delete();
+        return redirect(route('admin.index'));
     }
 }
