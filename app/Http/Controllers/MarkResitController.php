@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Models\Subject;
+use App\Models\Mark;
 use App\Models\MarkResit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class MarkResitController extends Controller
@@ -32,11 +32,13 @@ class MarkResitController extends Controller
      */
     public function create()
     {
-        $listStudent = Student::all();
-        $listSubject = Subject::all();
-        return view('mark.createMark', [
-            'listStudent' => $listStudent,
-            'listSubject' => $listSubject,
+        $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+                     ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
+                     ->where('mark_final','<','5')
+                     ->orWhere('mark_skill','<','5')
+                     ->get();
+        return view('mark.createMark-resit', [
+            'listMark' => $listMark,
         ]);
     }
 

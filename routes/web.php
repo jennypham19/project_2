@@ -18,6 +18,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\MarkResitController;
 use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\AverageMarkController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\UserAuthenticateController;
 
@@ -66,8 +67,12 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::post('/profile/change-password-process/{id}',[ProfileController::class,'changePasswordProcess'])->name('change-password-process');
 
     Route::get('statistic/list-student',[StatisticController::class,'indexStudent'])->name('list-student-pass');
+    //mark
     Route::resource('mark', MarkController::class);
+    //mark-resit
     Route::resource('mark-resit',MarkResitController::class);
+    //mark-average
+    Route::resource('mark-average',AverageMarkController::class);
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
     Route::post('/export-csv',[StudentController::class,'export_csv']);
 });

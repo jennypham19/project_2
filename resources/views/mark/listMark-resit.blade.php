@@ -25,8 +25,8 @@
                                 <th>STT</th>
                                 <th>Tên sinh viên</th>
                                 <th>Môn học</th>
-                                <th>Điểm thi lại lý thuyết</th>
-                                <th>Điểm thi lại thực hành</th>
+                                <th>Điểm thi lại LT</th>
+                                <th>Điểm thi lại TH</th>
                                 <th class="disabled-sorting text-center">Tác vụ</th>
                             </tr>
                         </thead>

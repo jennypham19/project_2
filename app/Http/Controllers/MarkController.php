@@ -55,7 +55,7 @@ class MarkController extends Controller
         // }
         return view('mark.listMark', [
             'listMark' => $listMark,
-            'listStudent'=> $listStudent,
+            'listStudent' => $listStudent,
             'listSubject' => $listSubject,
             'filterStudent' => $filterStudent,
             'filterSubject' => $filterSubject,
@@ -72,9 +72,10 @@ class MarkController extends Controller
     {
         $listStudent = Student::all();
         $listSubject = Subject::all();
+        // return $listSubject;
         return view('mark.createMark', [
-            'listStudent' => $listStudent,
-            'listSubject' => $listSubject,
+            'listStudent'=> $listStudent,
+            'listSubject'=> $listSubject,
         ]);
     }
 

@@ -18,26 +18,26 @@
                 <div class="form-group label-floating">
                     <label class="control-label">Tên sinh viên</label>
                     <select name="student" class="form-control">
-                        @foreach ($listStudent as $student)
-                            <option value="{{ $student->studentCode }}">{{ $student->FullName }}</option>
+                        @foreach ($listMark as $mark)
+                            <option value="{{ $mark->studentCode }}">{{ $mark->FullName }} ({{ $mark->Note }})</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group label-floating">
                     <label class="control-label">Môn học</label>
                     <select name="subject" class="form-control">
-                        @foreach ($listSubject as $subject)
-                            <option value="{{ $subject->subjectCode }}">{{ $subject->nameSubject }}</option>
+                        @foreach ($listMark as $mark)
+                            <option value="{{ $mark->subjectCode }}">{{ $mark->nameSubject }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group label-floating">
                     <label class="control-label">Điểm thi lại lý thuyết</label>
-                    <input type="text" class="form-control" name="mark_resit_final">
+                    <input type="text" class="form-control" name="mark_resit_final" value="{{ $mark->Mark }}">
                 </div>
                 <div class="form-group label-floating">
                     <label class="control-label">Điểm thi lại thực hành</label>
-                    <input type="text" class="form-control" name="mark_resit_skill">
+                    <input type="text" class="form-control" name="mark_resit_skill" value="{{ $mark->Mark }}">
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>
