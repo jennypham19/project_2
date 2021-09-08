@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Exports;
-
-use App\Models\ExcelStudent;
+use App\Models\Student;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class ExcelExportsStudent implements FromCollection,WithHeadings
+class ExcelExportsStudent implements FromCollection,WithHeadings,ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return ExcelStudent::select('studentCode','email','firstName','middleName','lastName','dateOfBirth','genDer','phone','address')->get();
-
+       return Student::select('studentCode','email','firstName','middleName','lastName','dateOfBirth','genDer','phone','address')->get();
+        // return ExcelStudent::all();
     }
     public function headings() :array {
     	return ["Mã sinh viên", "Email", "Tên", "Tên đệm","Họ","Ngày sinh","Giới tính","Số điện thoại","Địa Chỉ"];

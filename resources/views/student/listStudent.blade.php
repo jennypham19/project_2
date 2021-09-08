@@ -32,6 +32,11 @@
                         </form>
                        
                     </div>
+                    <a href="{{ route('student.create') }}" class="btn btn-info" style="color:black;">Thêm sinh viên</a>
+                   <form action="{{url('export-csv')}}" method="POST" style="float: right">
+                        @csrf
+                        <input type="submit" value="Xuất file" name="export_csv" class="btn-btn-success">
+                    </form>
                     <div class="material-datatables">
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
@@ -86,10 +91,12 @@
                 </div>
             </div>
         </div>
-    </div>
-    <a href="{{ route('student.create') }}" class="btn btn-info" style="color:black;">Thêm sinh viên</a>
-    <form action="{{url('export-csv')}}" method="POST">
-        @csrf
-        <input type="submit" value="Xuất danh sách sinh viên" name="export_csv" class="btn-btn-success">
+    </div>  
+    <form action="{{url('import-csv')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <input type="file" name="file">
+    <button type="submit" class="btn btn-info">Thêm bằng file excel</button>
     </form>
+    
+    
 @endsection

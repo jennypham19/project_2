@@ -13,7 +13,11 @@ class Student extends Model
     public $primaryKey = 'studentCode';
     public $incrementing = 'false';
     public $keyType = 'string';
-
+ 
+    protected $fillable = [
+        'studentCode','email','passWord','firstName','middleName','lastName','dateOfBirth','genDer','phone','address','dateEnrollment','classCode'
+    ];
+    
     public function getFullGradeAttribute()
     {
         return $this->nameClass . $this->courseCode;
@@ -32,6 +36,7 @@ class Student extends Model
             return "Nữ";
         }
     }
+   
 
 
 }

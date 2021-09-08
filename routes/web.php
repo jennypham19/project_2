@@ -70,6 +70,7 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::resource('mark-resit',MarkResitController::class);
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
     Route::post('/export-csv',[StudentController::class,'export_csv']);
+    Route::post('/import-csv',[StudentController::class,'import_csv'])->name('student-import');
 });
 
  //user

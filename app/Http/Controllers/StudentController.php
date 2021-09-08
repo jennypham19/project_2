@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ExcelExportsStudent;
+use App\Imports\ExcelImportsStudent;
+use  Illuminate\Http\UploadedFile;
 use App\Models\Grade;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -20,20 +22,20 @@ class StudentController extends Controller
     {
         $filter = $request->get('filter');
         $listGrade = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
-        ->get();
+            ->get();
         switch ($filter) {
             case 'All':
             case '':
                 $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
-                ->join("course", "grade.courseCode", "=", "course.courseCode")
-                ->orderBy('grade.classCode','DESC')
-                ->get(); 
+                    ->join("course", "grade.courseCode", "=", "course.courseCode")
+                    ->orderBy('grade.classCode', 'DESC')
+                    ->get();
                 break;
             default:
                 $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
-                ->join("course", "grade.courseCode", "=", "course.courseCode")
-                ->where("grade.classCode",$filter)
-                ->get();
+                    ->join("course", "grade.courseCode", "=", "course.courseCode")
+                    ->where("grade.classCode", $filter)
+                    ->get();
                 break;
         }
         return view('student.listStudent', [
@@ -181,8 +183,20 @@ class StudentController extends Controller
     {
         return view('student.listStudentResit');
     }
-    public function export_csv(){
-        return Excel::download(new ExcelExportsStudent,'student.xlsx');
+    public function export_csv()
+    {
+        return Excel::download(new ExcelExportsStudent, 'student.xlsx');
     }
-    
+    public function import_csv(Request $request)
+    {
+        $file = $request->file('file');
+        //TODO: Linh ơi chỗ này em thêm điều kiện cho file import nhé chốc chị gửi đoạn đó cho nha
+        Excel::import(new ExcelImportsStudent, $file);
+        return Redirect::route('student.index')->withStatus('Import thành công');
+    }
+
+    // public function import_csv(Request $request){
+    //     Excel::import(new ExcelImportsStudent, $request->file('part')->getRealPath());
+    //     return back();
+    // }
 }
