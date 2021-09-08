@@ -128,7 +128,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('mark-average.index') }}">
                                 <i class="material-icons">people</i>
                                 <p>ĐIỂM TRUNG BÌNH</p>
                             </a>

@@ -6,7 +6,7 @@
     <a class="navbar-brand" href="{{ route('subject.index') }}"> MÔN HỌC </a>
 @endsection
 @section('content')
-    {{-- <h1>Danh sách môn học</h1> --}}
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -38,16 +38,29 @@
                                         <td>{{ $subject->subjectCode }}</td>
                                         <td>{{ $subject->nameSubject }}</td>
                                         <td>{{ $subject->totalClassHour }}</td>
-                                        <td>{{ $subject->NameFinal }}</td>
-                                        <td>{{ $subject->NameSkill }}</td>
+                                        <td>
+                                            @if ($subject->final == 1)
+                                                <i class="material-icons">check_circle</i>
+                                            @else
+                                                <i class="material-icons">cancel</i>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($subject->skill == 1)
+                                                <i class="material-icons">check_circle</i>
+                                            @else
+                                                <i class="material-icons">cancel</i>
+                                            @endif
+                                        </td>
                                         <td>{{ $subject->startDate }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('subject.edit',$subject->subjectCode) }}">
+                                            <a href="{{ route('subject.edit', $subject->subjectCode) }}">
                                                 <button class="btn btn-success btn-xs">
                                                     <i class="material-icons">edit</i>
                                                 </button>
                                             </a>
-                                            <form action="{{ route('subject.destroy',$subject->subjectCode) }}" method="post" onclick="return confirm('Xóa không???')">
+                                            <form action="{{ route('subject.destroy', $subject->subjectCode) }}"
+                                                method="post" onclick="return confirm('Xóa không???')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-xs">

@@ -24,8 +24,22 @@ class Mark extends Model
             return "Thi lại lý thuyết";
         }else if($this->mark_final >=5 && $this->mark_skill >=5 ){
             return "Qua";
+        }else if($this->mark_final >=5 && $this->mark_skill == Null){
+            return "Qua";
         }else{
             return "Thi lại";
+        }
+    }
+
+    public function getMarkAttribute(){
+        if($this->mark_final >=5 || $this->mark_skill >=5){
+            return "-";
+        }
+    }
+
+    public function getMark1Attribute(){
+        if($this->mark_skill>=5){
+            return "-";
         }
     }
 }

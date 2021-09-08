@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mark;
+use App\Models\Student;
+use App\Models\Subject;
+use App\Models\MarkResit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AverageMarkController extends Controller
 {
@@ -13,7 +18,16 @@ class AverageMarkController extends Controller
      */
     public function index()
     {
-        //
+        $listMark = Mark::join("student", "student.studentCode", "=", "mark.studentCode")
+            ->join("subject", "subject.subjectCode", "=", "mark.subjectCode")
+            ->get();
+        $listMarkResit = MarkResit::join("student", "student.studentCode", "=", "mark_resit.studentCode")
+            ->join("subject", "subject.subjectCode", "=", "mark_resit.subjectCode")
+            ->get();
+        $listSubject = DB::table('subject')->select('nameSubject')->get();
+        return view('average-mark.list-average-mark', [
+            'listSubject' => $listSubject,
+        ]);
     }
 
     /**
@@ -23,7 +37,12 @@ class AverageMarkController extends Controller
      */
     public function create()
     {
-        //
+        $listSubject = Subject::all();
+        $listStudent = Student::all();
+        return view('average-mark.create-average-mark', [
+            'listSubject' => $listSubject,
+            'listStudent' => $listStudent,
+        ]);
     }
 
     /**

@@ -16,7 +16,7 @@
             <form action="{{ route('mark.store') }}" method="post">
                 @csrf
                 <div class="form-group label-floating">
-                    <label class="control-label">Tên sinh viên</label>
+                    <label style="color:#000;">Tên sinh viên</label>
                     <select name="student" class="form-control">
                         @foreach ($listStudent as $student)
                             <option value="{{ $student->studentCode }}">{{ $student->FullName }}</option>
@@ -24,7 +24,7 @@
                     </select>
                 </div>
                 <div class="form-group label-floating">
-                    <label class="control-label">Môn học</label>
+                    <label style="color:#000;">Môn học</label>
                     <select name="subject" class="form-control">
                         @foreach ($listSubject as $subject)
                             <option value="{{ $subject->subjectCode }}">{{ $subject->nameSubject }}</option>
@@ -32,12 +32,12 @@
                     </select>
                 </div>
                 <div class="form-group label-floating">
-                    <label class="control-label">Điểm lý thuyết </label>
-                    <input type="text" class="form-control" name="mark_final">
+                    <label style="color:#000;">Điểm lý thuyết </label>
+                    <input type="text" class="form-control" name="mark_final" placeholder="{{ $subject->NameFinal}}">
                 </div>
                 <div class="form-group label-floating">
-                    <label class="control-label">Điểm thực hành </label>
-                    <input type="text" class="form-control" name="mark_skill">
+                    <label style="color:#000;">Điểm thực hành </label>
+                    <input type="text" class="form-control" name="mark_skill" placeholder="{{ $subject->NameSkill}}">
                 </div>
                 {{-- <div class="form-group label-floating">
                     <label class="control-label">Ghi chú</label>

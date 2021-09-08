@@ -17,18 +17,14 @@ class Subject extends Model
     public function getNameFinalAttribute()
     {
         if ($this->final==1){
-            return "Có";
-        }else{
-            return "Không";
+            return "";
         }
     }
 
     public function getNameSkillAttribute()
     {
         if ($this->skill==1){
-            return "Có";
-        }else{
-            return "Không";
+            return "";
         }
     }
 
