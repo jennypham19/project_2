@@ -42,7 +42,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
+                <button type="submit" class="btn btn-fill btn-rose">Cập nhật</button>
             </form>
         </div>
     </div>

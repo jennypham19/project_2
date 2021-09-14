@@ -16,62 +16,47 @@
                     <h4 class="card-title">ĐIỂM TRUNG BÌNH</h4>
                     <div class="toolbar">
                     </div>
-                    {{-- <div style="float:left;">
-                        <form action="">
-                            <select name="filter_student">
-                                <option>All</option>
-                                @foreach ($listStudent as $student)
-                                    <option value="{{ $student->studentCode }}" @if ($student->studentCode == $filterStudent)
+                    <div>
+                        <form action="" method="GET">
+                            <select style="color:#000;" class="btn btn" name="grade" >
+                                <option style="color:#000;">All</option>
+                                @foreach ($listGrade as $item)
+                                    <option style="color:#000;" value="{{ $item->classCode }}" @if ($item->classCode == $grade)
                                         selected
-                                    @endif>
-                                        {{ $student->FullName }}
-                                    </option>
+                                    @endif>{{ $item->FullGrade }}</option>
                                 @endforeach
                             </select>
-                            <button>Lọc</button>
-                        </form> 
-                    </div> --}}
-                    {{-- <div style="margin-left:250px; ">
-                        <form action="">
-                            <select name="filter_subject">
-                                <option>All</option>
-                                @foreach ($listSubject as $subject)
-                                    <option value="{{ $subject->subjectCode }}" @if ($subject->subjectCode == $filterSubject)
-                                        selected
-                                    @endif>
-                                        {{ $subject->nameSubject }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <button>Lọc</button>
+                            <button class="btn btn">Lọc</button>
                         </form>
-                    </div> --}}
+                    </div>
                     <div class="material-datatables">
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>STT</th>
-                                    <th>Tên sinh viên</th>
+                                    <th>Mã sinh viên</th>
                                     <th>Lớp</th>
-                                    @foreach ($listSubject as $subject)
-                                       <th colspan="2">{{ $subject->nameSubject }}</th> 
-                                    @endforeach
+                                    <th>Tên sinh viên</th>
                                     <th>Điểm TB</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i=1;
+                                @endphp
+                                @foreach ($listAvgMark as $avgMark)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Phạm Ngọc Ánh</td>
-                                    <td>BKD02K11</td>
-                                    <td>8</td>
-                                    <td>8</td>
-                                    <td>8</td>
-                                    <td>8</td>
-                                    <td>9</td>
-                                    <td>8.5</td>
-                                    <td>8.7</td>
-                                </tr>
+                                    <th>
+                                        <i class="material-icons"><a href="{{ route('mark-average.show',$avgMark['id']) }}" style="color:#000;">add</a></i>
+                                    </th>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $avgMark['id'] }}</td>
+                                    <td>{{ $avgMark['grade'] }}</td>
+                                    <td>{{ $avgMark['student'] }}</td>
+                                    <td>{{ $avgMark['TBT'] }}</td>
+                                </tr> 
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -79,5 +64,5 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('mark-average.create') }}" class="btn btn-info" style="color:black;">Thêm mới</a>
+    {{-- <a href="{{ route('mark-average.create') }}" class="btn btn">Thêm</a> --}}
 @endsection

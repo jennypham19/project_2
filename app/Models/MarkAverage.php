@@ -11,4 +11,10 @@ class MarkAverage extends Model
     protected $table='mark_average';
     public $timestamps = false;
     public $primaryKey = 'number';
+    protected $fillable = [
+        'number',
+        'classCode',
+        'studentCode',
+        'mark_average',
+    ];
 }

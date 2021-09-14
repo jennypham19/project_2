@@ -66,7 +66,8 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/profile/change-password',[ProfileController::class,'changePassword'])->name('change-password');
     Route::post('/profile/change-password-process/{id}',[ProfileController::class,'changePasswordProcess'])->name('change-password-process');
 
-    Route::get('statistic/list-student',[StatisticController::class,'indexStudent'])->name('list-student-pass');
+    Route::get('statistic/list-mark',[StatisticController::class,'indexStudent'])->name('list-mark');
+    Route::post('statistic/export-student-mark',[StatisticController::class, 'export'])->name('export-student-mark');
     //mark
     Route::resource('mark', MarkController::class);
     //mark-resit

@@ -12,4 +12,8 @@ class Course extends Model
     public $primaryKey = 'courseCode';
     public $incrementing = 'false';
     public $keyType = 'string';
+    protected $fillable = [
+        'courseCode',
+        'nameCourse',
+    ];
 }

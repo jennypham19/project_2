@@ -68,12 +68,12 @@
                                 <p>KHÓA</p>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('semester.index') }}">
                                 <i class="material-icons">schedule</i>
                                 <p>HỌC KỲ</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('subject.index') }}">
                                 <i class="material-icons">menu_book</i>
@@ -121,12 +121,12 @@
                                 <p>ĐIỂM</p>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('mark-resit.index') }}">
                                 <i class="material-icons">assignment</i>
                                 <p>ĐIỂM THI LẠI</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('mark-average.index') }}">
                                 <i class="material-icons">people</i>
@@ -148,6 +148,12 @@
                 <div class="collapse" id="analyticExamples">
                     <ul class="nav">
                         <li>
+                            <a href="{{ route('list-mark') }}">
+                                <i class="material-icons">people</i>
+                                <p>DANH SÁCH ĐIỂM THEO LỚP</p>
+                            </a>
+                        </li>
+                        {{-- <li>
                             <a href="{{ route('list-student-pass') }}">
                                 <i class="material-icons">grade</i>
                                 <p>DANH SÁCH QUA MÔN</p>
@@ -170,7 +176,7 @@
                                 <i class="material-icons">people</i>
                                 <p>DANH SÁCH HỌC LẠI</p>
                             </a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                 </div>

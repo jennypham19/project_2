@@ -14,39 +14,41 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">ĐIỂM</h4>
-                    <div class="toolbar">
+                    <div style="float:right;">
+                        <a href="{{ route('mark.create') }}"><i class ="material-icons">add</i> </a> 
                     </div>
-                    <div style="float:left;">
+                    <h4 class="card-title">ĐIỂM</h4> 
                         <form action="">
-                            <select name="filter_student">
-                                <option>All</option>
+                            <select style="color:#000;" class="btn btn" name="filter_student">
+                                <option style="color:#000;" >All</option>
                                 @foreach ($listStudent as $student)
-                                    <option value="{{ $student->studentCode }}" @if ($student->studentCode == $filterStudent)
+                                    <option style="color:#000;" value="{{ $student->studentCode }}" @if ($student->studentCode == $filterStudent)
                                         selected
-                                    @endif>
-                                        {{ $student->FullName }}
-                                    </option>
+                                @endif>
+                                {{ $student->FullName }}
+                                </option>
                                 @endforeach
                             </select>
-                            <button>Lọc</button>
-                        </form> 
+                            <button style="color:#000;" class="btn btn">Lọc</button>
+                        </form>
+                    <div class="toolbar">
                     </div>
-                    <div style="margin-left:250px; ">
+                    
+                    {{-- <div style="margin-left:250px; ">
                         <form action="">
                             <select name="filter_subject">
                                 <option>All</option>
                                 @foreach ($listSubject as $subject)
                                     <option value="{{ $subject->subjectCode }}" @if ($subject->subjectCode == $filterSubject)
                                         selected
-                                    @endif>
-                                        {{ $subject->nameSubject }}
-                                    </option>
+                                @endif>
+                                {{ $subject->nameSubject }}
+                                </option>
                                 @endforeach
                             </select>
                             <button>Lọc</button>
                         </form>
-                    </div>
+                    </div> --}}
                     <div class="material-datatables">
                         <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
@@ -57,7 +59,8 @@
                                     <th>Môn học</th>
                                     <th>Điểm LT</th>
                                     <th>Điểm TH</th>
-                                    <th>Ghi chú</th>
+                                    <th>Điểm LT lần 1</th>
+                                    <th>Điểm TH lần 2</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>
@@ -67,21 +70,45 @@
                                         <td>{{ $mark->number }}</td>
                                         <td>{{ $mark->FullName }}</td>
                                         <td>{{ $mark->nameSubject }}</td>
-                                        <td>{{ $mark->mark_final }}</td>
-                                        <td>{{ $mark->mark_skill}}</td>
-                                        <td>{{ $mark->Note }}</td>
+                                        <td>
+                                            @if ($mark->mark_final == '')
+                                                <i class="material-icons">minimize</i>
+                                            @else
+                                                {{ $mark->mark_final }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($mark->mark_skill == '')
+                                                <i class="material-icons">minimize</i>
+                                            @else
+                                                {{ $mark->mark_skill }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($mark->mark_final_resit == '')
+                                                <i class="material-icons">minimize</i>
+                                            @else
+                                                {{ $mark->mark_final_resit }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($mark->mark_skill_resit == '')
+                                                <i class="material-icons">minimize</i>
+                                            @else
+                                                {{ $mark->mark_skill_resit }}
+                                            @endif
+                                        </td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('mark.edit',$mark->number) }}">
-                                                <button class="btn btn-success btn-xs">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
+                                            <a href="{{ route('mark.edit', $mark->number) }}"
+                                                class="btn btn-simple btn-info btn-icon edit">
+                                                <i class="material-icons">edit</i>
                                             </a>
-                                            <form action="{{ route('mark.destroy',$mark->number) }}" method="post" onclick="return confirm('Xóa không???')">
+                                            <form class="btn btn-simple btn-danger btn-icon remove"
+                                                action="{{ route('mark.destroy', $mark->number) }}" method="post"
+                                                onclick="return confirm('Xóa không???')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger btn-xs">
-                                                    <i class="material-icons">lock</i>
-                                                </button>
+                                                <i class="material-icons">close</i>
                                             </form>
                                         </td>
                                     </tr>
@@ -93,6 +120,5 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('mark.create') }}" class="btn btn-info" style="color:black;">Thêm điểm</a>
 
 @endsection

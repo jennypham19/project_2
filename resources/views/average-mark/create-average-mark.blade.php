@@ -15,8 +15,9 @@
             <form action="{{ route('mark.store') }}" method="post">
                 @csrf
                 <div class="form-group label-floating">
-                    <label style="color:#000;">Tên sinh viên</label>
-                    <select name="student" class="form-control">
+                    <label style="color:#000;">Lớp</label>
+                    
+                    <select name="student" class="form-control" value ="{{ $array-> }}">
                        
                     </select>
                 </div>
@@ -24,12 +25,6 @@
                     <label style="color:#000;">Lớp</label>
                     <select name="student" class="form-control">
                        
-                    </select>
-                </div>
-                <div class="form-group label-floating">
-                    <label style="color:#000;">Môn học</label>
-                    <select name="subject" class="form-control">
-                        
                     </select>
                 </div>
                 <div class="form-group label-floating">

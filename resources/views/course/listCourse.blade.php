@@ -6,14 +6,14 @@
     <a class="navbar-brand" href="{{ route('course.index') }}"> KHÓA </a>
 @endsection
 @section('content2')
-<div class="form-group form-search is-empty">
-    <input type="text" class="form-control" value="{{ $search }}" placeholder=" Search " name="search">
-    <span class="material-input"></span>
-</div>
-<button type="submit" class="btn btn-white btn-round btn-just-icon">
-    <i class="material-icons">search</i>
-    <div class="ripple-container"></div>
-</button>
+    <div class="form-group form-search is-empty">
+        <input type="text" class="form-control" value="{{ $search }}" placeholder=" Search " name="search">
+        <span class="material-input"></span>
+    </div>
+    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+        <i class="material-icons">search</i>
+        <div class="ripple-container"></div>
+    </button>
 @endsection
 @section('content')
     {{-- <h1>Danh sách khóa</h1> --}}
@@ -24,12 +24,18 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
-                    <h4 class="card-title">KHÓA</h4>
-                    <div class="toolbar">
-
+                    <div style="float:right;">
+                        <a href="{{ route('course.create') }}"><i class ="material-icons">add</i> </a> 
                     </div>
+                    <h4 class="card-title">KHÓA</h4>
+                    
+                    <div class="toolbar" >
+                        {{-- <a href="{{ route('course.create') }}"><i class ="material-icons">close</i> </a> --}}
+                    </div>
+                    
                     <div class="material-datatables">
-                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                            width="100%" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Mã khóa</th>
@@ -39,21 +45,20 @@
                             </thead>
                             <tbody>
                                 @foreach ($listCourse as $course)
-                                    <tr>
+                                    <tr>    
                                         <td>{{ $course->courseCode }}</td>
                                         <td>{{ $course->nameCourse }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('course.edit', $course->courseCode) }}">
-                                                <button class="btn btn-success btn-xs">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
+                                            <a href="{{ route('course.edit', $course->courseCode) }}"
+                                                class="btn btn-simple btn-info btn-icon edit">
+                                                <i class="material-icons">edit</i>
                                             </a>
-                                            <form action="{{ route('course.destroy',$course->courseCode) }}" method="post" onclick="return confirm('Xóa không???')">
+                                            <form class="btn btn-simple btn-danger btn-icon remove"
+                                                action="{{ route('course.destroy', $course->courseCode) }}" method="post"
+                                                onclick="return confirm('Xóa không???')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger btn-xs">
-                                                    <i class="material-icons">close</i>
-                                                </button>
+                                                <i class="material-icons">close</i>
                                             </form>
                                         </td>
                                     </tr>
@@ -65,5 +70,5 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('course.create') }}" class="btn btn-info" style="color:black;">Thêm khóa </a>
+    
 @endsection

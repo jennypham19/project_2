@@ -1,13 +1,13 @@
 @extends('layout.index')
 @section('content')
     <h3>Danh sách điểm sinh viên theo lớp</h3>
-    <form action="">
-        <select class="btn btn" name="grade">
-            <option>==========</option>
+    <form action="" method="GET">
+        <select style="color:#000;" class="btn btn" name="grade">
+            <option style="color:#000;">All</option>
             @foreach ($listGrade as $item)
-                <option value="{{ $item->classCode }}" @if ($item->classCode == $idGrade)
+                <option style="color:#000;" value="{{ $item->classCode }}" @if ($item->classCode == $grade)
                     selected
-                @endif>{{ $item->FullGrade }}</option>
+            @endif>{{ $item->FullGrade }}</option>
             @endforeach
         </select>
         <button class="btn btn">Lọc</button>
@@ -43,4 +43,41 @@
             @endforeach
         </tbody>
     </table>
+    <form action="{{ route('export-student-mark') }}" method="POST">
+        @csrf
+        <div class="row">
+            <div class="col-md-3" style="display: flex;">
+                <select name="grade[]" class="selectpicker" multiple id="exportExcel">
+                    <option disabled>chon lop</option>
+                    <option value="" id="optSelectAll">Tat ca</option>
+                    @foreach ($listGrade as $item)
+                        <option style="color:#000;" value="{{ $item->classCode }}">{{ $item->FullGrade }}</option>
+                    @endforeach
+                </select>
+                <button style="color:#000;" type="submit" name="export_student-mark" class="btn btn">Xuất
+                    file</button>
+            </div>
+        </div>
+    </form>
 @endsection
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(function() {
+        $(document).on('change', '#exportExcel', function() {
+            let isSelectAll = $('#optSelectAll').prop('selected');
+
+            console.log("change", isSelectAll);
+
+            if (isSelectAll) {
+                console.log('must display');
+                $(this).find('option:not(#optSelectAll)').prop('disabled', true).prop('se');
+                $(this).selectpicker('refresh');
+            } else {
+                $(this).find('option').prop('disabled', false);
+                $(this).selectpicker('refresh');
+            }
+        })
+    });
+</script> --}}

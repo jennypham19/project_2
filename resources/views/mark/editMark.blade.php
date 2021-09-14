@@ -37,11 +37,19 @@
                 </div>
                 <div class="form-group label-floating">
                     <label style="color:black;">Điểm lý thuyết</label>
-                    <input type="text" class="form-control" name="mark" value="{{ $mark->mark_final }}">
+                    <input type="text" class="form-control" name="mark_final" value="{{ $mark->mark_final }}">
                 </div>
                 <div class="form-group label-floating">
                     <label style="color:black;">Điểm thực hành</label>
-                    <input type="text" class="form-control" name="mark" value="{{ $mark->mark_skill }}">
+                    <input type="text" class="form-control" name="mark_skill" value="{{ $mark->mark_skill }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Điểm lý thuyết lần 2</label>
+                    <input type="text" class="form-control" name="mark_final_resit" value="{{ $mark->mark_final_resit }}">
+                </div>
+                <div class="form-group label-floating">
+                    <label style="color:black;">Điểm thực hành lần 2</label>
+                    <input type="text" class="form-control" name="mark_skill_resit" value="{{ $mark->mark_skill_resit }}">
                 </div>
                 {{-- <div class="form-group label-floating">
                     <label style="color:black;">Ghi chú</label>

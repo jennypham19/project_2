@@ -24,6 +24,9 @@
                     <i class="material-icons">assignment</i>
                 </div>
                 <div class="card-content">
+                    <div style="float:right;">
+                        <a href="{{ route('major.create') }}"><i class ="material-icons">add</i> </a> 
+                    </div>
                     <h4 class="card-title">CHUYÊN NGÀNH</h4>
                     <div class="toolbar">
 
@@ -44,17 +47,16 @@
                                         <td>{{ $major->majorCode }}</td>
                                         <td>{{ $major->nameMajor }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('major.edit', [$major->majorCode]) }}">
-                                                <button class="btn btn-success btn-xs">
-                                                     <i class ="material-icons">edit</i>
-                                                </button>
+                                            <a href="{{ route('major.edit', [$major->majorCode]) }}"
+                                                class="btn btn-simple btn-info btn-icon edit">
+                                                <i class="material-icons">edit</i>
                                             </a>
-                                            <form action="{{ route('major.destroy',$major->majorCode) }}" method="post" onclick="return confirm('Xóa không???')">
+                                            <form class="btn btn-simple btn-danger btn-icon remove"
+                                                action="{{ route('major.destroy', $major->majorCode) }}" method="post"
+                                                onclick="return confirm('Xóa không???')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger btn-xs">
-                                                    <i class="material-icons">close</i>
-                                                </button>
+                                                <i class="material-icons">close</i>
                                             </form>
                                         </td>
                                     </tr>
@@ -66,6 +68,4 @@
             </div>
         </div>
     </div>
-    
-    <a href="{{ route('major.create') }}" class="btn btn-info" style="color:black;" >Thêm ngành học</a>
 @endsection
