@@ -20,8 +20,9 @@ class UserAuthenticateController extends Controller
         $passStudent = $request->get('password-student');
         try {
             $student = Student::where('email',$emailStudent)->where('passWord',$passStudent)->firstOrFail();
-            $request->session()->put('user',$student->FullName);
-            return Redirect::route('dashboard-student');
+            $request->session()->put('user',$student);
+            // dd($request);
+            return Redirect::route('home-student');
         } catch (Exception $e) {
             return Redirect::route('login-student')->with('error',"Tài khoản hoặc mật khẩu của bạn bị sai");
         }

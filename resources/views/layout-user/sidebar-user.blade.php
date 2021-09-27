@@ -11,95 +11,30 @@
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="info">
-                <div class="photo">
-                    <img src="{{ asset('assets1') }}/img/default-avatar.png" />
-                </div>
-
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                    <span>
+                    <span class="text-center">
                         @if (Session::exists('user'))
-                            {{ Session::get("user") }}    
+                            <span >
+                               {{ session('user')->FullName }}  
+                            </span>  
                         @endif
-                        
-                        <b class="caret"></b>
                     </span>
                 </a>
-
-                <div class="collapse" id="collapseExample">
-                    <ul class="nav">
-                        <li>
-                            <a href="#pablo">
-                                <span class="sidebar-mini">MP</span>
-                                <span class="sidebar-normal">My Profile</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#pablo">
-                                <span class="sidebar-mini">EP</span>
-                                <span class="sidebar-normal">Edit Profile</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#pablo">
-                                <span class="sidebar-mini">S</span>
-                                <span class="sidebar-normal">Settings</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
 
         <ul class="nav">
-
             <li>
-                <a href="{{ route('major-student') }}">
+                <a href="{{ route('profile-student',session('user')->studentCode) }}">
                     <i class="pe-7s-plugin"></i>
-                    <p>Major
+                    <p>Profile
                     </p>
                 </a>
             </li>
             <li>
-                <a href="{{ route('course-student') }}">
-                    <i class="pe-7s-plugin"></i>
-                    <p>Course
-                    </p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('semester-student') }}">
-                    <i class="pe-7s-plugin"></i>
-                    <p>Semester
-                    </p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('subject-student') }}">
-                    <i class="pe-7s-plugin"></i>
-                    <p>Subject
-                    </p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('grade-student') }}">
-                    <i class="pe-7s-plugin"></i>
-                    <p>Grade
-                    </p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('mark-student') }}">
+                <a href="{{ route('mark-student',session('user')->studentCode) }}">
                     <i class="pe-7s-plugin"></i>
                     <p>Mark
-                    </p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('calendar-student') }}">
-                    <i class="pe-7s-plugin"></i>
-                    <p>Calendar
                     </p>
                 </a>
             </li>

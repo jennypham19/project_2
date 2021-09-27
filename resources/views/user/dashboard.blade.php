@@ -1,4 +1,4 @@
 @extends('layout-user.index')
 @section('content-user')
-    <h1>Trang lớp</h1>
+    <h1>WELCOME YOUR PAGE!!!!</h1>
 @endsection

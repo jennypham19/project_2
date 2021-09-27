@@ -33,7 +33,8 @@ class ProfileController extends Controller
         $admin->email = $email;
         $admin->fullName = $fullName;
         $admin->save();
-        return Redirect::route('profile')->with('success', "Profile successfully updated");
+        $request->session()->flash('alert-success', 'Profile was successful updated!');
+        return Redirect::route('profile');
     }
 
     public function changePassword()

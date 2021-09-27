@@ -6,7 +6,12 @@
     <a class="navbar-brand" href="{{ route('mark.index') }}"> ĐIỂM </a>
 @endsection
 @section('content')
-    {{-- <h1>Điểm</h1> --}}
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if (Session::has('alert-' . $msg))
+
+            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+        @endif
+    @endforeach
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -15,42 +20,26 @@
                 </div>
                 <div class="card-content">
                     <div style="float:right;">
-                        <a href="{{ route('mark.create') }}"><i class ="material-icons">add</i> </a> 
+                        <a href="{{ route('mark.create') }}"><i class="material-icons">add</i> </a>
                     </div>
-                    <h4 class="card-title">ĐIỂM</h4> 
-                        <form action="">
-                            <select style="color:#000;" class="btn btn" name="filter_student">
-                                <option style="color:#000;" >All</option>
-                                @foreach ($listStudent as $student)
-                                    <option style="color:#000;" value="{{ $student->studentCode }}" @if ($student->studentCode == $filterStudent)
-                                        selected
-                                @endif>
-                                {{ $student->FullName }}
-                                </option>
-                                @endforeach
-                            </select>
-                            <button style="color:#000;" class="btn btn">Lọc</button>
-                        </form>
+                    <h4 class="card-title">ĐIỂM</h4>
+                    <form action="">
+                        <select style="color:#000;" class="btn btn" name="filter_student">
+                            <option style="color:#000;">All</option>
+                            @foreach ($listStudent as $student)
+                                <option style="color:#000;" value="{{ $student->studentCode }}" @if ($student->studentCode == $filterStudent)
+                                    selected
+                            @endif>
+                            {{ $student->FullName }}
+                            </option>
+                            @endforeach
+                        </select>
+                        <button style="color:#000;" class="btn btn">Lọc</button>
+                    </form>
                     <div class="toolbar">
                     </div>
-                    
-                    {{-- <div style="margin-left:250px; ">
-                        <form action="">
-                            <select name="filter_subject">
-                                <option>All</option>
-                                @foreach ($listSubject as $subject)
-                                    <option value="{{ $subject->subjectCode }}" @if ($subject->subjectCode == $filterSubject)
-                                        selected
-                                @endif>
-                                {{ $subject->nameSubject }}
-                                </option>
-                                @endforeach
-                            </select>
-                            <button>Lọc</button>
-                        </form>
-                    </div> --}}
                     <div class="material-datatables">
-                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                        <table id="table" class="table table-hover table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>

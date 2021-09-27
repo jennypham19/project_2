@@ -17,8 +17,8 @@ class AdminController extends Controller
     public function index()
     {
         $listAdmin = Admin::get();
-        return view('admin.list-admin',[
-            "listAdmin"=>$listAdmin,
+        return view('admin.list-admin', [
+            "listAdmin" => $listAdmin,
         ]);
     }
 
@@ -45,11 +45,12 @@ class AdminController extends Controller
         $fullName = $request->get('full-name');
         $role = $request->get('role');
         $admin = new Admin();
-        $admin -> email = $email;
-        $admin -> password = $password;
-        $admin -> fullName = $fullName;
-        $admin -> role = $role;
-        $admin -> save();
+        $admin->email = $email;
+        $admin->password = $password;
+        $admin->fullName = $fullName;
+        $admin->role = $role;
+        $admin->save();
+        $request->session()->flash('alert-success', 'Admin was successful added!');
         return Redirect::route('admin.index');
     }
 
@@ -61,7 +62,6 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -73,7 +73,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $admin = Admin::find($id);
-        return view('admin.edit-admin',[
+        return view('admin.edit-admin', [
             'admin' => $admin,
         ]);
     }
@@ -92,11 +92,12 @@ class AdminController extends Controller
         $fullName = $request->get('full-name');
         $role = $request->get('role');
         $admin = Admin::find($id);
-        $admin -> email = $email;
-        $admin -> password = $password;
-        $admin -> fullName = $fullName;
-        $admin -> role = $role;
-        $admin -> save();
+        $admin->email = $email;
+        $admin->password = $password;
+        $admin->fullName = $fullName;
+        $admin->role = $role;
+        $admin->save();
+        $request->session()->flash('alert-success', 'Admin was successful updated!');
         return Redirect::route('admin.index');
     }
 
@@ -106,9 +107,25 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        Admin::where('codeAdmin',$id)->delete();
-        return redirect(route('admin.index'));
+        if (Session::exists('admin')) {
+            $admin = session('admin')->role;
+            if ($admin == 1) {
+                $request->session()->flash('alert-warning', "You don't have permission to delete admin");
+                return redirect(route('admin.index'));
+            } else {
+                Admin::where('codeAdmin',$id)->delete();
+                return Redirect::route('admin.index');
+            }
+            
+        }
+            
+        
     }
 }
+
+           
+                
+               
+            

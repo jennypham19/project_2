@@ -4,32 +4,32 @@
             <ul>
                 <li>
                     <a href="#">
-                        Home
+                        Email:bkacad@edu.com.vn
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Company
+                        Tel: 0243 623 1023
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Portofolio
+                        Website: http://www.bkacad.edu.vn
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Blog
+                        Địa chỉ:tòa A17 Bách Khoa, số 17 Tạ Quang Bửu, Hai Bà Trưng, Hà Nội
                     </a>
                 </li>
             </ul>
         </nav>
         <p class="copyright pull-right">
-            &copy;
+            {{-- &copy;
             <script>
                 document.write(new Date().getFullYear())
             </script>
-            <a href="http://www.creative-tim.com"> Creative Tim </a>, made with love for a better web
+            <a href="http://www.creative-tim.com"> Creative Tim </a>, made with love for a better web --}}
         </p>
     </div>
 </footer>

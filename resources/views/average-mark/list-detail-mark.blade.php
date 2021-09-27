@@ -36,16 +36,28 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6">
             <table cellspacing="0" width="100%" style="width:100%">
-                    <p>
-                        <tr>
-                            <td>
-                                <h4>Điểm trung bình tổng</h4>
-                            </td>
-                            <td>
-                                <h4><b>{{ $TBT }}</b></h4>
-                            </td>
-                        </tr>
-                    </p>
+                @foreach ($student as $item)
+                <p>
+                    <tr>
+                        <td>
+                            <h4>Ngành</h4>
+                        </td>
+                        <td>
+                            <h4><b>{{ $item->nameMajor }}</b></h4>
+                        </td>
+                    </tr>
+                </p>
+                <p>
+                    <tr>
+                        <td>
+                            <h4>Khóa</h4>
+                        </td>
+                        <td>
+                            <h4><b>{{ $item->courseCode }}</b></h4>
+                        </td>
+                    </tr>
+                </p>
+            @endforeach
             </table> 
         </div>
     </div>
@@ -70,7 +82,15 @@
                     <td>{{ $value->TB }}</td>
                 </tr>
             @endforeach
-
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4"><b><h4>Điểm trung bình</h4></b></th>
+                <th>{{ $TBT }}</th>
+            </tr>
+        </tfoot>
     </table>
+    <form action="" method="post">
+        <button style="color:#000;" type="submit" name="export_student-mark" class="btn btn">Xuất</button>
+    </form>
 @endsection

@@ -53,6 +53,7 @@ class SubjectController extends Controller
         $subject -> skill = $skill;
         $subject -> startDate = $startDate;
         $subject ->save();
+        $request->session()->flash('alert-success', 'Subject was successful added!');
         return Redirect::route('subject.index');
     }
 
@@ -104,6 +105,7 @@ class SubjectController extends Controller
         $subject -> skill = $skill;
         $subject->startDate = $startDate;
         $subject->save();
+        $request->session()->flash('alert-success', 'Subject was successful updated!');
         return Redirect::route('subject.index');
     }
 

@@ -8,6 +8,7 @@ use App\Http\Middleware\CheckLoginUser;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CalendarStudent;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\CourseController;
@@ -68,13 +69,15 @@ Route::middleware([CheckLogin::class])->group(function () {
 
     Route::get('statistic/list-mark',[StatisticController::class,'indexStudent'])->name('list-mark');
     Route::post('statistic/export-student-mark',[StatisticController::class, 'export'])->name('export-student-mark');
+    Route::get('statistic/list-mark-max',[StatisticController::class,'markMax'])->name('list-mark-max');
+    Route::get('statistic/list-student-resit',[StatisticController::class, 'listStudentResit'])->name('list-student-resit');
+    Route::post('statistic/export-student-resit',[StatisticController::class, 'exportStudentResit'])->name('export-student-resit');
     //mark
     Route::resource('mark', MarkController::class);
     //mark-resit
     Route::resource('mark-resit',MarkResitController::class);
     //mark-average
     Route::resource('mark-average',AverageMarkController::class);
-    Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
     Route::post('/export-csv',[StudentController::class,'export_csv']);
     Route::post('/import-csv',[StudentController::class,'import_csv'])->name('student-import');
 });
@@ -85,14 +88,13 @@ Route::post('/user/login-process', [UserAuthenticateController::class, 'loginPro
 Route::get('/user/logout', [UserAuthenticateController::class, 'logoutUser'])->name('logout-student');
 
 Route::middleware([CheckLoginUser::class])->group(function(){
-    Route::get('/user/dashboard', [UserController::class, 'index'])->name('dashboard-student');
-    Route::get('/user/major', [UserController::class, 'indexMajor'])->name('major-student');
-    Route::get('/user/course', [UserController::class, 'indexCourse'])->name('course-student');
-    Route::get('/user/semester', [UserController::class, 'indexSemester'])->name('semester-student');
-    Route::get('/user/subject', [UserController::class, 'indexSubject'])->name('subject-student');
-    Route::get('/user/grade', [UserController::class, 'indexGrade'])->name('grade-student');
-    Route::get('/user/mark', [UserController::class, 'indexMark'])->name('mark-student');
-    Route::get('/user/calendar', [UserController::class, 'indexCalendar'])->name('calendar-student');
+    Route::get('user/home',[UserController::class,'dash'])->name('home-student');
+    Route::get('/user/mark/{id}', [UserController::class, 'indexMark'])->name('mark-student');
+    Route::get('/user/profile/{id}',[UserController::class,'index'])->name('profile-student');
+    Route::put('/user/edit-profile/{id}',[UserController::class,'editProfile'])->name('edit-profile');
+    Route::get('/user/password/{id}',[UserController::class,'changePassword'])->name('password');
+    Route::post('/user/change-process/{id}',[UserController::class,'changePasswordProcess'])->name('change-process');
+
 });
 
 

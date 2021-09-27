@@ -49,6 +49,8 @@ class MajorController extends Controller
         $major->majorCode = $majorCode;
         $major->nameMajor= $nameMajor;
         $major->save();
+        $request->session()->flash('alert-success', 'Major was successful added!');
+         return Redirect::route('major.index');
     }
 
     /**
@@ -92,6 +94,7 @@ class MajorController extends Controller
         $major->majorCode = $majorCode;
         $major->nameMajor = $nameMajor;
         $major->save();
+        $request->session()->flash('alert-success', 'Major was successful updated!');
         return redirect()->route('major.index');
     }
 

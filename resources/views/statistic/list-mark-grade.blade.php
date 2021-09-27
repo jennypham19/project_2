@@ -12,8 +12,8 @@
         </select>
         <button class="btn btn">Lọc</button>
     </form>
-    <table class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
-        <thead>
+    <table class="table table-hover table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+        <thead class="thead-dark">
             <tr style="background-color:rgb(122, 196, 245);">
                 <th><b>STT</b></th>
                 <th><b>Mã sinh viên</b></th>

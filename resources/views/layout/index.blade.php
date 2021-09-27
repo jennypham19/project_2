@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png" />
@@ -16,7 +17,8 @@
     <link href="{{ asset('assets') }}/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
@@ -29,7 +31,7 @@
             @include('layout.nav')
             <div class="content">
                 <div class="container-fluid">
-                  @yield('content')
+                    @yield('content')
                 </div>
             </div>
             @include('layout.footer')
@@ -83,30 +85,30 @@
 <script src='https://github.com/mozilla-comm/ical.js/releases/download/v1.4.0/ical.js'></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#table').DataTable({
             "pagingType": "full_numbers",
             responsive: true,
             "aLengthMenu": [
-                [10, 25, 50, 100, -1], 
+                [10, 25, 50, 100, -1],
                 [10, 25, 50, 100, "Tất cả"]
             ],
-				"iDisplayLength": 10,
-				"oLanguage": {
-					"sLengthMenu": "Hiển thị _MENU_",
-					"oPaginate": {
-						"sFirst": "<span aria-hidden='true'>First</span>",
-						"sLast": "<span  aria-hidden='true'>Last</span>",
-						"sNext": "<span aria-hidden='true'><i class='material-icons'>arrow_forward</i></span>",
-						"sPrevious": "<span aria-hidden='true'><i class='material-icons'>arrow_back</i></span>"
-					},
-					"sEmptyTable": "Không có dữ liệu",
-					"sSearch": "Tìm kiếm:",
-					"sZeroRecords": "Không có dữ liệu",
-					"sInfo": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ dòng được tìm thấy",
-					"sInfoEmpty" : "Không tìm thấy",
-					"sInfoFiltered": " (trong tổng số _MAX_ dòng)"
-				}
+            "iDisplayLength": 10,
+            "oLanguage": {
+                "sLengthMenu": "Hiển thị _MENU_",
+                "oPaginate": {
+                    "sFirst": "<span aria-hidden='true'>First</span>",
+                    "sLast": "<span  aria-hidden='true'>Last</span>",
+                    "sNext": "<span aria-hidden='true'><i class='material-icons'>arrow_forward</i></span>",
+                    "sPrevious": "<span aria-hidden='true'><i class='material-icons'>arrow_back</i></span>"
+                },
+                "sEmptyTable": "Không có dữ liệu",
+                "sSearch": "Tìm kiếm:",
+                "sZeroRecords": "Không có dữ liệu",
+                "sInfo": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ dòng được tìm thấy",
+                "sInfoEmpty": "Không tìm thấy",
+                "sInfoFiltered": " (trong tổng số _MAX_ dòng)"
+            }
         });
     });
 </script>
@@ -125,4 +127,5 @@
         demo.initVectorMap();
     });
 </script> --}}
+
 </html>

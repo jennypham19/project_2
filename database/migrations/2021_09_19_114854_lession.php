@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MarkAverage extends Migration
+class Lession extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class MarkAverage extends Migration
      */
     public function up()
     {
-        Schema::create('mark_average',function (Blueprint $table){
-            $table->increments('number');
-            $table->string('majorCode');
+        Schema::create('lession', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('weekday');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('classCode');
-            $table->string('studentCode');
-            $table->foreign('majorCode')->references('majorCode')->on('major');
+            $table->string('subjectCode');
             $table->foreign('classCode')->references('classCode')->on('grade');
-            $table->foreign('studentCode')->references('studentCode')->on('student');
-            $table->string('mark_average');
+            $table->foreign('subjectCode')->references('subjectCode')->on('subject');
         });
     }
 
@@ -32,6 +34,6 @@ class MarkAverage extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mark_average');
+        Schema::dropIfExists('lession');
     }
 }

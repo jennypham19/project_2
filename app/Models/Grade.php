@@ -21,4 +21,8 @@ class Grade extends Model
     public function getFullGradeAttribute(){
         return $this->nameClass.$this->courseCode;
     }
+    public function getFullNameAttribute()
+    {
+        return $this->lastName. " ".$this->middleName." ".$this->firstName;
+    }
 }

@@ -7,9 +7,12 @@
 @endsection
 @section('content')
     <div class="card">
-        @if (Session::exists('success'))
-            <div class="text-center">{{ Session::get('success') }}</div>
-        @endif
+        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            @if (Session::has('alert-' . $msg))
+
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+            @endif
+        @endforeach
         <div class="card-header card-header-icon" data-background-color="rose">
             <i class="material-icons">mail_outline</i>
         </div>

@@ -16,7 +16,15 @@
     </button>
 @endsection
 @section('content')
-    {{-- <h1>Danh sách ngành học</h1> --}}
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+      @endif
+    @endforeach
+  </div> 
+  <!-- end .flash-message -->
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -32,7 +40,7 @@
 
                     </div>
                     <div class="material-datatables">
-                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                        <table id="table" class="table table-hover table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>

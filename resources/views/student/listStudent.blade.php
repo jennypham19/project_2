@@ -6,7 +6,12 @@
     <a class="navbar-brand" href="{{ route('student.index') }}"> SINH VIÊN </a>
 @endsection
 @section('content')
-    {{-- <h1>Danh sách sinh viên</h1> --}}
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if (Session::has('alert-' . $msg))
+
+            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+        @endif
+    @endforeach
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -15,7 +20,7 @@
                 </div>
                 <div class="card-content">
                     <div style="float:right;">
-                        <a href="{{ route('student.create') }}"><i class ="material-icons">add</i> </a> 
+                        <a href="{{ route('student.create') }}"><i class="material-icons">add</i> </a>
                     </div>
                     <h4 class="card-title">SINH VIÊN</h4>
                     <form action="" method="GET">
@@ -32,7 +37,7 @@
                     <div class="toolbar">
                     </div>
                     <div class="material-datatables">
-                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                        <table id="table" class="table table-hover table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>
@@ -44,7 +49,7 @@
                                     <th>Giới tính</th>
                                     {{-- <th>Số điện thoại</th>
                                     <th>Địa chỉ</th>
-                                    <th>Ngày nhập học</th>  --}}
+                                    <th>Ngày nhập học</th> --}}
                                     <th>Lớp</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
@@ -63,7 +68,8 @@
                                         <td>{{ $student->dateEnrollment }}</td> --}}
                                         <td>{{ $student->FullGrade }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('student.show',$student->studentCode) }}" class="btn btn-simple btn-info btn-icon like">
+                                            <a href="{{ route('student.show', $student->studentCode) }}"
+                                                class="btn btn-simple btn-info btn-icon like">
                                                 <i class="material-icons">visibility</i>
                                             </a>
                                             <a href="{{ route('student.edit', $student->studentCode) }}"

@@ -2,58 +2,105 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mark;
 use App\Models\Major;
 use App\Models\Course;
+use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Semester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
-    public function index(){
-        return view('user.dashboard-user');
+    public function dash(){
+        return view('user.dashboard');
     }
-
-    public function indexMajor()
+    public function index($id)
     {
-        $listMajor = Major::get();
-        return view('user.list-major',[
-            'listMajor'=>$listMajor,
+        $listStudent = Student::join("grade", "student.classCode", "=", "grade.classCode")
+            ->join("course", "grade.courseCode", "=", "course.courseCode")
+            ->find($id);
+        return view('user.profile', [
+            'listStudent' => $listStudent,
         ]);
     }
 
-    public function indexCourse()
+    public function editProfile(Request $request, $id)
     {
-        $listCourse = Course::get();
-        return view('user.list-course',[
-            'listCourse'=>$listCourse,
+        $fname = $request->get('fname');
+        $mname = $request->get('mname');
+        $lname = $request->get('lname');
+        $dob = $request->get('dob');
+        $gender = $request->get('gender');
+        $phone = $request->get('phone');
+        $address = $request->get('address');
+        $student = Student::find($id);
+        $student->firstName = $fname;
+        $student->middleName = $mname;
+        $student->lastName = $lname;
+        $student->dateOfBirth = $dob;
+        $student->genDer = $gender;
+        $student->phone = $phone;
+        $student->address = $address;
+        $student->save();
+        $request->session()->flash('alert-info', 'Profile was successful updated!');
+        return Redirect::route('profile-student', $id);
+    }
+
+    public function changePassword($id)
+    {
+        $student = Student::find($id);
+        return view('user.change-pass', [
+            'student' => $student,
         ]);
     }
 
-    public function indexSemester()
+    public function changePasswordProcess(Request $request, $id)
     {
-        $listSemester = Semester::get();
-        return view('user.list-semester',[
-            'listSemester'=>$listSemester,
+        $old_password = $request->get('curren_password');
+        $new_password = $request->get('new_password');
+        $new_password_confirmation = $request->get('new_password_confirmation');
+        $student = Student::find($id);
+        if ($old_password == $student->passWord) {
+            if ($new_password == $new_password_confirmation) {
+                $student->passWord = $new_password;
+                $student->save();
+                $request->session()->flash('alert-info', 'Password was successful updated!');
+                return Redirect::route('password', $student->studentCode);
+            } else {
+                return Redirect::route('password', $student->studentCode)->with('error1', 'New password confirmation is not matched with new password');
+            }
+        } else {
+            return Redirect::route('password', $student->studentCode)->with('error', "Current password is not matched with old password");
+        }
+    }
+    public function indexMark($id)
+    {
+        $student = Student::join("grade", "student.classCode", "grade.classCode")
+            ->join("course", "grade.courseCode", "=", "course.courseCode")
+            ->join("major", "grade.majorCode", "=", "major.majorCode")
+            ->where("studentCode", "=", $id)
+            ->get();
+        $mark = Mark::join("subject", "mark.subjectCode", "=", "subject.subjectCode")
+            ->where("studentCode", "=", $id)
+            ->get();
+        $count =  Mark::join("subject", "mark.subjectCode", "=", "subject.subjectCode")
+            ->where("studentCode", "=", $id)
+            ->count();
+        $TB = 0;
+        foreach ($mark as $val) {
+            $TB = $TB + $val->TB;
+        }
+        if ($count == 0) {
+            $count = 1;
+        }
+        $TBT = round($TB / $count, 1);
+        return view('user.list-mark', [
+            'mark' => $mark,
+            'student' => $student,
+            'TBT' => $TBT,
         ]);
-    }
-
-    public function indexSubject()
-    {
-        $listSubject = Subject::get();
-        return view('user.list-subject',[
-            'listSubject'=>$listSubject,
-        ]);
-    }
-
-    public function indexGrade()
-    {
-        return view('user.list-grade');
-    }
-
-    public function indexMark()
-    {
-        return view('user.list-mark');
     }
 
     public function indexCalendar()

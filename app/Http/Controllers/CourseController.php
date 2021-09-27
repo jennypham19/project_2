@@ -47,6 +47,7 @@ class CourseController extends Controller
         $course -> courseCode = $courseCode;
         $course -> nameCourse = $nameCourse;
         $course->save();
+        $request->session()->flash('alert-success', 'Course was successful added!');
         return redirect()->route('course.index');
 
     }
@@ -91,6 +92,7 @@ class CourseController extends Controller
         $course-> courseCode = $courseCode;
         $course->nameCourse = $nameCourse;
         $course->save();
+        $request->session()->flash('alert-success', 'Course was successful updated!');
         return Redirect::route('course.index');
     }
 

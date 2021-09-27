@@ -68,12 +68,6 @@
                                 <p>KHÓA</p>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="{{ route('semester.index') }}">
-                                <i class="material-icons">schedule</i>
-                                <p>HỌC KỲ</p>
-                            </a>
-                        </li> --}}
                         <li>
                             <a href="{{ route('subject.index') }}">
                                 <i class="material-icons">menu_book</i>
@@ -121,12 +115,6 @@
                                 <p>ĐIỂM</p>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="{{ route('mark-resit.index') }}">
-                                <i class="material-icons">assignment</i>
-                                <p>ĐIỂM THI LẠI</p>
-                            </a>
-                        </li> --}}
                         <li>
                             <a href="{{ route('mark-average.index') }}">
                                 <i class="material-icons">people</i>
@@ -153,19 +141,19 @@
                                 <p>DANH SÁCH ĐIỂM THEO LỚP</p>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="{{ route('list-student-pass') }}">
+                         <li>
+                            <a href="{{ route('list-mark-max') }}">
                                 <i class="material-icons">grade</i>
-                                <p>DANH SÁCH QUA MÔN</p>
+                                <p>DANH SÁCH ĐIỂM CAO NHẤT</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="">
+                       <li>
+                            <a href="{{ route('list-student-resit') }}">
                                 <i class="material-icons">people</i>
                                 <p>DANH SÁCH THI LẠI</p>
                             </a>
                         </li>
-                        <li>
+                         {{--<li>
                             <a href="">
                                 <i class="material-icons">assignment</i>
                                 <p> DANH SÁCH ĐIỂM</p>
@@ -180,12 +168,6 @@
 
                     </ul>
                 </div>
-            </li>
-            <li>
-                <a href="{{ route('calendar') }}">
-                    <i class="material-icons">date_range</i>
-                    <p> LỊCH HỌC </p>
-                </a>
             </li>
             <li>
                 <a href="{{ route('logout-admin') }}">

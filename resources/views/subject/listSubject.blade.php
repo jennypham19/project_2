@@ -6,7 +6,12 @@
     <a class="navbar-brand" href="{{ route('subject.index') }}"> MÔN HỌC </a>
 @endsection
 @section('content')
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if (Session::has('alert-' . $msg))
 
+            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+        @endif
+    @endforeach
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -15,14 +20,14 @@
                 </div>
                 <div class="card-content">
                     <div style="float:right;">
-                        <a href="{{ route('subject.create') }}"><i class ="material-icons">add</i> </a> 
+                        <a href="{{ route('subject.create') }}"><i class="material-icons">add</i> </a>
                     </div>
                     <h4 class="card-title">MÔN HỌC</h4>
                     <div class="toolbar">
 
                     </div>
                     <div class="material-datatables">
-                        <table id="table" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                        <table id="table" class="table table-hover table-no-bordered table-hover" cellspacing="0"
                             width="100%" style="width:100%">
                             <thead>
                                 <tr>

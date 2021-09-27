@@ -62,6 +62,7 @@ class GradeController extends Controller
         $grade->courseCode = $courseCode;
         $grade->majorCode = $majorCode;
         $grade->save();
+        $request->session()->flash('alert-success', 'Grade was successful added!');
         return Redirect::route('grade.index');
     }
 
@@ -115,6 +116,7 @@ class GradeController extends Controller
         $grade->courseCode = $course;
         $grade->majorCode = $major;
         $grade->save();
+        $request->session()->flash('alert-success', 'Grade was successful updated!');
         return Redirect::route('grade.index');
     }
 

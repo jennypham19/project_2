@@ -97,6 +97,7 @@ class StudentController extends Controller
         $student->classCode = $grade;
 
         $student->save();
+        $request->session()->flash('alert-success', 'Student was successful added!');
         return Redirect::route('student.index');
     }
 
@@ -168,6 +169,7 @@ class StudentController extends Controller
         $student->dateEnrollment = $dateEnrollment;
         $student->classCode = $classCode;
         $student->save();
+        $request->session()->flash('alert-success', 'Student was successful updated!');
         return Redirect::route('student.index');
     }
 

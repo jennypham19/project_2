@@ -27,6 +27,18 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets1') }}/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
+    <!--     Calendar     -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!--fullcalendar plugin files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+    
+    <!-- for plugin notification -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <body>
@@ -38,7 +50,7 @@
 
             <div class="main-content">
                 <div class="container-fluid">
-                        @yield('content-user')
+                    @yield('content-user')
                 </div>
             </div>
             @include('layout-user.footer')
@@ -102,8 +114,7 @@
 
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('assets1') }}/js/demo.js"></script>
-{{-- 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).ready(function() {
 
         demo.initDashboardPageCharts();

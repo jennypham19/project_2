@@ -189,7 +189,7 @@ class Mark extends Model
         }
 
 
-        //cấm thi lần 1 và thi lần 2
+        //cấm thi lần 1 và thi lần 2 (cả 2 bài)
         if ($this->mark_final == null && $this->mark_skill == null && $this->mark_final_resit != null && $this->mark_skill_resit != null) {
             if ($this->mark_final_resit >= 5) {
                 $A = $this->mark_final_resit;
@@ -198,6 +198,22 @@ class Mark extends Model
                 $B = $this->mark_skill_resit;
             }
             return ($A + $B) / 2;
+        }
+
+        //cấm thi lần 1 và thi lần 2 (1 bài => final)
+        if($this->mark_final==null && $this->mark_final_resit!=null){
+            if($this->mark_final_resit >= 5){
+                $A = $this->mark_final_resit;
+            }
+            return $A;
+        }
+
+        //cấm thi lần 1 và thi lần 2 (1 bài => skill)
+        if($this->mark_skill==null && $this->mark_skill_resit!= null){
+            if($this->mark_skill_resit >= 5){
+                $B = $this->mark_skill_resit;
+            }
+            return $B;
         }
 
         //thi LT không thi TH

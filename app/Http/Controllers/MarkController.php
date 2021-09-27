@@ -102,6 +102,7 @@ class MarkController extends Controller
         $mark->mark_skill_resit = $mark_skill_resit;
         // $mark->note = $note;
         $mark->save();
+        $request->session()->flash('alert-success', 'Mark was successful added!');
         return Redirect::route('mark.index');
     }
 
@@ -161,6 +162,7 @@ class MarkController extends Controller
         $mark->mark_skill_resit = $mark_skill_resit;
         // $mark->note = $note;
         $mark->save();
+        $request->session()->flash('alert-success', 'Mark was successful updated!');
         return Redirect::route('mark.index');
     }
 

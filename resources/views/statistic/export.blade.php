@@ -13,7 +13,6 @@
     </thead>
     <tbody>
         @php
-            var_dump($listMark);
             $i = 1;
         @endphp
         @foreach ($listMark as $mark)

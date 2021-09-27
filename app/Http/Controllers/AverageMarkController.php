@@ -7,8 +7,10 @@ use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\MarkResit;
+use App\Models\MarkAverage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class AverageMarkController extends Controller
 {
@@ -25,7 +27,9 @@ class AverageMarkController extends Controller
         switch ($grade) {
             case 'All':
             case '':
-                $listAvgMark = Student::join("grade", "student.classCode", "grade.classCode")->get();
+                $listAvgMark = Student::join("grade", "student.classCode", "grade.classCode")
+                    ->join("course", "grade.courseCode", "=", "course.courseCode")
+                    ->join("major", "grade.majorCode", "=", "major.majorCode")->get();
                 $j = 0;
                 $count = 0;
                 $TBT = 0;
@@ -46,7 +50,9 @@ class AverageMarkController extends Controller
                     }
                     $TBT = round($TB / $count, 1);
                     $list = [
+                        'major' => $value->majorCode,
                         'id' => $value->studentCode,
+                        'id-grade' => $value->classCode,
                         'grade' => $value->FullGrade,
                         'student' => $value->FullName,
                         'TBT' => $TBT,
@@ -79,6 +85,7 @@ class AverageMarkController extends Controller
                     $TBT = round($TB / $count, 1);
                     $list = [
                         'id' => $value->studentCode,
+                        'id-grade' => $value->classCode,
                         'grade' => $value->FullGrade,
                         'student' => $value->FullName,
                         'TBT' => $TBT,
@@ -87,6 +94,7 @@ class AverageMarkController extends Controller
                 }
                 break;
         }
+
         return view('average-mark.list-average-mark', [
             'listAvgMark' => $array,
             'listGrade' => $listGrade,
@@ -101,12 +109,6 @@ class AverageMarkController extends Controller
      */
     public function create()
     {
-        $listSubject = Subject::all();
-        $listStudent = Student::all();
-        return view('average-mark.create-average-mark', [
-            'listSubject' => $listSubject,
-            'listStudent' => $listStudent,
-        ]);
     }
 
     /**
@@ -117,7 +119,29 @@ class AverageMarkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $listAvgMark = Student::join("grade", "student.classCode", "grade.classCode")->get();
+        $j = 0;
+        $count = 0;
+        $TBT = 0;
+        foreach ($listAvgMark as $value) {
+            $idStudent = $value->studentCode;
+            $mark = Mark::join("subject", "mark.subjectCode", "=", "subject.subjectCode")
+                ->where("studentCode", "=", $idStudent)
+                ->get();
+            $count =  Mark::join("subject", "mark.subjectCode", "=", "subject.subjectCode")
+                ->where("studentCode", "=", $idStudent)
+                ->count();
+            $TB = 0;
+            foreach ($mark as $val) {
+                $TB = $TB + $val->TB;
+            }
+            if ($count == 0) {
+                $count = 1;
+            }
+            $TBT = round($TB / $count, 1);
+        }
+
+        return Redirect::route('mark-average.index');
     }
 
     /**
@@ -129,6 +153,8 @@ class AverageMarkController extends Controller
     public function show($id)
     {
         $student = Student::join("grade", "student.classCode", "grade.classCode")
+            ->join("course", "grade.courseCode", "=", "course.courseCode")
+            ->join("major", "grade.majorCode", "=", "major.majorCode")
             ->where("studentCode", "=", $id)
             ->get();
         $mark = Mark::join("subject", "mark.subjectCode", "=", "subject.subjectCode")
