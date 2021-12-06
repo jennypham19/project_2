@@ -8,7 +8,6 @@
 @section('content')
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if (Session::has('alert-' . $msg))
-
             <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
         @endif
     @endforeach
@@ -55,10 +54,8 @@
                                             <form class="btn btn-simple btn-danger btn-icon remove"
                                                 action="{{ route('admin.destroy', $admin->codeAdmin) }}" method="post"
                                                 onclick="return confirm('Xóa không???')">
-                                                @csrf
                                                 @method('DELETE')
-                                                <input type="hidden" name="user_id" value="{{ $admin->codeAdmin }}" />
-                                                <input type="hidden" name="request_name" value="delete_user" />
+                                                @csrf
                                                 <i class="material-icons">close</i>
                                             </form>
                                         </td>
@@ -72,7 +69,7 @@
         </div>
     </div>
 @endsection
-<script>
+{{-- <script>
     function is_admin() {
         $admin = is_logged();
         if (!empty($admin['lrole']) && $admin['role'] == '1') {
@@ -80,4 +77,4 @@
         }
         false;
     }
-</script>
+</script> --}}

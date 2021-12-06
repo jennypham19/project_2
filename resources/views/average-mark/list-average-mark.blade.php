@@ -59,14 +59,14 @@
                                         <td>{{ $avgMark['student'] }}</td>
                                         <td>{{ $avgMark['TBT'] }}</td>
                                     </tr>
-                                    @php
+                                    {{-- @php
                                         $insert = DB::table('mark_average')->insert([
                                             'majorCode'=>$avgMark['major'],
                                             'classCode' => $avgMark['id-grade'],
                                             'studentCode' => $avgMark['id'],
                                             'mark_average' => $avgMark['TBT'],
                                         ]);
-                                    @endphp
+                                    @endphp --}}
                                 @endforeach
 
                             </tbody>

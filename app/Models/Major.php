@@ -16,4 +16,8 @@ class Major extends Model
         'majorCode',
         'nameMajor',
     ];
+
+    public function getFullGradeAttribute(){
+        return $this->nameClass.$this->courseCode;
+    }
 }

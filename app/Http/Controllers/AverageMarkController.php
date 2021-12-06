@@ -120,7 +120,6 @@ class AverageMarkController extends Controller
     public function store(Request $request)
     {
         $listAvgMark = Student::join("grade", "student.classCode", "grade.classCode")->get();
-        $j = 0;
         $count = 0;
         $TBT = 0;
         foreach ($listAvgMark as $value) {
@@ -140,6 +139,12 @@ class AverageMarkController extends Controller
             }
             $TBT = round($TB / $count, 1);
         }
+         DB::table('mark_average')->insert([
+            'majorCode'=>$value['major'],
+            'classCode' => $value['id-grade'],
+            'studentCode' => $value['id'],
+            'mark_average' => $TBT,
+        ]);
 
         return Redirect::route('mark-average.index');
     }

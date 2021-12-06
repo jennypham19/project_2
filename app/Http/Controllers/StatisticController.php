@@ -126,9 +126,8 @@ class StatisticController extends Controller
     {
         $listMajor = Major::all();
         $major = $request->get('major');
-        $listMaxMark = Grade::join("course", "grade.courseCode", "=", "course.courseCode")
-            ->join("major", "grade.majorCode", "=", "major.majorCode")
-            // ->join("student","grade.classCode","=","student.classCode")
+        $listMaxMark = Major::join("grade", "grade.majorCode", "=", "major.majorCode")
+            ->join("course", "grade.courseCode", "=", "course.courseCode")
             // ->join("mark_average","grade.classCode","=","mark_average.classCode")
             // ->where("grade.majorCode",$major)
             ->get();
@@ -136,18 +135,19 @@ class StatisticController extends Controller
         $j = 0;
         $array = [];
         foreach ($listMaxMark as $value) {
-            $idClass = $value->classCode;
-            $mark = MarkAverage::where("classCode", "=", $idClass)
+            $idClass = $value->majorCode;
+            $mark = MarkAverage::where("majorCode", "=", $idClass)
                 ->max("mark_average");
-            $student = Student::where("classCode", "=", $idClass)->get();
-            
+            $student = Student::join("grade", "student.classCode", "=", "grade.classCode")
+                ->where("majorCode", "=", $idClass)
+                ->get();
             foreach ($student as $value1) {
                 $idStudent = $value1->studentCode;
                 $mark1 = MarkAverage::where("studentCode", "=", $idStudent)
-                ->max("mark_average");
+                    ->max("mark_average");
             }
             $list = [
-                'id' => $value1->studentCode ,
+                'id' => $value1->studentCode,
                 'Major' => $value->nameMajor,
                 'Grade' => $value->FullGrade,
                 'Student' => $value1->FullName,

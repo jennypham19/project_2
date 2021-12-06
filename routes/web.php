@@ -39,7 +39,7 @@ Route::get('/admin/login', [AuthenticateController::class, 'loginAdmin'])->name(
 Route::post('/login-process-admin', [AuthenticateController::class, 'loginProcessAdmin'])->name('loginProcessAdmin');
 Route::get('/admin/logout', [AuthenticateController::class, 'logoutAdmin'])->name('logout-admin');
 
-//tạo middleware để  check xem ng dùng có đăng nhập hay không.Nếu có thì cho vào, không thì mời đăng nhập
+//tạo middleware để  check xem admin có đăng nhập??.Nếu có thì cho vào, no thì mời đăng nhập
 Route::middleware([CheckLogin::class])->group(function () {
     //dashboard
     Route::get('/admin/dashboard', function () {

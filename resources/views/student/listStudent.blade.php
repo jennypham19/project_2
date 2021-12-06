@@ -58,7 +58,7 @@
                                 @foreach ($listStudent as $student)
                                     <tr>
                                         <td>{{ $student->studentCode }}</td>
-                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->FullName }}</td>
                                         {{-- <td>{{ $student->passWord }}</td>
                                         <td>{{ $student->FullName }}</td> --}}
                                         <td>{{ $student->dateOfBirth }}</td>

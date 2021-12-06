@@ -49,7 +49,7 @@
                                     <th>Điểm LT</th>
                                     <th>Điểm TH</th>
                                     <th>Điểm LT lần 1</th>
-                                    <th>Điểm TH lần 2</th>
+                                    <th>Điểm TH lần 1</th>
                                     <th class="disabled-sorting text-center">Tác vụ</th>
                                 </tr>
                             </thead>

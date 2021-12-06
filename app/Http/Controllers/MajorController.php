@@ -110,9 +110,4 @@ class MajorController extends Controller
         return redirect(route('major.index'));
     }
 
-    public function hide($id){
-        // Major::where('majorCode',$id);
-        echo $id;
-        // return Redirect::route('major.index');
-    }
 }

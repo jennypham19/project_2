@@ -109,19 +109,14 @@ class AdminController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        if (Session::exists('admin')) {
-            $admin = session('admin')->role;
-            if ($admin == 1) {
-                $request->session()->flash('alert-warning', "You don't have permission to delete admin");
-                return redirect(route('admin.index'));
-            } else {
-                Admin::where('codeAdmin',$id)->delete();
-                return Redirect::route('admin.index');
-            }
-            
-        }
-            
-        
+        $admin = Admin::where("codeAdmin",$id)->get();
+        if($admin["role"]==1){
+            $request->session()->flash('alert-warning', "You don't have permission to delete admin");
+            return redirect(route('admin.index'));
+        }else{
+            Admin::where('codeAdmin',$id)->delete();
+            return Redirect::route('admin.index');
+        }   
     }
 }
 

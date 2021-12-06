@@ -16,11 +16,11 @@
                 @csrf
                 <div class="form-group label-floating">
                     <label style="color:black;">Mã khóa</label>
-                    <input type="text" class="form-control" name="code_course">
+                    <input type="text" class="form-control" name="code_course" required>
                 </div>
                 <div class="form-group label-floating">
                     <label style="color:black;">Tên khóa</label>
-                    <input type="text" class="form-control" name="name_course">
+                    <input type="text" class="form-control" name="name_course" required>
                 </div>
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>

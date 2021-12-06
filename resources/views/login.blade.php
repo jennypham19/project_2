@@ -31,7 +31,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="post" action="{{ route('loginProcessAdmin') }}">
+                            <form method="post" action="{{ route('loginProcessAdmin') }}" name="form" onsubmit="return validateForm()">
                                 @csrf
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
@@ -47,7 +47,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email </label>
-                                                <input type="email" name="email" class="form-control">
+                                                <input type="email" name="email" class="form-control" id="email">
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -56,7 +56,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Password</label>
-                                                <input type="password" name="password" class="form-control">
+                                                <input type="password" name="password" class="form-control" id="password">
                                             </div>
                                         </div>
                                         @if (Session::exists('error'))
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="footer text-center">
                                         <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Đăng nhập</button><br>
-                                        <span><a href="#" style="color:black;">Quên mật khẩu</a></span>&emsp;&emsp;
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -75,6 +75,22 @@
             </div>
         </div>
     </div>
+    <script>
+        function validateForm(){
+            var email=document.forms["form"]["email"];
+            var password=document.forms["form"]["password"];
+            if(email.value==""){
+                window.alert("Email không được để trống");
+                email.focus;
+                return false;
+            }
+            if(password.value==""){
+                window.alert("Password không được để trống");
+                password.focus;
+                return false;
+            }
+        }
+    </script>
 </body>
 <!--   Core JS Files   -->
 <script src="{{ asset('assets') }}/js/jquery-3.2.1.min.js" type="text/javascript"></script>

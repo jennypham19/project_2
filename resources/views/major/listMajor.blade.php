@@ -59,6 +59,7 @@
                                                 class="btn btn-simple btn-info btn-icon edit">
                                                 <i class="material-icons">edit</i>
                                             </a>
+                                            
                                             <form class="btn btn-simple btn-danger btn-icon remove"
                                                 action="{{ route('major.destroy', $major->majorCode) }}" method="post"
                                                 onclick="return confirm('Xóa không???')">
