@@ -25,6 +25,12 @@
 
         <ul class="nav">
             <li>
+                <a href="{{ route('home-student')}}">
+                    <i class="pe-7s-plugin"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('profile-student',session('user')->studentCode) }}">
                     <i class="pe-7s-plugin"></i>
                     <p>Profile

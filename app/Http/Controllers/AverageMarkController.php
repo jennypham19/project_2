@@ -84,6 +84,7 @@ class AverageMarkController extends Controller
                     }
                     $TBT = round($TB / $count, 1);
                     $list = [
+                        'id-major'=>$value->majorCode,
                         'id' => $value->studentCode,
                         'id-grade' => $value->classCode,
                         'grade' => $value->FullGrade,
@@ -91,10 +92,18 @@ class AverageMarkController extends Controller
                         'TBT' => $TBT,
                     ];
                     $array[$j++] = $list;
+                    DB::table('mark_average')->insert([
+                        'majorCode'=>$value['id-major'],
+                        'classCode' => $value['id-grade'],
+                        'studentCode' => $value['id'],
+                        'mark_average' => $TBT,
+                    ]);
                 }
                 break;
+                
         }
-
+      
+        
         return view('average-mark.list-average-mark', [
             'listAvgMark' => $array,
             'listGrade' => $listGrade,
@@ -119,7 +128,9 @@ class AverageMarkController extends Controller
      */
     public function store(Request $request)
     {
-        $listAvgMark = Student::join("grade", "student.classCode", "grade.classCode")->get();
+        $listAvgMark = Student::join("grade", "student.classCode", "grade.classCode")
+        ->join("major","major.majorCode","=","grade.classCode")
+        ->get();
         $count = 0;
         $TBT = 0;
         foreach ($listAvgMark as $value) {
@@ -138,13 +149,20 @@ class AverageMarkController extends Controller
                 $count = 1;
             }
             $TBT = round($TB / $count, 1);
+            $list = [
+                'id-major'=>$value->majorCode,
+                'id-grade' => $value->classCode,
+                'id' => $value->studentCode,
+                'TBT' => $TBT,
+            ];
         }
-         DB::table('mark_average')->insert([
-            'majorCode'=>$value['major'],
+        $id = DB::table('mark_average')->insert([
+            'majorCode'=>$value['id-major'],
             'classCode' => $value['id-grade'],
             'studentCode' => $value['id'],
             'mark_average' => $TBT,
         ]);
+        
 
         return Redirect::route('mark-average.index');
     }

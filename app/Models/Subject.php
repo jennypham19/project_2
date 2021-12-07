@@ -13,14 +13,7 @@ class Subject extends Model
     public $primaryKey = 'subjectCode';
     public $incrementing = 'false';
     public $keyType = 'string';
-    protected $fillable = [
-        'subjectCode',
-        'nameSubject',
-        'totalClassHour',
-        'final',
-        'skill',
-        'startDate',
-    ];
+    
 
     public function getNameFinalAttribute()
     {

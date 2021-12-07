@@ -12,12 +12,7 @@ class Grade extends Model
     public $primaryKey = 'classCode';
     public $incrementing ='false';
     public $keyType = 'string';
-    protected $fillable = [
-        'classCode',
-        'nameClass',
-        'courseCode',
-        'majorCode',
-    ];
+    
     public function getFullGradeAttribute(){
         return $this->nameClass.$this->courseCode;
     }

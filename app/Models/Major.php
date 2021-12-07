@@ -12,11 +12,7 @@ class Major extends Model
     protected $primaryKey = 'majorCode';
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $fillable = [
-        'majorCode',
-        'nameMajor',
-    ];
-
+    
     public function getFullGradeAttribute(){
         return $this->nameClass.$this->courseCode;
     }

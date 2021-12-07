@@ -141,12 +141,12 @@
                                 <p>DANH SÁCH ĐIỂM THEO LỚP</p>
                             </a>
                         </li>
-                         <li>
+                         {{-- <li>
                             <a href="{{ route('list-mark-max') }}">
                                 <i class="material-icons">grade</i>
                                 <p>DANH SÁCH ĐIỂM CAO NHẤT</p>
                             </a>
-                        </li>
+                        </li> --}}
                        <li>
                             <a href="{{ route('list-student-resit') }}">
                                 <i class="material-icons">people</i>

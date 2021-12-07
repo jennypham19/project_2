@@ -124,33 +124,42 @@ class StatisticController extends Controller
     //diem cao nhat
     public function markMax(Request $request)
     {
+        // đây à,ừ
+        //đâu chỗ tính TB đâu
+        //tính điểm tb cao nhất á ánh,tìm điểm TB cao nhất chứ điểm TB tính r mà
+        // uk thi tìm ý
+//thế phải sắp xếp mảng thôi, làm đi
+//còn có ý tưởng chứ má
+// tưởng sắp xếp diểm bt ai ngờ tìm điểm cao nhất
+//lại còn theo mã ngành nữa, thế nên t mới làm đc cái lọ thì mất cái chai
+//từ nghĩ k=cách đã k thì bỏ đi bạn ạ :)))), thì t có ý định là bỏ r nhưng vẫn cố gắng làm =))
         $listMajor = Major::all();
         $major = $request->get('major');
-        $listMaxMark = Major::join("grade", "grade.majorCode", "=", "major.majorCode")
-            ->join("course", "grade.courseCode", "=", "course.courseCode")
-            // ->join("mark_average","grade.classCode","=","mark_average.classCode")
+        $listMaxMark = MarkAverage::join("grade", "grade.classCode", "=", "mark_average.classCode")
+            ->join("major", "major.majorCode", "=", "mark_average.majorCode")
+            ->join("student","student.studentCode","=","mark_average.studentCode")
             // ->where("grade.majorCode",$major)
             ->get();
-        // dd($listMaxMark);
         $j = 0;
         $array = [];
         foreach ($listMaxMark as $value) {
             $idClass = $value->majorCode;
             $mark = MarkAverage::where("majorCode", "=", $idClass)
                 ->max("mark_average");
-            $student = Student::join("grade", "student.classCode", "=", "grade.classCode")
-                ->where("majorCode", "=", $idClass)
-                ->get();
-            foreach ($student as $value1) {
-                $idStudent = $value1->studentCode;
-                $mark1 = MarkAverage::where("studentCode", "=", $idStudent)
-                    ->max("mark_average");
-            }
+            // $student = Student::join("grade", "student.classCode", "=", "grade.classCode")
+            //     ->where("majorCode", "=", $idClass)
+            //     ->get();
+            // foreach ($student as $value1) {
+            //     $idStudent = $value1->studentCode;
+            //     $mark1 = MarkAverage::where("studentCode", "=", $idStudent)
+            //         ->max("mark_average");
+                   
+            // }
             $list = [
-                'id' => $value1->studentCode,
+                'id' => $value->studentCode,
                 'Major' => $value->nameMajor,
                 'Grade' => $value->FullGrade,
-                'Student' => $value1->FullName,
+                'Student' => $value->FullName,
                 'TBT' => $mark,
             ];
             $array[$j++] = $list;
